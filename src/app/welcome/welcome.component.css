@@ -1,0 +1,88 @@
+.heading-bar {
+  border-bottom: 1px solid #d9d9d970;
+  padding: 6px 0 0;
+  margin: 0 0 22px;
+  position: relative;
+}
+.heading-bar h5 {
+  margin: 0;
+  color: #333;
+  line-height: 30px;
+  padding-bottom: 6px;
+  border-bottom: 3px solid #FF4081;
+  display: inline-block;
+  margin-bottom: -2px;
+}
+.h-line {
+  background: #FF4081;
+  width: 30px;
+  height: 3px;
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  display: none;
+}
+.flex-center {
+  display: flex;
+  align-items: center;
+}
+img {
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+  width: auto;
+}
+/*-------*/
+.genre {
+  flex-direction: inherit;
+  justify-content: flex-start;
+  margin-bottom: 30px;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+}
+.genre-item {
+  width: 23.5%;
+  height: 110px;
+  border: 1px solid #eeeeeec4;
+  padding: 15px;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  margin: 8px;
+}
+.genre-item-img {
+  width: 35%;
+  height: 100%;
+}
+.genre-item-text a {
+  color: #282c3f;
+  font-weight: 400;
+}
+/*-------*/
+
+/* --------- Grid view CSS ----- */
+.grid-view {
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.grid-view-item {
+  width: 23.5%;
+  height: 300px;
+  border: 1px solid #e9e9e9;
+  margin: 0 8px 20px 8px;
+  padding: 5px;
+}
+.grid-view-item-img {
+  width: 95%;
+  margin: 0 auto;
+  height: 250px;
+  justify-content: center;
+}
+.grid-view-item-text a {
+  color: #000;
+  font-weight: 500;
+}
+/* --------- End of Grid   ----- */

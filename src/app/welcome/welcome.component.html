@@ -1,0 +1,54 @@
+<div class="container">
+  <br>
+
+  <!-- Popular Section -->
+  <div class="heading-bar">
+    <h5 class="text-uppercase"><b>Most Popular Books</b></h5>
+    <span class="h-line"></span>
+  </div>
+  <div class="genre flex-center">
+    <div class="genre-item flex-center" *ngFor="let i of items">
+      <div class="genre-item-img">
+        <img src="{{ i.src }}" alt="{{ i.text }}">
+      </div>
+      <div class="genre-item-text">
+        <h5><a href="">{{ i.text }}</a></h5>
+        <p><a href="">Read more >></a></p>
+      </div>
+    </div>
+  </div>
+  <!-- End of Popular Section -->
+
+  <!-- Resource types Section -->
+  <div class="heading-bar">
+    <h5 class="text-uppercase"><b>Resource Types</b></h5>
+    <span class="h-line"></span>
+  </div>
+  <div class="genre flex-center">
+    <div class="genre-item flex-center" *ngFor="let item of resourceItems">
+      <!--<div class="genre-item-img">
+        <img src="{{ i.src }}" alt="{{ i.text }}">
+      </div>-->
+      <div class="genre-item-text">
+        <h6><a href=""><b>{{ item.text }}</b></a></h6>
+        <p><a href="">Open Category >></a></p>
+      </div>
+    </div>
+  </div>
+  <!-- end of Resource types Section -->
+
+  <hr>
+
+  <section>
+    <div class="flex-center grid-view">
+      <div class="grid-view-item" *ngFor="let item of gridView">
+        <div class="grid-view-item-img flex-center">
+          <img src="{{ item.src }}" alt="">
+        </div>
+        <div class="grid-view-item-text">
+          <h6><a href="">{{ item.text }}</a></h6>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

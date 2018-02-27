@@ -26,12 +26,12 @@ export class WelcomeComponent {
   gridView = [
     {text: 'A Walk Across The Sun', src: 'http://html.crunchpress.com/book-store/images/image25.jpg'},
     {text: 'A Walk Across The Sun', src: 'http://html.crunchpress.com/book-store/images/image38.jpg'},
+    {text: 'A Walk Across The Sun', src: 'http://html.crunchpress.com/book-store/images/image42.jpg'},
+    {text: 'A Walk Across The Sun', src: 'http://html.crunchpress.com/book-store/images/image41.jpg'},
     {text: 'A Walk Across The Sun', src: 'http://html.crunchpress.com/book-store/images/image38.jpg'},
     {text: 'A Walk Across The Sun', src: 'http://html.crunchpress.com/book-store/images/image41.jpg'},
-    {text: 'A Walk Across The Sun', src: 'http://html.crunchpress.com/book-store/images/image25.jpg'},
     {text: 'A Walk Across The Sun', src: 'http://html.crunchpress.com/book-store/images/image38.jpg'},
-    {text: 'A Walk Across The Sun', src: 'http://html.crunchpress.com/book-store/images/image25.jpg'},
-    {text: 'A Walk Across The Sun', src: 'http://html.crunchpress.com/book-store/images/image38.jpg'}
+    {text: 'A Walk Across The Sun', src: 'http://html.crunchpress.com/book-store/images/image25.jpg'}
   ];
   constructor() {}
 }

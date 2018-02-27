@@ -7,7 +7,7 @@
     <span class="h-line"></span>
   </div>
   <div class="genre flex-center">
-    <div class="genre-item flex-center" *ngFor="let i of items">
+    <div class="genre-item popular-genre-item flex-center" *ngFor="let i of items">
       <div class="genre-item-img">
         <img src="{{ i.src }}" alt="{{ i.text }}">
       </div>
@@ -30,10 +30,13 @@
         <img src="{{ i.src }}" alt="{{ i.text }}">
       </div>-->
       <div class="genre-item-text">
-        <h6><a href=""><b>{{ item.text }}</b></a></h6>
+        <h6><a href="" class="resource-type-text"><b>{{ item.text }}</b></a></h6>
         <p><a href="">Open Category >></a></p>
       </div>
     </div>
+  </div>
+  <div class="text-right show-more bottom-30">
+    <a href="">Show more >></a>
   </div>
   <!-- end of Resource types Section -->
 
@@ -47,8 +50,28 @@
         </div>
         <div class="grid-view-item-text">
           <h6><a href="">{{ item.text }}</a></h6>
+          <p class="author">-By <b>Raghuvaran</b></p>
+        </div>
+
+        <div class="grid-view-item-desc">
+          <p>
+            Immerse Yourself in the Magic of Cambodia with a Luxurious
+            Eight Day/Seven Night Esc...
+          </p>
+        </div>
+
+        <div class="grid-view-footer">
+          <div class="price-area">
+            <p>Rs.76.00</p>
+          </div>
+          <div>
+            <button class="btn btn-default btn-sm">View Book</button>
+          </div>
         </div>
       </div>
+    </div>
+    <div class="text-right show-more bottom-30">
+      <a href="">Show more >></a>
     </div>
   </section>
 </div>

@@ -219,3 +219,6 @@
   font-size: 36px;
   color: #fff;
 }
+.dropdown-menu {
+  min-width: 20rem !important;
+}

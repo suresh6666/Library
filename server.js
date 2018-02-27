@@ -32,6 +32,4 @@ app.get('*', (req, res) => {
 });
 });
 
-app.listen(port, () => {
-  console.log(`Listening at ${baseUrl}`);
-});
+app.listen(process.env.PORT || 5000);

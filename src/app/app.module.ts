@@ -11,6 +11,7 @@ import { FooterComponent } from './footer/footer.component';
 import {TypeaheadModule} from 'ngx-bootstrap';
 import {FormsModule} from '@angular/forms';
 import { BookDetailsComponent } from './book-details/book-details/book-details.component';
+import { SearchbooksComponent } from './searchbooks/searchbooks.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { BookDetailsComponent } from './book-details/book-details/book-details.c
     NavbarComponent,
     AuthenticationComponent,
     FooterComponent,
-    BookDetailsComponent
+    BookDetailsComponent,
+    SearchbooksComponent
   ],
   imports: [
     FormsModule,

@@ -7,6 +7,7 @@ import 'rxjs/add/observable/of';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  groupSelected: any = '';
   statesComplex: any[] = [
     { id: 1, name: 'Alabama', region: 'South' },
     { id: 2, name: 'Alaska', region: 'West' },

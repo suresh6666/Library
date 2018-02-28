@@ -3,6 +3,7 @@ import {WelcomeComponent} from '../welcome/welcome.component';
 import {AuthenticationComponent} from '../authentication/authentication.component';
 import {BookDetailsComponent} from '../book-details/book-details/book-details.component';
 import {SearchbooksComponent} from '../searchbooks/searchbooks.component';
+import {ProfileComponent} from '../profile/profile.component';
 
 export const routes: Routes = [
   { path: 'welcome', component: WelcomeComponent },
@@ -10,6 +11,7 @@ export const routes: Routes = [
   // Book Details Component
   { path: 'book_details/:book_name', component: BookDetailsComponent },
   { path: 'search', component: SearchbooksComponent },
+  { path: 'profile', component: ProfileComponent },
   { path: '',
     redirectTo: '/welcome',
     pathMatch: 'full'

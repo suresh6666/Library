@@ -19,5 +19,10 @@ export class AppUrls {
   * --
   * --
   * */
-  public jsonUser = 'http://jsonplaceholder.typicode.com/users';
+  public jsonUser = 'https://jsonplaceholder.typicode.com/users/1';
+}
+
+// Lease rate for the Entire application
+export enum Lease {
+  percentage = 12
 }

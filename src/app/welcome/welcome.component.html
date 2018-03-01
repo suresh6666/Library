@@ -30,7 +30,7 @@
         <img src="{{ i.src }}" alt="{{ i.text }}">
       </div>-->
       <div class="genre-item-text">
-        <h6><a href="" class="resource-type-text"><b>{{ item.text }}</b></a></h6>
+        <h6><a routerLink="/search" [queryParams]="{ q: '', category: item.text, author: ''}" class="resource-type-text"><b>{{ item.text }}</b></a></h6>
         <p><a href="">Open Category >></a></p>
       </div>
     </div>

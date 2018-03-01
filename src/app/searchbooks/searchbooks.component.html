@@ -1,0 +1,25 @@
+<div class="container">
+  <br>
+  <div class="row">
+    <div class="col-lg-8 col-md-8">
+      <div class="search-card" *ngFor="let book of books">
+        <div class="img-sec">
+          <img src="{{ book.book_image }}" alt="{{ book.title }}">
+        </div> <!-- end of img-sec -->
+        <div class="search-desc">
+          <p class="search-title" title="{{ book.title }}">
+            <a style="color: #333333; font-weight: 400;" routerLink="/book_details/{{ book.title }}">{{ book.title }}</a>
+          </p>
+          <p class="search-author">By <a href="" style="text-decoration: underline;">{{ book.author }}</a></p>
+          <p class="book-desc">
+            Gluten-free quinoa selfies carles, kogi gentrify retro marfa viral. Aesthetic before they sold out put a bird on it sriracha typewriter. Skateboard viral irony tonx ...
+          </p>
+          <p>Leasing Price: {{ book.lease_price }}, <b>Reading Price: {{ book.reading_fee }}</b></p>
+          <div>
+            <button class="btn btn-sm btn-primary">Rent this book!</button>
+          </div>
+        </div> <!-- end of Search desc -->
+      </div> <!-- end of Search card -->
+    </div> <!-- end col -->
+  </div> <!-- end row -->
+</div>

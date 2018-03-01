@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./authentication.component.css']
 })
 export class AuthenticationComponent implements OnInit {
-
-  constructor() { }
+  public randomCheck: number;
+  constructor() {
+    this.randomNumber();
+  }
 
   ngOnInit() {
+  }
+  randomNumber(): number {
+    this.randomCheck = Math.floor((Math.random() * 1032123) + 1);
+    return this.randomCheck;
   }
 
 }

@@ -1,0 +1,40 @@
+.card-header {
+  overflow: hidden;
+  background: #fafafa;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 11px 11px 3px;
+}
+.book-details-img {
+  border: 0;
+}
+.book-details-ul {
+  margin: 0;
+  list-style: none;
+}
+.book-details-ul li {
+  display: inline-block;
+  margin-left: 10px;
+}
+.book-details-ul li a {
+  color: #000;
+}
+.book-details-checkout {
+  background-color: #FF4081;
+  border: 1px solid #FF4081;
+  -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.26), inset 1px 1px 0 0 hsla(0, 0%, 100%, .2);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.26), inset 1px 1px 0 0 hsla(0, 0%, 100%, .2);
+}
+.pink-heading {
+  color: #FF4081;
+  margin-bottom: 6px;
+}
+.browse-by ul {
+  list-style: none;
+  padding: 0;
+}
+.browse-by ul li {
+  padding: 3px 0;
+}
+.browse-by ul li a {
+  color: #000;
+}

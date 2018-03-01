@@ -2,8 +2,11 @@ export interface Book {
   'book_id': string,
   'title': string,
   'book_summary': string,
+  'url': string,
+  'keywords': [string],
+  'number_of_pages': number,
   'author': string,
-  'lease_price': string,
+  'lease_price': number,
   'availability': boolean,
   'delivery_time': string,
   'book_image': string,
@@ -11,8 +14,8 @@ export interface Book {
   'language': string,
   'publisher': string,
   'year': string,
-  'ISBN': string,
-  'IBCN': string,
+  'isbn': string,
+  'ibcn': string,
   'book_author_desc': string
 }
 
@@ -28,7 +31,7 @@ export interface Author {
 export interface User {
   'user_id': string,
   'user_name': string,
-  'isActive': boolean,
+  'is_active': boolean,
   'picture': string,
   'age': number,
   'first_name': string,
@@ -40,5 +43,15 @@ export interface User {
   'address': string,
   'about': string,
   'shipping_address': Array<any>
+}
+
+export interface NewAddress {
+  name: string,
+  address: string,
+  city: string,
+  state: string,
+  pin_code: string,
+  status: boolean,
+  phone: string
 }
 

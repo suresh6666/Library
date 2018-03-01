@@ -3,3 +3,37 @@ body {
   background-color: #FFFFFF;
   font-size: 14px;
 }
+.places {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.places li {
+  float: left;
+}
+.place {
+  position: relative;
+  display: inline-block;
+  margin: 0 10px 10px 0;
+  padding: 0 20px 0 23px;
+  height: 26px;
+  border-radius: 3px 0 0 3px;
+  background: #F3F3F3;
+  color: #000;
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 26px;
+  -webkit-transition: all .4s;
+}
+.place::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-top: 13px solid transparent;
+  border-bottom: 13px solid transparent;
+  border-left: 10px solid #EFF1F5;
+  background: #fff;
+  content: '';
+  -webkit-transition: all .4s;
+}

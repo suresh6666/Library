@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+
 import 'rxjs/add/observable/of';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -8,6 +12,7 @@ import 'rxjs/add/observable/of';
 })
 export class NavbarComponent implements OnInit {
   groupSelected: any = '';
+  modalRef: any;
   statesComplex: any[] = [
     { id: 1, name: 'Alabama', region: 'South' },
     { id: 2, name: 'Alaska', region: 'West' },
@@ -60,8 +65,15 @@ export class NavbarComponent implements OnInit {
     { id: 50, name: 'Wisconsin', region: 'Midwest' },
     { id: 51, name: 'Wyoming', region: 'West' }
   ];
-  constructor() {}
+  constructor(private route: Router,
+              private modalService: BsModalService) {}
 
   ngOnInit() {}
-
+  searchBooks(searchText, cat, author) {
+    this.route.navigate(['/search'], {queryParams: {q: searchText, author: author, category: cat}});
+    this.groupSelected = null;
+  }
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+  }
 }

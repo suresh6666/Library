@@ -1,0 +1,157 @@
+<div class="container">
+  <br>
+  <div class="card">
+    <div class="card-header">
+      <h5 style="margin-bottom: 0;" class="card-title"><b>Profile settings</b></h5>
+    </div> <!-- end card -->
+    <div class="card-body">
+      <form class="form">
+        <div class="row">
+          <div class="col-lg-5">
+            <div class="form-group">
+              <label class="control-label" for="user_id">User Id</label>
+              <input id="user_id" name="user_id" type="text" placeholder="User ID"
+                     class="form-control input-md" [(ngModel)]="user.name" required readonly />
+            </div> <!-- form-group-->
+            <div class="form-group">
+              <label class="control-label" for="user_name">Username</label>
+              <input id="user_name" name="user_name" type="text" placeholder="Username"
+                     class="form-control input-md" [(ngModel)]="user.user_name" required />
+            </div> <!-- form-group-->
+            <div class="form-group">
+              <label class="control-label" for="user_name">First Name</label>
+              <input id="first_name" name="first_name" type="text" placeholder="first_name"
+                     class="form-control input-md" [(ngModel)]="user.first_name" required />
+            </div> <!-- form-group-->
+            <div class="form-group">
+              <label class="control-label" for="user_name">Last name</label>
+              <input id="last_name" name="last_name" type="text" placeholder="last_name"
+                     class="form-control input-md" [(ngModel)]="user.last_name" required />
+            </div> <!-- form-group-->
+            <div class="form-group">
+              <label class="control-label" for="is_active">Status</label>
+              <input id="is_active" name="displayname" type="text"
+                     placeholder="Staus" class="form-control input-md" required="" readonly [(ngModel)]="user.is_active" />
+            </div> <!-- form-group-->
+            <div class="form-group">
+              <label class="control-label" for="age">Age</label>
+              <input id="age" name="age" type="text" placeholder="Age"
+                     class="form-control input-md" [(ngModel)]="user.age" required />
+            </div> <!-- form-group-->
+          </div> <!-- end col -->
+          <div class="col-lg-5">
+            <div class="form-group">
+              <label class="control-label" for="gender">Gender</label>
+              <select id="gender" #selectGender class="form-control inout-md">
+                <option *ngFor="let gen of gender" [value]="gen.value">
+                  {{gen.title}}
+                </option>
+              </select>
+            </div> <!-- form-group-->
+            <div class="form-group">
+              <label class="control-label" for="email">Email</label>
+              <input id="email" name="email" type="text" placeholder="Email"
+                     class="form-control input-md" [(ngModel)]="user.email" readonly required />
+            </div> <!-- form-group-->
+            <div class="form-group">
+              <label class="control-label" for="Phone">Phone</label>
+              <input id="phone" name="phone" type="text" placeholder="Phone"
+                     class="form-control input-md" [(ngModel)]="user.phone" required />
+            </div> <!-- form-group-->
+            <div class="form-group">
+              <label class="control-label" for="address">Address</label>
+              <input id="address" name="address" type="text" placeholder="Address"
+                     class="form-control input-md" [(ngModel)]="user.address" required />
+            </div> <!-- form-group-->
+            <div class="form-group">
+              <label class="control-label" for="About">About</label>
+              <input id="About" name="About" type="text" placeholder="About"
+                     class="form-control input-md" [(ngModel)]="user.about" required />
+            </div> <!-- form-group-->
+          </div> <!-- end col -->
+        </div> <!-- end row -->
+        <div class="row">
+          <div class="col-lg-4">
+            <button type="submit" class="btn btn-md btn-primary">Update</button>
+            <button type="button" class="btn btn-default btn-md">Cancel</button>
+          </div> <!-- end col -->
+        </div> <!-- end row -->
+      </form> <!-- end form -->
+    </div> <!-- end body -->
+  </div> <!-- end card -->
+  <br>
+  <div class="card">
+    <div class="card-header">
+      <h5 style="margin-bottom: 0;" class="card-title"><b>Shipping Address</b></h5>
+    </div> <!-- end header -->
+    <div class="card-body shipping-address">
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="new-address">
+            <h6 style="margin-bottom: 0; color: #2780E3; text-transform: uppercase; font-weight: 400;">
+              <i class="fa fa-plus"></i>&nbsp;
+              <a (click)="openModal(template)" style="cursor: pointer;">Add New Address</a>
+            </h6>
+          </div> <!-- end new address -->
+        </div> <!-- end col -->
+      </div> <!-- end row -->
+
+
+      <ng-template #template>
+        <div class="modal-header">
+          <p class="modal-title pull-left text-uppercase"><b>Add New Address </b></p>
+          <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="row">
+              <div class="form-group col-lg-6">
+                <input name="new_name" type="text" [(ngModel)]="newAddress.name" class="form-control input-sm"
+                       placeholder="Name" id="new_name">
+              </div> <!-- form-group -->
+              <div class="form-group col-lg-6">
+                <input name="new_phone" type="text" [(ngModel)]="newAddress.phone" class="form-control input-sm"
+                       placeholder="Phone" id="new_phone">
+              </div> <!-- form-group -->
+            </div> <!-- end row -->
+            <div class="form-group">
+              <textarea name="new_address" type="text" [(ngModel)]="newAddress.address" class="form-control input-sm"
+                        placeholder="Address" id="new_address"></textarea>
+            </div> <!-- form-group -->
+            <div class="row">
+              <div class="form-group col-lg-6">
+                <input name="new_city" type="text" [(ngModel)]="newAddress.city" class="form-control input-sm"
+                       placeholder="City" id="new_city">
+              </div> <!-- form-group -->
+              <div class="form-group col-lg-6">
+                <input name="new_state" type="text" [(ngModel)]="newAddress.state" class="form-control input-sm"
+                       placeholder="State" id="new_state">
+              </div> <!-- form-group -->
+            </div> <!-- end row -->
+            <div class="form-group">
+              <button class="btn btn-md btn-primary text-uppercase" type="submit">Add New Address</button>
+              <button class="btn btn-md btn-default" type="button">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </ng-template>
+
+      <br>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="address-area" *ngFor="let i of [1, 3]">
+            <div class="address-info">
+              <span class="address-type">Work</span>
+              <div class="address-owner">
+                <p><b>Muppalla, Surya &nbsp;&nbsp;8500011686</b></p>
+                <span>Maximus 2B, 4th floor, mind space, HITECH city, Hyderabad, Telangana 500081., Mind space, HITECH city., Hyderabad, Telangana - 500081</span>
+              </div>
+            </div>
+          </div> <!-- end new address -->
+        </div> <!-- end col -->
+      </div> <!-- end row -->
+    </div> <!-- end body -->
+  </div> <!-- end card -->
+</div>

@@ -27,8 +27,14 @@
               <br>
               <p><b>Available</b>, Delivered in <b>2</b> Days</p>
               <p>
-                <button class="btn btn-primary btn-md book-details-checkout">Request hard copy!</button>
-                <button class="btn btn-primary btn-md">Request E-copy!</button>
+                <button routerLink="/checkout/20102010" class="btn btn-primary btn-md book-details-checkout" tooltip="Request for Hard copy!"
+                        placement="top">
+                  Request hard copy!
+                </button>
+                <button routerLink="/checkout/{{ 201020102 }}" class="btn btn-primary btn-md" tooltip="Request for E-copy!"
+                        placement="top">
+                  Request E-copy!
+                </button>
               </p>
             </div> <!-- end col -->
             <div class="col-lg-7">

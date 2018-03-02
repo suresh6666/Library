@@ -5,6 +5,7 @@ import {BookDetailsComponent} from '../book-details/book-details/book-details.co
 import {SearchbooksComponent} from '../searchbooks/searchbooks.component';
 import {ProfileComponent} from '../profile/profile.component';
 import {CheckoutComponent} from '../checkout/checkout.component';
+import {MycreditComponent} from '../mycredit/mycredit.component';
 
 export const routes: Routes = [
   { path: 'welcome', component: WelcomeComponent },
@@ -13,7 +14,8 @@ export const routes: Routes = [
   { path: 'book_details/:book_name', component: BookDetailsComponent },
   { path: 'search', component: SearchbooksComponent },
   { path: 'profile', component: ProfileComponent },
-  { path: 'checkout', component: CheckoutComponent },
+  { path: 'checkout/:book_id', component: CheckoutComponent },
+  { path: 'mycredit', component: MycreditComponent },
   { path: '',
     redirectTo: '/welcome',
     pathMatch: 'full'

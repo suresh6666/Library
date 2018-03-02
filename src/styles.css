@@ -37,3 +37,13 @@ body {
   content: '';
   -webkit-transition: all .4s;
 }
+.book-details-checkout {
+  background-color: #FF4081;
+  border: 1px solid #FF4081;
+  /*-webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.26), inset 1px 1px 0 0 hsla(0, 0%, 100%, .2);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.26), inset 1px 1px 0 0 hsla(0, 0%, 100%, .2);*/
+}
+div.panel.card {
+  margin-bottom: 10px !important;
+}
+

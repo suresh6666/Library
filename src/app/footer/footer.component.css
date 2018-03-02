@@ -83,7 +83,7 @@ ul.list-unstyled.categories li {
   right: 5px;
   padding: 10px;
   cursor: pointer;
-  z-index: 9999;
+  z-index: 99;
   background: #1967be;
 }
 .get-help h6 b {

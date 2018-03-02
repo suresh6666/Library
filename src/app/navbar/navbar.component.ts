@@ -4,14 +4,17 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 import 'rxjs/add/observable/of';
 import {ActivatedRoute, Router} from '@angular/router';
+import {FilterArray} from '../shared/app.pipes';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.css'],
+  providers: [FilterArray]
 })
 export class NavbarComponent implements OnInit {
   groupSelected: any = '';
+  searchCategory = '';
   modalRef: any;
   statesComplex: any[] = [
     { id: 1, name: 'Alabama', region: 'South' },

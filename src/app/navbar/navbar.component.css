@@ -22,6 +22,21 @@
 .by-categ-ul li a {
   cursor: pointer;
 }
+.modal-cat-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.modal-cat-title div:last-child {
+  margin-left: 25px;
+}
+.modal-cat-title div:last-child input {
+  font-size: 13px;
+  height: 35px;
+}
+.by-categ-ul li a:hover {
+  text-decoration: underline;
+}
 .categ {
   background-color: #FF4081;
   border: 1px solid #FF4081;

@@ -9,7 +9,10 @@
       "outDir": "dist",
       "assets": [
         "assets",
-        "favicon.ico"
+        "favicon.ico",
+        { "glob": "books.json", "input": "./db", "output": "./assets/db" },
+        { "glob": "categories.json", "input": "./db", "output": "./assets/db" },
+        { "glob": "users.json", "input": "./db", "output": "./assets/db" }
       ],
       "index": "index.html",
       "main": "main.ts",

@@ -1,37 +1,34 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
+import {AppService} from '../shared/app.service';
+import {AppUrls} from '../shared/app.constants';
 
 @Component({
   selector: 'app-welcome',
   templateUrl: './welcome.component.html',
   styleUrls: ['./welcome.component.css']
 })
-export class WelcomeComponent {
-  items = [
-    {text: 'Harley David', src: 'http://html.crunchpress.com/book-store/images/image02.jpg'},
-    {text: 'Harry Porter', src: 'http://html.crunchpress.com/book-store/images/image03.jpg'},
-    {text: 'Harry Porter', src: 'http://html.crunchpress.com/book-store/images/image03.jpg'},
-    {text: 'Harley David', src: 'http://html.crunchpress.com/book-store/images/image02.jpg'}
-  ];
-  resourceItems = [
-    {text: 'Movies', src: 'http://html.crunchpress.com/book-store/images/image02.jpg'},
-    {text: 'English', src: 'http://html.crunchpress.com/book-store/images/image03.jpg'},
-    {text: 'Telugu Books', src: 'http://html.crunchpress.com/book-store/images/image03.jpg'},
-    {text: 'Toddlers', src: 'http://html.crunchpress.com/book-store/images/image02.jpg'},
-    {text: 'Children Books', src: 'http://html.crunchpress.com/book-store/images/image02.jpg'},
-    {text: 'Disney', src: 'http://html.crunchpress.com/book-store/images/image02.jpg'},
-    {text: 'Calender Mysteries', src: 'http://html.crunchpress.com/book-store/images/image02.jpg'},
-    {text: 'English Novels', src: 'http://html.crunchpress.com/book-store/images/image02.jpg'}
-  ];
-  gridView = [
-    {text: 'A Walk Across The Sun', src: 'http://html.crunchpress.com/book-store/images/image25.jpg'},
-    {text: 'A Walk Across The Sun', src: 'http://html.crunchpress.com/book-store/images/image38.jpg'},
-    {text: 'A Walk Across The Sun', src: 'http://html.crunchpress.com/book-store/images/image42.jpg'},
-    {text: 'A Walk Across The Sun', src: 'http://html.crunchpress.com/book-store/images/image41.jpg'},
-    {text: 'A Walk Across The Sun', src: 'http://html.crunchpress.com/book-store/images/image38.jpg'},
-    {text: 'A Walk Across The Sun', src: 'http://html.crunchpress.com/book-store/images/image41.jpg'},
-    {text: 'A Walk Across The Sun', src: 'http://html.crunchpress.com/book-store/images/image38.jpg'},
-    {text: 'A Walk Across The Sun', src: 'http://html.crunchpress.com/book-store/images/image25.jpg'}
-  ];
-  constructor() {}
+export class WelcomeComponent implements OnInit {
+  booksList: any = [];
+  resourceItems: any = [];
+  constructor (private appService: AppService, private appUrls: AppUrls) {}
+  ngOnInit () {
+    // get the List of categories
+    this.appService.get(this.appUrls.categories).subscribe((data) => {
+      const items: any = data;
+      items.forEach((item, index) => {
+        if (index <= 12) {
+          this.resourceItems.push(item);
+        }
+      });
+    });
+    this.appService.get(this.appUrls.books_list).subscribe((data) => {
+      const items: any = data;
+      items.forEach((item, index) => {
+        if (index <= 9) {
+          this.booksList.push(item);
+        }
+      });
+    });
+  }
 }

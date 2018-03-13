@@ -2,26 +2,7 @@
   <br>
   <div class="row">
     <div class="col-lg-8 col-md-8">
-      <accordion [closeOthers]="oneAtATime">
-        <accordion-group #group>
-          <div accordion-heading class="clearfix text-uppercase">
-            <b><i class="fa fa-address-book"></i>&nbsp; Delivery Address</b>
-          </div>
-          This is just some content to illustrate fancy headings.
-        </accordion-group>
-        <accordion-group (isOpenChange)="log($event)">
-          <div accordion-heading class="clearfix text-uppercase">
-            <b><i class="fa fa-shopping-cart"></i>&nbsp; Order Summary</b>
-          </div>
-          <p>Some content</p>
-        </accordion-group>
-        <accordion-group (isOpenChange)="log($event)">
-          <div accordion-heading class="clearfix text-uppercase">
-            <b><i class="fa fa-paypal"></i>&nbsp; Payment</b>
-          </div>
-          <p>Some content</p>
-        </accordion-group>
-      </accordion>
+
     </div> <!-- end col -->
     <div class="col-lg-4 col-md-4">
       <div class="card mb-3" style="max-width: 20rem;">

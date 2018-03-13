@@ -3,21 +3,6 @@
   <div class="row">
     <div class="col-lg-12">
       <div class="card border-default">
-        <div class="card-header">
-          <div class="row">
-            <div class="col-lg-7">
-              <p>
-                <b>The Kite Runner</b> by <a href="">Khalid Hosseini</a>
-              </p>
-            </div> <!-- end col -->
-            <div class="col-lg-5 pull-right text-right">
-              <ul class="book-details-ul">
-                <li><a href="">2 Reviews</a></li>
-                <li><i class="fa fa-envelope-o"></i><a href=""> Email to a Friend</a></li>
-              </ul>
-            </div> <!-- end col -->
-          </div>
-        </div>
         <div class="card-body">
           <div class="row">
             <div class="col-lg-4">
@@ -25,52 +10,44 @@
                 <img src="http://html.crunchpress.com/book-store/images/image41.jpg" alt="">
               </div> <!-- thumbnail -->
               <br>
-              <p><b>Available</b>, Delivered in <b>2</b> Days</p>
-              <p>
-                <button routerLink="/checkout/20102010" class="btn btn-primary btn-md book-details-checkout" tooltip="Request for Hard copy!"
-                        placement="top">
-                  Request hard copy!
-                </button>
-                <button routerLink="/checkout/{{ 201020102 }}" class="btn btn-primary btn-md" tooltip="Request for E-copy!"
-                        placement="top">
-                  Request E-copy!
-                </button>
-              </p>
             </div> <!-- end col -->
             <div class="col-lg-7">
-              <p><b>Quick Overview</b></p>
-              <p class="book-details-desc">
-                Vestibulum a velit at erat adipiscing volutpat. Lorem ipsum dolor sit amet,
-                consectetur adipiscing elit. Ut eget neque velit, suscipit volutpat ligula.
+              <p class="font-weight-bold book-title">
+                <b>Harry Potter and the Philosopher's Stone</b>
               </p>
-              <p class="book-details-desc">
-                Quisque diam arcu, dignissim nec molestie sed, pellentesque a augue.
-                Nunc sed felis libero, vitae imperdiet risus in feugiat lectus vitae elit euismod rhoncus. Suspendisse potenti.
-              </p>
-              <table class="table table-bordered">
-                <tbody>
-                <tr>
-                  <td>Material Group:</td>
-                  <td><a href="">Books-Regular</a></td>
-                </tr>
-                <tr>
-                  <td>Lease Price (Rs):</td>
-                  <td>299.00</td>
-                </tr>
-                <tr>
-                  <td>Lease Rate (%):	</td>
-                  <td>12.00</td>
-                </tr>
-                <tr>
-                  <td>Reading Fee (Rs):</td>
-                  <td>35.88 (12.00% of 299.00)</td>
-                </tr>
-                <tr>
-                  <td><p><b>Your Reading Fee (Rs):</b></p></td>
-                  <td><p><b>35.88</b></p></td>
-                </tr>
-                </tbody>
-              </table>
+              <p>By <a href="">Khalid Hosseini</a> &nbsp;(Author)</p>
+
+              <div class="lease-details">
+                <p class="book-cost">MRP  Rs. 350  (Inclusive of all taxes)</p>
+                <h5 class="lease-details-h">
+                  <span class="lease-details-price">Rs. 201.00 </span>
+                  <span class="lease-calc">(12.00% of 350.00)</span>
+                </h5>
+              </div>
+
+              <div class="book-summary">
+                <p><b>Book Summary</b></p>
+                <p>
+                  Sed molestie semper ligula vitae pellentesque duis laoreet erat a pretium pulvinar, justo nisi fermentum risus, sed condimentum nisl elit vel risus.
+                  Vivamus felis dolor, consectetur vel condimentum sit amet, iaculis in orci.
+                </p>
+                <p><a href="">Read more..</a></p>
+                <p style="display: none;">
+                  Phasellus sed vehicula justo nunc quis erat vel ante ornare pulvinar cras tristique facilisis tincidunt quisque felis erat iaculis at fringilla vitae rutrum id magna. Nam pharetra scelerisque justo at vehicula aliquam erat
+                  volutpat. Quisque vulputate justo eu mattis interdum magna erat porta risus tincidunt
+                </p>
+                <br>
+                <div class="request-copy-area">
+                  <button routerLink="/checkout/20102010" class="btn btn-primary btn-md book-details-checkout req-btn">
+                    Request hard copy!
+                  </button>
+                  <button routerLink="/checkout/{{ 201020102 }}" class="btn btn-primary btn-md req-btn req-ecopy">
+                    Request E-copy!
+                  </button>
+                </div>
+                <p class="book-cost" style="margin-top: 5px;">Book is Available, Generally delivered by 2 days</p>
+              </div>
+
             </div> <!-- end col -->
           </div> <!-- end row -->
         </div> <!-- end body -->
@@ -82,58 +59,25 @@
     <div class="col-lg-8 col-md-8 col-sm-12">
       <!-- Book Details -->
       <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-12 book-summary">
           <p><b>Book Details</b></p>
-          <table class="table table-bordered">
-            <tbody>
-            <tr>
-              <td>Language:</td>
-              <td><a href="">English</a></td>
-            </tr>
-            <tr>
-              <td>Author:</td>
-              <td>Chetan Bhagat</td>
-            </tr>
-            <tr>
-              <td>Publisher:	</td>
-              <td>Rainlight Rupa</td>
-            </tr>
-            <tr>
-              <td>Year:</td>
-              <td>2016</td>
-            </tr>
-            <tr>
-              <td>IBCN:</td>
-              <td>100040096</td>
-            </tr>
-            </tbody>
-          </table>
+          <p>Number of Pages: 352</p>
+          <p>Publisher: Bloomsbury Press (3 September 2014)</p>
+          <p>
+            Language: English
+          </p>
+          <p>ISBN-10: 1408855658</p>
+          <p>ISBN-13: 978-1408855652</p>
+          <p>Product Dimensions: 12.8 x 2.3 x 19.8 cm</p>
         </div> <!-- end col -->
       </div> <!-- end row -->
       <!-- end of Book Details -->
 
       <hr />
-      <!-- Book Summary -->
-      <div class="row" id="book_summary">
-        <div class="col-lg-12">
-          <p><b>Book Summary</b></p>
-          <p>
-            Sed molestie semper ligula vitae pellentesque duis laoreet erat a pretium pulvinar, justo nisi fermentum risus, sed condimentum nisl elit vel risus.
-            Vivamus felis dolor, consectetur vel condimentum sit amet, iaculis in orci.
-          </p>
-          <p>
-            Phasellus sed vehicula justo nunc quis erat vel ante ornare pulvinar cras tristique facilisis tincidunt quisque felis erat iaculis at fringilla vitae rutrum id magna. Nam pharetra scelerisque justo at vehicula aliquam erat
-            volutpat. Quisque vulputate justo eu mattis interdum magna erat porta risus tincidunt
-          </p>
-        </div> <!-- end col -->
-      </div> <!-- end row -->
-      <!-- end of Book Summary -->
-
-      <hr />
       <!-- Book Author -->
       <div class="row">
-        <div class="col-lg-12">
-          <p><b>Book Author</b></p>
+        <div class="col-lg-12 book-summary">
+          <p><b>About the Author</b></p>
           <p>
             Chetan Bhagat (born 22 April 1974), is an Indian author, columnist, and speaker.
             Bhagat is the author of bestselling novels, Five Point Someone (2004), One Night @ the Call Center (2005),
@@ -152,9 +96,6 @@
     </div> <!-- end col -->
     <div class="col-lg-4">
       <div class="card browse-by">
-        <div class="card-header">
-          <p class="heading" style="margin-bottom: 7px;"><b>Browse By</b></p>
-        </div>
         <div class="card-body">
           <p class="pink-heading"><b>Book Category</b></p>
           <ul>

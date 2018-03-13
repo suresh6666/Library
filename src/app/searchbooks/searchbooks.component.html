@@ -14,10 +14,13 @@
           <p class="book-desc">
             Gluten-free quinoa selfies carles, kogi gentrify retro marfa viral. Aesthetic before they sold out put a bird on it sriracha typewriter. Skateboard viral irony tonx ...
           </p>
-          <p>Leasing Price: {{ book.lease_price }}, <b>Reading Price: {{ book.reading_fee }}</b></p>
+          <p>
+            Leasing Price: {{ book.lease_price }},
+            <b>Reading Price: {{ book.reading_fee }}</b><span class="book-cost"> (12% of {{ book.lease_price }})</span>
+          </p>
           <div>
             <button class="btn btn-primary btn-sm book-details-checkout">Request hard copy!</button>
-            <button class="btn btn-primary btn-sm">Request E-copy!</button>
+            <button class="btn btn-primary btn-sm req-ecopy">Request E-copy!</button>
           </div>
         </div> <!-- end of Search desc -->
       </div> <!-- end of Search card -->

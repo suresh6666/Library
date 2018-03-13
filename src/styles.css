@@ -3,6 +3,21 @@ body {
   background-color: #FFFFFF;
   font-size: 14px;
 }
+.card {
+  border: 1px solid #EEEEEE;
+}
+.req-ecopy, .req-ecopy:hover, .req-ecopy:active, .req-ecopy:focus {
+  margin-left: 20px;
+  border-color: #333;
+  background: #333;
+}
+.book-cost {
+  color: #7a7a7a;
+  margin-bottom: -3px;
+}
+.card-header {
+  background: #FFFFFF !important;
+}
 .places {
   overflow: hidden;
   margin: 0;

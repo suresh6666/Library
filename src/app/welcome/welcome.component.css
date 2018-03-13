@@ -56,8 +56,9 @@ img {
   margin: 8px;
 }
 .genre-item-img {
-  width: 35%;
+  width: 25%;
   height: 100%;
+  margin-right: 7px;
 }
 .genre-item-text a {
   color: #282c3f;
@@ -77,24 +78,27 @@ img {
   box-sizing: border-box;
 }
 .grid-view-item {
-  width: 23.5%;
+  width: 18.5%;
   height: auto;
-  border: 1px solid #e9e9e9;
   margin: 0 8px 20px 8px;
-  padding: 5px;
 }
 .grid-view-item-img {
-  width: 95%;
+  width: 100%;
   margin: 0 auto;
-  height: 250px;
+  height: 190px;
   justify-content: center;
 }
 .grid-view-item-text a {
-  color: #000;
-  font-weight: 500;
+  color: #333333e0;
+  font-weight: 400;
+}
+.grid-view-item-text h6 {
+  margin-bottom: 4px;
 }
 .grid-view-item-text p.author, .grid-view-item-desc p {
   font-size: 12px;
+  color: #333333b5;
+  text-transform: uppercase;
 }
 .grid-view-footer {
   border-top: 1px solid #EEEEEE;

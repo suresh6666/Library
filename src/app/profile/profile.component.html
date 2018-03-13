@@ -90,14 +90,13 @@
           <div class="new-address">
             <h6 style="margin-bottom: 0; color: #2780E3; text-transform: uppercase; font-weight: 400;">
               <i class="fa fa-plus"></i>&nbsp;
-              <a (click)="openModal(template)" style="cursor: pointer;">Add New Address</a>
+              <a style="cursor: pointer;">Add New Address</a>
             </h6>
           </div> <!-- end new address -->
         </div> <!-- end col -->
       </div> <!-- end row -->
 
-
-      <ng-template #template>
+      <!--<ng-template #template>
         <div class="modal-header">
           <p class="modal-title pull-left text-uppercase"><b>Add New Address </b></p>
           <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
@@ -110,33 +109,33 @@
               <div class="form-group col-lg-6">
                 <input name="new_name" type="text" [(ngModel)]="newAddress.name" class="form-control input-sm"
                        placeholder="Name" id="new_name">
-              </div> <!-- form-group -->
+              </div> &lt;!&ndash; form-group &ndash;&gt;
               <div class="form-group col-lg-6">
                 <input name="new_phone" type="text" [(ngModel)]="newAddress.phone" class="form-control input-sm"
                        placeholder="Phone" id="new_phone">
-              </div> <!-- form-group -->
-            </div> <!-- end row -->
+              </div> &lt;!&ndash; form-group &ndash;&gt;
+            </div> &lt;!&ndash; end row &ndash;&gt;
             <div class="form-group">
               <textarea name="new_address" type="text" [(ngModel)]="newAddress.address" class="form-control input-sm"
                         placeholder="Address" id="new_address"></textarea>
-            </div> <!-- form-group -->
+            </div> &lt;!&ndash; form-group &ndash;&gt;
             <div class="row">
               <div class="form-group col-lg-6">
                 <input name="new_city" type="text" [(ngModel)]="newAddress.city" class="form-control input-sm"
                        placeholder="City" id="new_city">
-              </div> <!-- form-group -->
+              </div> &lt;!&ndash; form-group &ndash;&gt;
               <div class="form-group col-lg-6">
                 <input name="new_state" type="text" [(ngModel)]="newAddress.state" class="form-control input-sm"
                        placeholder="State" id="new_state">
-              </div> <!-- form-group -->
-            </div> <!-- end row -->
+              </div> &lt;!&ndash; form-group &ndash;&gt;
+            </div> &lt;!&ndash; end row &ndash;&gt;
             <div class="form-group">
               <button class="btn btn-md btn-primary text-uppercase" type="submit">Add New Address</button>
               <button class="btn btn-md btn-default" type="button">Cancel</button>
             </div>
           </form>
         </div>
-      </ng-template>
+      </ng-template>-->
 
       <br>
       <div class="row">

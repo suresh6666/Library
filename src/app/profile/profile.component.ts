@@ -1,6 +1,4 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import { BsModalService } from 'ngx-bootstrap/modal';
-import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 import {AppService} from '../shared/app.service';
 import {AppUrls} from '../shared/app.constants';
@@ -13,12 +11,9 @@ import {NewAddress, User} from '../shared/app.interface';
 })
 export class ProfileComponent implements OnInit {
   public user: any;
-  public gender: [object, object];
-  public modalRef: BsModalRef;
-  public newAddress: NewAddress;
+  public gender: any[];
   constructor(private appService: AppService,
-              private appUrls: AppUrls,
-              private modalService: BsModalService) { }
+              private appUrls: AppUrls) { }
 
   ngOnInit() {
     this.gender = [{title: 'Male', value: 'male'}, {title: 'Female', value: 'female'}];
@@ -38,19 +33,6 @@ export class ProfileComponent implements OnInit {
       'about': null,
       'shipping_address': []
     };
-    this.newAddress = {
-      name: 'Hello',
-      address: '',
-      city: '',
-      state: '',
-      pin_code: '',
-      status: true,
-      phone: ''
-    };
-    this.appService.get(this.appUrls.jsonUser).subscribe(data => {});
+    this.appService.get(this.appUrls.categories).subscribe(data => {});
   }
-  openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template);
-  }
-
 }

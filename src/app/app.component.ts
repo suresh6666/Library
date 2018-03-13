@@ -7,20 +7,10 @@ import { Subscription } from 'rxjs/Subscription';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent implements OnInit {
   routerSubscription: Subscription;
 
   constructor(private router: Router) {}
 
-  ngOnInit() {
-    this.routerSubscription = this.router.events
-      .filter(event => event instanceof NavigationEnd)
-      .subscribe(event => {
-        window.scrollTo(0, 0);
-      });
-  }
-
-  ngOnDestroy() {
-    this.routerSubscription.unsubscribe();
-  }
+  ngOnInit() {}
 }

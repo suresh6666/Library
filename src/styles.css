@@ -92,3 +92,7 @@ div.panel.card {
   from {top: 5%; opacity: 1;}
   to {top: 0; opacity: 0;}
 }
+input[type=password], input[type=text], select.form-control, input[type=email], input[type=number] {
+  height: 40px;
+}
+

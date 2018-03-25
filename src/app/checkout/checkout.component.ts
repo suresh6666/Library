@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {AppService} from '../shared/app.service';
 import {AppConstants, AppUrls} from '../shared/app.constants';
 import {ActivatedRoute} from '@angular/router';
-import any = jasmine.any;
 
 @Component({
   selector: 'app-checkout',
@@ -11,6 +10,7 @@ import any = jasmine.any;
 })
 export class CheckoutComponent implements OnInit {
   public book_id: string;
+  public toggle: any = {address: true, payment: false};
   public newAddress: any = {clicked: false};
   public details: any = {};
   constructor(private appService: AppService,

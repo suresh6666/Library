@@ -38,10 +38,10 @@
                 </p>
                 <br>
                 <div class="request-copy-area">
-                  <button routerLink="/checkout/{{ details._id }}" class="btn btn-primary btn-md book-details-checkout req-btn">
+                  <button routerLink="/checkout/{{ details._id }}" [queryParams]="{type: 'hardcopy'}" class="btn btn-primary btn-md book-details-checkout req-btn">
                     Request hard copy!
                   </button>
-                  <button routerLink="/checkout/{{ details._id }}" class="btn btn-primary btn-md req-btn req-ecopy">
+                  <button routerLink="/checkout/{{ details._id }}" [queryParams]="{type: 'ecopy'}" class="btn btn-primary btn-md req-btn req-ecopy">
                     Request E-copy!
                   </button>
                 </div>

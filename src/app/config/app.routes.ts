@@ -13,27 +13,29 @@ import {SettingsComponent} from '../profile/settings/settings.component';
 import {ShippingComponent} from '../profile/shipping/shipping.component';
 import {LoginComponent} from '../login/login.component';
 import {ForgotPasswordComponent} from '../forgot-password/forgot-password.component';
+import {ChangePasswordComponent} from '../change-password/change-password.component';
 
 export const routes: Routes = [
-  { path: 'welcome', component: WelcomeComponent },
-  // Book Details Component
-  { path: 'book_details/:book_name/:isbn', component: BookDetailsComponent },
+  {path: 'welcome', component: WelcomeComponent},
+  {path: 'book_details/:book_name/:isbn', component: BookDetailsComponent},
   {path: 'register-now', component: RegisterComponent},
   {path: 'login-now', component: LoginComponent},
   {path: 'forgot-password', component: ForgotPasswordComponent},
-  { path: 'search', component: SearchbooksComponent },
-  { path: 'checkout/:book_id', component: CheckoutComponent },
-  { path: 'mycredit', component: MycreditComponent },
+  {path: 'search', component: SearchbooksComponent},
+  {path: 'checkout/:book_id', component: CheckoutComponent},
+  {path: 'mycredit', component: MycreditComponent},
   {
     path: 'profile', component: ProfileComponent,
     children: [
       {path: '', redirectTo: 'settings', pathMatch: 'full'},
       {path: 'membership', component: MembershipComponent},
       {path: 'settings', component: SettingsComponent},
-      {path: 'shipping', component: ShippingComponent}
+      {path: 'shipping', component: ShippingComponent},
+      {path: 'change-password', component: ChangePasswordComponent},
     ]
   },
-  { path: '',
+  {
+    path: '',
     redirectTo: '/welcome',
     pathMatch: 'full'
   }

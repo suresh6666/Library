@@ -3,84 +3,78 @@
   <div class="row">
     <div class="col-lg-8 col-md-8">
       <div class="panel panel-default">
-        <div class="panel-heading">
-          <h5 class="panel-title"><span class="label label-primary">1</span> Delivery address</h5>
+        <div class="panel-heading" (click)="toggle = {address: true, payment: false}">
+          <h5 class="panel-title">Delivery address</h5>
         </div>
-        <div class="panel-body">
+        <div class="panel-body" *ngIf="toggle.address">
           <div *ngFor="let item of [1, 2]">
-            hello
+            <div>
+              <span class="address-input"><input type="radio" name="item" /></span>
+              <span class="address-title"><b>Surya Muppalla</b></span>
+              <span>8500011686</span>
+            </div>
+            <div class="address">
+              Maximus 2B, 4th floor, mind space, HITECH city, Hyderabad, Telangana 500081., Mind space, HITECH city., Hyderabad, Telangana
+            </div>
+            <br>
           </div>
         </div>
       </div>
       <div class="panel panel-default">
-        <div class="panel-heading" (click)="newAddress.clicked = true;">
-          <h5>Add Address</h5>
+        <div class="panel-heading" (click)="newAddress.clicked = !newAddress.clicked;">
+          <h5 class="panel-title"><i class="fa fa-plus-square-o"></i>&nbsp;&nbsp;Add Address</h5>
         </div>
         <div class="panel-body" *ngIf="newAddress.clicked">
           <form class="form-horizontal" role="form">
             <fieldset>
-              <!-- Form Name -->
-              <legend>Address Details</legend>
-              <!-- Text input-->
               <div class="form-group">
-                <label class="col-sm-2 control-label" for="textinput">Line 1</label>
-                <div class="col-sm-10">
-                  <input type="text" placeholder="Address Line 1" class="form-control">
+                <div class="col-lg-4">
+                  <input type="text" class="form-control" placeholder="Name">
+                </div>
+                <div class="col-lg-4">
+                  <input type="text" class="form-control" placeholder="Phone Number">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-8">
+                  <input type="text" placeholder="Address Line 1" class="form-control input-md">
                 </div>
               </div>
               <!-- Text input-->
               <div class="form-group">
-                <label class="col-sm-2 control-label" for="textinput">Line 2</label>
-                <div class="col-sm-10">
-                  <input type="text" placeholder="Address Line 2" class="form-control">
+                <div class="col-sm-8">
+                  <input type="text" placeholder="Address Line 2" class="form-control input-md">
                 </div>
               </div>
               <!-- Text input-->
               <div class="form-group">
-                <label class="col-sm-2 control-label" for="textinput">City</label>
-                <div class="col-sm-10">
-                  <input type="text" placeholder="City" class="form-control">
+                <div class="col-sm-8">
+                  <input type="text" placeholder="City" class="form-control input-md">
                 </div>
               </div>
-
               <!-- Text input-->
               <div class="form-group">
-                <label class="col-sm-2 control-label" for="textinput">State</label>
                 <div class="col-sm-4">
-                  <input type="text" placeholder="State" class="form-control">
+                  <input type="text" placeholder="State" class="form-control input-md">
                 </div>
-
-                <label class="col-sm-2 control-label" for="textinput">Postcode</label>
                 <div class="col-sm-4">
-                  <input type="text" placeholder="Post Code" class="form-control">
+                  <input type="text" placeholder="Post Code" class="form-control input-md">
                 </div>
               </div>
-
-
-
-              <!-- Text input-->
               <div class="form-group">
-                <label class="col-sm-2 control-label" for="textinput">Country</label>
-                <div class="col-sm-10">
-                  <input type="text" placeholder="Country" class="form-control">
-                </div>
-              </div>
-
-              <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                  <div class="pull-right">
-                    <button type="reset" class="btn btn-default" (click)="newAddress.clicked = false;">Cancel</button>
+                <div class="col-lg-3 col-md-3">
+                  <div>
                     <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="reset" class="btn btn-default" (click)="newAddress.clicked = false;">Cancel</button>
                   </div>
                 </div>
               </div>
-
             </fieldset>
           </form>
         </div>
       </div>
       <div class="panel panel-default">
-        <div class="panel-heading">
+        <div class="panel-heading" (click)="toggle = {address: false, payment: true}">
           <h3 class="panel-title">
             Payment Details
           </h3>
@@ -91,16 +85,15 @@
             </label>
           </div>
         </div>
-        <div class="panel-body">
+        <div class="panel-body" *ngIf="toggle.payment">
           <div class="row">
             <div class="col-lg-6 col-md-6">
               <form role="form">
                 <div class="form-group">
-                  <label for="cardNumber">
-                    CARD NUMBER</label>
+                  <label for="cardNumber">CARD NUMBER</label>
                   <div class="input-group">
                     <input type="text" class="form-control" id="cardNumber" placeholder="Valid Card Number"
-                           required autofocus />
+                           required />
                     <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
                   </div>
                 </div>
@@ -109,26 +102,32 @@
                     <div class="form-group">
                       <label for="expityMonth">EXPIRY DATE</label>
                       <div class="col-xs-6 col-lg-6 pl-ziro">
-                        <input type="text" class="form-control" id="expityMonth" placeholder="MM" required />
+                        <input type="text" class="form-control" id="expityMonth" placeholder="MM"
+                               required maxlength="2" />
                       </div>
                       <div class="col-xs-6 col-lg-6 pl-ziro">
-                        <input type="text" class="form-control" id="expityYear" placeholder="YY" required /></div>
+                        <input type="text" class="form-control" id="expityYear" placeholder="YY"
+                               required maxlength="2" />
+                      </div>
                     </div>
                   </div>
                   <div class="col-xs-5 col-md-5 pull-right">
                     <div class="form-group">
-                      <label for="cvCode">
-                        CV CODE</label>
-                      <input type="password" class="form-control" id="cvCode" placeholder="CV" required />
+                      <label for="cvCode">CVV CODE</label>
+                      <input type="password" class="form-control" id="cvCode" placeholder="CVV"
+                             required maxlength="3" />
                     </div>
                   </div>
                 </div>
                 <ul class="nav nav-pills nav-stacked">
-                  <li class="active"><a href="#"><span class="badge pull-right"><span class="glyphicon glyphicon-usd"></span>4200</span> Final Payment</a>
+                  <li>
+                    <a><span class="badge pull-right">Rs. {{ details['total_fee'] }}</span> Final Payment</a>
                   </li>
                 </ul>
                 <br>
-                <button class="btn btn-success btn-lg btn-block" role="button" type="submit">Pay</button>
+                <button class="btn btn-primary btn-lg btn-block" role="button" type="submit">
+                  Pay (Rs. {{ details['total_fee'] }})
+                </button>
               </form>
             </div>
           </div>
@@ -136,6 +135,14 @@
       </div>
     </div> <!-- end col -->
     <div class="col-lg-4 col-md-4">
+      <div class="card price-card">
+        <div class="card-body">
+          <h5 class="text-uppercase"><b>Order Summary</b></h5>
+          <h5><b>{{ details.book_title }}</b></h5>
+          <h6>By <a>{{ details['book_authors'] }}</a></h6>
+        </div>
+      </div>
+      <br>
       <div class="card price-card">
         <div class="card-header">
           <h5 class="text-uppercase"><b>Price details</b></h5>
@@ -149,7 +156,7 @@
           </p>
           <hr>
           <p class="card-text text-uppercase">
-            <b>Amount Payable <span class="float-right pull-right">{{ details['total_fee'] }}</span></b>
+            <b>Amount Payable <span class="float-right pull-right">Rs. {{ details['total_fee'] }}</span></b>
           </p>
         </div>
       </div>

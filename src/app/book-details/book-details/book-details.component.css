@@ -6,7 +6,7 @@
 .book-title {
   font-size: 15px;
   text-transform: uppercase;
-  margin-bottom: 2px;
+  margin: 10px 0 3px;
 }
 .lease-details {
   border: 3px solid #EEEEEE;

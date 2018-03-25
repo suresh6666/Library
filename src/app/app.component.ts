@@ -1,6 +1,7 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import {Component, Input, OnInit} from '@angular/core';
+import {Router, NavigationEnd, NavigationStart} from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
+
 
 @Component({
   selector: 'app-root',
@@ -9,8 +10,11 @@ import { Subscription } from 'rxjs/Subscription';
 })
 export class AppComponent implements OnInit {
   routerSubscription: Subscription;
-
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationStart) {}
+    });
+  }
 
   ngOnInit() {}
 }

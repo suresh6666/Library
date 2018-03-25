@@ -2,26 +2,159 @@
   <br>
   <div class="row">
     <div class="col-lg-8 col-md-8">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h5 class="panel-title"><span class="label label-primary">1</span> Delivery address</h5>
+        </div>
+        <div class="panel-body">
+          <div *ngFor="let item of [1, 2]">
+            hello
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading" (click)="newAddress.clicked = true;">
+          <h5>Add Address</h5>
+        </div>
+        <div class="panel-body" *ngIf="newAddress.clicked">
+          <form class="form-horizontal" role="form">
+            <fieldset>
+              <!-- Form Name -->
+              <legend>Address Details</legend>
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="textinput">Line 1</label>
+                <div class="col-sm-10">
+                  <input type="text" placeholder="Address Line 1" class="form-control">
+                </div>
+              </div>
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="textinput">Line 2</label>
+                <div class="col-sm-10">
+                  <input type="text" placeholder="Address Line 2" class="form-control">
+                </div>
+              </div>
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="textinput">City</label>
+                <div class="col-sm-10">
+                  <input type="text" placeholder="City" class="form-control">
+                </div>
+              </div>
 
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="textinput">State</label>
+                <div class="col-sm-4">
+                  <input type="text" placeholder="State" class="form-control">
+                </div>
+
+                <label class="col-sm-2 control-label" for="textinput">Postcode</label>
+                <div class="col-sm-4">
+                  <input type="text" placeholder="Post Code" class="form-control">
+                </div>
+              </div>
+
+
+
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="textinput">Country</label>
+                <div class="col-sm-10">
+                  <input type="text" placeholder="Country" class="form-control">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <div class="pull-right">
+                    <button type="reset" class="btn btn-default" (click)="newAddress.clicked = false;">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                  </div>
+                </div>
+              </div>
+
+            </fieldset>
+          </form>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            Payment Details
+          </h3>
+          <div class="checkbox pull-right">
+            <label>
+              <input type="checkbox" />
+              Remember
+            </label>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-lg-6 col-md-6">
+              <form role="form">
+                <div class="form-group">
+                  <label for="cardNumber">
+                    CARD NUMBER</label>
+                  <div class="input-group">
+                    <input type="text" class="form-control" id="cardNumber" placeholder="Valid Card Number"
+                           required autofocus />
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-7 col-md-7">
+                    <div class="form-group">
+                      <label for="expityMonth">EXPIRY DATE</label>
+                      <div class="col-xs-6 col-lg-6 pl-ziro">
+                        <input type="text" class="form-control" id="expityMonth" placeholder="MM" required />
+                      </div>
+                      <div class="col-xs-6 col-lg-6 pl-ziro">
+                        <input type="text" class="form-control" id="expityYear" placeholder="YY" required /></div>
+                    </div>
+                  </div>
+                  <div class="col-xs-5 col-md-5 pull-right">
+                    <div class="form-group">
+                      <label for="cvCode">
+                        CV CODE</label>
+                      <input type="password" class="form-control" id="cvCode" placeholder="CV" required />
+                    </div>
+                  </div>
+                </div>
+                <ul class="nav nav-pills nav-stacked">
+                  <li class="active"><a href="#"><span class="badge pull-right"><span class="glyphicon glyphicon-usd"></span>4200</span> Final Payment</a>
+                  </li>
+                </ul>
+                <br>
+                <button class="btn btn-success btn-lg btn-block" role="button" type="submit">Pay</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     </div> <!-- end col -->
     <div class="col-lg-4 col-md-4">
-      <div class="card mb-3" style="max-width: 20rem;">
+      <div class="card price-card">
         <div class="card-header">
-          <p style="margin-bottom: 0;" class="text-uppercase"><b>Price details</b></p>
+          <h5 class="text-uppercase"><b>Price details</b></h5>
         </div>
         <div class="card-body">
           <p class="card-text text-uppercase">
-            Price <b class="float-right pull-right">400</b>
+            Price <b class="float-right pull-right">Rs. {{ details['reading_fee'] }}</b>
           </p>
           <p class="card-text text-uppercase">
-            Delivery Charges <b class="float-right pull-right">40</b>
+            Delivery Charges <b class="float-right pull-right">Rs. {{ appConstants['del_charges'] }}</b>
           </p>
           <hr>
           <p class="card-text text-uppercase">
-            <b>Amount Payable <span class="float-right pull-right">440</span></b>
+            <b>Amount Payable <span class="float-right pull-right">{{ details['total_fee'] }}</span></b>
           </p>
         </div>
       </div>
     </div> <!-- end col -->
   </div> <!-- end row -->
 </div>
+
+<br><br><br><br><br><br>

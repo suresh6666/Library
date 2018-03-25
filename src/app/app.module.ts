@@ -7,39 +7,51 @@ import {AppComponent} from './app.component';
 import { routes } from './config/app.routes';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { AuthenticationComponent } from './authentication/authentication.component';
 import { FooterComponent } from './footer/footer.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { BookDetailsComponent } from './book-details/book-details/book-details.component';
 import { SearchbooksComponent } from './searchbooks/searchbooks.component';
-import { ProfileComponent } from './profile/profile.component';
 import {AppService} from './shared/app.service';
-import {AppUrls} from './shared/app.constants';
+import {AppConstants, AppUrls} from './shared/app.constants';
 import {FilterArray} from './shared/app.pipes';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { MycreditComponent } from './mycredit/mycredit.component';
+import {AuthGuardService, AuthService} from './shared/auth.service';
+import { RegisterComponent } from './register/register.component';
+import { MembershipComponent } from './profile/membership/membership.component';
+import { SettingsComponent } from './profile/settings/settings.component';
+import { ShippingComponent } from './profile/shipping/shipping.component';
+import {ProfileComponent} from './profile/profile.component';
+import { LoginComponent } from './login/login.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomeComponent,
     NavbarComponent,
-    AuthenticationComponent,
     FooterComponent,
     BookDetailsComponent,
     SearchbooksComponent,
-    ProfileComponent,
     FilterArray,
     CheckoutComponent,
-    MycreditComponent
+    MycreditComponent,
+    RegisterComponent,
+    ProfileComponent,
+    MembershipComponent,
+    SettingsComponent,
+    ShippingComponent,
+    LoginComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     BrowserModule.withServerTransition({appId: 'universal-cli'}),
     RouterModule.forRoot(routes)
   ],
-  providers: [AppService, AppUrls],
+  providers: [AppService, AppUrls, AppConstants, AuthService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

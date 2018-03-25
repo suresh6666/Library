@@ -11,35 +11,13 @@
         <img src="https://picsum.photos/100?image={{ index}}{{index + 2}}" alt="{{ i.book_title }}">
       </div>
       <div class="genre-item-text">
-        <h5><a routerLink="/book_details/{{i.book_title}}">{{ i.book_title }}</a></h5>
-        <p><a routerLink="/book_details/{{ i.book_summary }}">Read more >></a></p>
+        <h5><a routerLink="/book_details/{{i.book_title}}/{{ i.ISBN_13 }}">{{ i.book_title }}</a></h5>
+        <h6>By <a routerLink="/book_details/{{ i.book_summary }}">{{ i.book_authors }}</a></h6>
       </div>
     </div>
   </div>
   <!-- End of Popular Section -->
-
-  <!-- Resource types Section -->
-  <div class="heading-bar">
-    <h5 class="text-uppercase"><b>Resource Types</b></h5>
-    <span class="h-line"></span>
-  </div>
-  <div class="genre flex-center">
-    <div class="genre-item flex-center" *ngFor="let item of resourceItems">
-      <!--<div class="genre-item-img">
-        <img src="{{ i.src }}" alt="{{ i.text }}">
-      </div>-->
-      <div class="genre-item-text">
-        <h6><a routerLink="/search" [queryParams]="{ q: '', category: item.category_name, author: ''}"
-               class="resource-type-text"><b>{{ item.category_name }}</b></a></h6>
-        <p><a href="">Open Category >></a></p>
-      </div>
-    </div>
-  </div>
-  <div class="text-right show-more bottom-30">
-    <a href="">Show more >></a>
-  </div>
-  <!-- end of Resource types Section -->
-
+  <br />
   <section>
     <h4 class="text-center">Hear what’s trending for reading in a while.!</h4>
     <hr>
@@ -49,13 +27,15 @@
           <img src="https://picsum.photos/300/250?image={{ index}}{{index + 3}}" alt="">
         </div>
         <div class="grid-view-item-text">
-          <h6><a routerLink="/book_details/{{ item.book_title }}">{{ item.book_title }}</a></h6>
-          <p class="author">-By <b class="text-uppercase">{{ item.book_author }}</b></p>
+          <h5><a routerLink="/book_details/{{ item.book_title }}/{{ item.ISBN_13 }}">{{ item.book_title }}</a></h5>
+          <h6 class="author">By {{ item.book_authors }}</h6>
         </div>
       </div>
     </div>
-    <div class="text-right show-more bottom-30">
-      <a href="">Show more >></a>
+    <div class="text-center show-more bottom-30">
+      <a href="" class="btn btn-md btn-danger text-uppercase">
+        Show more &nbsp;<i class="fa fa-arrow-right"></i>
+      </a>
     </div>
   </section>
 </div>

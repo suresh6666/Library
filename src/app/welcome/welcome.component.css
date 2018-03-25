@@ -24,7 +24,7 @@
 }
 .flex-center {
   display: flex;
-  align-items: center;
+  /*align-items: center;*/
 }
 img {
   max-width: 100%;
@@ -46,7 +46,7 @@ img {
   flex-wrap: wrap;
 }
 .genre-item {
-  width: 23.5%;
+  width: 31%;
   height: 110px;
   border: 1px solid #eeeeeec4;
   padding: 15px;

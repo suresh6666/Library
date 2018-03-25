@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import * as $ from 'jquery';
+declare var $: any;
 import {AppService} from '../shared/app.service';
 import {AppUrls} from '../shared/app.constants';
 
@@ -14,21 +14,23 @@ export class WelcomeComponent implements OnInit {
   constructor (private appService: AppService, private appUrls: AppUrls) {}
   ngOnInit () {
     // get the List of categories
-    this.appService.get(this.appUrls.categories).subscribe((data) => {
-      const items: any = data;
+    this.appService.get(this.appUrls.categories).then((data: any) => {
+      console.log(data);
+      const items: any = data['_items'];
       items.forEach((item, index) => {
         if (index <= 12) {
           this.resourceItems.push(item);
         }
       });
-    });
-    this.appService.get(this.appUrls.books_list).subscribe((data) => {
-      const items: any = data;
+    }, (err) => {});
+    this.appService.get(this.appUrls.books_list).then((data: any) => {
+      console.log(data);
+      const items: any = data['_items'];
       items.forEach((item, index) => {
         if (index <= 9) {
           this.booksList.push(item);
         }
       });
-    });
+    }, (err) => {});
   }
 }

@@ -25,7 +25,7 @@
     <div class="row">
       <div class="col-lg-4">
         <div class="form-group">
-          <button class="btn btn-md btn-primary" type="submit">Submit</button> &nbsp;&nbsp;
+          <button class="btn btn-md btn-primary" [disabled]="!lForm.valid" type="submit">Submit</button> &nbsp;&nbsp;
           <button type="reset" class="btn btn-md btn-default">Reset</button>
         </div>
       </div>

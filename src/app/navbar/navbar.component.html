@@ -34,7 +34,7 @@
           </span>
         </h1>
       </div>
-      <div class="flipkart-navbar-search smallsearch col-sm-5 col-xs-11">
+      <div class="flipkart-navbar-search smallsearch col-sm-7 col-xs-12">
         <div class="row">
           <input [(ngModel)]="searchForBook" class="flipkart-navbar-input col-xs-11" id="search-typeahead"
                   placeholder="Search for Books, Audios, Videos..." data-provide="typeahead" autocomplete="off">
@@ -45,6 +45,15 @@
           </button>
         </div>
       </div>
+      <ul class="nav navbar-nav" *ngIf="authService.isAuthenticated()">
+        <li>
+          <a routerLink="/profile/settings" routerLinkActive="profile-active">
+            My profile/settings
+          </a>
+        </li>
+        &nbsp;
+        <li (click)="logout()" class="pointer"><a>Logout</a></li>
+      </ul>
     </div>
   </div>
 </div>

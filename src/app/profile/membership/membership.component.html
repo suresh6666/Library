@@ -2,17 +2,17 @@
 <br>
 <table class='table borderless'>
   <tr>
-    <td>Membership Id: <span class="blue-ink">12345</span></td>
-    <td>Membership Type:	<span class="blue-ink">Individual</span></td>
-    <td>Status:	<span class="blue-ink">Active</span></td>
+    <td>Membership Id: <span class="blue-ink">{{ membership['membership_id'] }}</span></td>
+    <td>Membership Type:	<span class="blue-ink">{{  membership['membership_type']}}</span></td>
+    <td>Status:	<span class="blue-ink">{{(membership['status']) ? 'Active': 'In Active' }}</span></td>
   </tr>
   <tr>
-    <td>Account Balance:	<span class="blue-ink">-500.00</span></td>
-    <td>Plan Balance: <span class="blue-ink"></span></td>
+    <td>Account Balance:	<span class="blue-ink">{{ membership['account_balance'] }}</span></td>
+    <td>Plan Balance: <span class="blue-ink">{{ membership['plan_balance'] }}</span></td>
   </tr>
   <tr>
-    <td>Issue Pending:	<span class="blue-ink">0</span></td>
-    <td>Return Pending:	<span class="blue-ink">0</span></td>
-    <td>Return Ready:	<span class="blue-ink">0</span></td>
+    <td>Issue Pending:	<span class="blue-ink">{{ membership['issue_pending'] }}</span></td>
+    <td>Return Pending:	<span class="blue-ink">{{ membership['return_pending'] }}</span></td>
+    <td>Return Ready:	<span class="blue-ink">{{ membership['return_ready'] }}</span></td>
   </tr>
 </table>

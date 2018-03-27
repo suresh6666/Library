@@ -21,7 +21,7 @@ export class SearchbooksComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.appService.get(this.appUrls.books_list).then((data) => {
+    this.appService.get(this.appUrls.search_books, this.queryParams).then((data) => {
       console.log(data);
       this.books = data['_items'];
     }).catch((err) => {

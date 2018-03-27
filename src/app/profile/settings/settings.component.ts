@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 import {AppService} from '../../shared/app.service';
 import {AppUrls} from '../../shared/app.constants';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-settings',
@@ -9,7 +10,7 @@ import {AppUrls} from '../../shared/app.constants';
   styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit {
-
+  public registeredOn: any;
   public user: any;
   public gender: any[];
   public queryParams: {};
@@ -24,8 +25,7 @@ export class SettingsComponent implements OnInit {
   ngOnInit() {
     this.gender = [{title: 'Male', value: 'male'}, {title: 'Female', value: 'female'}];
     this.user = {
-      'user_id': null,
-      'user_name': null,
+      '_id': null,
       'is_active': false,
       'picture': null,
       'age': null,
@@ -34,11 +34,20 @@ export class SettingsComponent implements OnInit {
       'gender': this.gender[0],
       'company': null,
       'email': null,
-      'phone': null,
-      'address': null,
-      'about': null,
-      'shipping_address': []
+      'mobile_number': null,
     };
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (user) {
+      this.appService.get(this.appUrls.users + '/' + user['_id']).then((data) => {
+        console.log(data);
+        this.user = data;
+        const date = new Date(data['created_date']);
+        this.registeredOn = date;
+      }).catch((err: HttpErrorResponse) => {
+        console.log(err);
+        this.appService.errorHandling(err);
+      });
+    }
   }
 
 }

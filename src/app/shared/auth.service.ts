@@ -26,6 +26,7 @@ export class AuthService {
   }
   public removeToken(): boolean {
     localStorage.removeItem('access_token');
+    localStorage.removeItem('user');
     return true;
   }
 }

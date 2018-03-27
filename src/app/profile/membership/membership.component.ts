@@ -6,10 +6,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./membership.component.css']
 })
 export class MembershipComponent implements OnInit {
-
-  constructor() { }
+  public membership: object;
+  constructor() {}
 
   ngOnInit() {
+    this.membership = {
+      membership_type: '',
+      membership_id: 12345,
+      account_balance: 0,
+      issue_pending: 0,
+      plan_balance: 0,
+      return_pending: 0,
+      return_ready: 0,
+      status: false
+    }
   }
 
 }

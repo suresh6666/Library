@@ -3,6 +3,7 @@ import 'rxjs/add/observable/of';
 
 import {ActivatedRoute, Router} from '@angular/router';
 import {FilterArray} from '../shared/app.pipes';
+import {AuthService} from '../shared/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -13,7 +14,8 @@ import {FilterArray} from '../shared/app.pipes';
 export class NavbarComponent implements OnInit, AfterViewInit {
   searchForBook: string;
   showVar: boolean;
-  constructor(private route: Router) {
+  constructor(private route: Router,
+              public authService: AuthService) {
     this.route.events.subscribe((val) => {
       // console.log(val);
     });
@@ -25,4 +27,8 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   }
   ngOnInit() {}
   ngAfterViewInit() {}
+  logout() {
+    this.authService.removeToken();
+    this.route.navigate(['/welcome']);
+  }
 }

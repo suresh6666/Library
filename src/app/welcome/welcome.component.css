@@ -64,6 +64,14 @@ img {
   color: #282c3f;
   font-weight: 400;
 }
+.genre-item-text h5 {
+  margin-top: 0;
+  line-height: 18px;
+}
+.genre-item-text h6, .author {
+  font-size: 11px;
+  line-height: 13px;
+}
 .resource-type-text {
   text-transform: uppercase;
 }

@@ -1,22 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AppService} from '../shared/app.service';
 import {AppUrls} from '../shared/app.constants';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {Subscription} from 'rxjs/Subscription';
+import {AuthService} from '../shared/auth.service';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+  public userInfo: any = {};
   constructor(private appService: AppService,
               private router: Router,
-              private appUrls: AppUrls) {}
+              private appUrls: AppUrls,
+              private authService: AuthService) {}
   ngOnInit() {
-    this.appService.get(this.appUrls.me).then((data) => {
-      console.log(data);
-    }).catch((err) => {
-      console.log(err);
-    });
+    if (!this.authService.isAuthenticated()) {
+      this.router.navigate(['/login-now'])
+    }
   }
 }
+

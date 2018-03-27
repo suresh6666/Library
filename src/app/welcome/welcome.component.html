@@ -11,8 +11,8 @@
         <img src="https://picsum.photos/100?image={{ index}}{{index + 2}}" alt="{{ i.book_title }}">
       </div>
       <div class="genre-item-text">
-        <h5><a routerLink="/book_details/{{i.book_title}}/{{ i.ISBN_13 }}">{{ i.book_title }}</a></h5>
-        <h6>By <a routerLink="/book_details/{{ i.book_summary }}">{{ i.book_authors }}</a></h6>
+        <h5><a routerLink="/book_details/{{i.book_url}}/{{ i.ISBN_13 }}">{{ i.book_title }}</a></h5>
+        <h6>By <span *ngFor="let author of i.book_authors"><a href="">{{ author }}</a>,&nbsp;</span></h6>
       </div>
     </div>
   </div>
@@ -27,8 +27,8 @@
           <img src="https://picsum.photos/300/250?image={{ index}}{{index + 3}}" alt="">
         </div>
         <div class="grid-view-item-text">
-          <h5><a routerLink="/book_details/{{ item.book_title }}/{{ item.ISBN_13 }}">{{ item.book_title }}</a></h5>
-          <h6 class="author">By {{ item.book_authors }}</h6>
+          <h5><a routerLink="/book_details/{{ item.book_url }}/{{ item.ISBN_13 }}">{{ item.book_title }}</a></h5>
+          <h6 class="author">By <span *ngFor="let author of item.book_authors"><a href="">{{ author }}</a>, &nbsp;</span></h6>
         </div>
       </div>
     </div>

@@ -4,6 +4,7 @@ import {AppUrls} from '../shared/app.constants';
 import {AppService} from '../shared/app.service';
 import {Router} from '@angular/router';
 import {AuthService} from '../shared/auth.service';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -12,8 +13,8 @@ import {AuthService} from '../shared/auth.service';
 })
 export class LoginComponent implements OnInit {
   lForm = new FormGroup({
-    email: new FormControl('', [Validators.required]),
-    password: new FormControl()
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required])
   });
   constructor(private appService: AppService,
               private appUrls: AppUrls,
@@ -28,11 +29,14 @@ export class LoginComponent implements OnInit {
       console.log(data);
       if (data['data']) {
         this.authService.setToken(data['data']['login_token']);
-        localStorage.setItem('email', data['data']['email']);
+        const obj = JSON.stringify({email: data['data']['email'], _id: data['data']['_id']});
+        localStorage.setItem('user', obj);
+        this.appService.toast(data['data']['email'], 'Successfully Logged in!', 's');
         this.router.navigate(['profile']);
       }
-    }).catch((err) => {
+    }).catch((err: HttpErrorResponse) => {
       console.log(err);
+      this.appService.errorHandling(err);
     });
   }
 

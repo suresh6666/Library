@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
@@ -7,7 +7,7 @@ import 'rxjs/add/operator/toPromise';
 export class AppService {
   constructor(private http: HttpClient) {}
   // Get Method to get the Data from Server
-  get(url?: string, data?: any, params?: any): Promise<any> {
+  get(url?: string, parameters?: any): Promise<any> {
     return this.http.get(url).toPromise();
   }
   post(url: string, data: any, params?: any): Promise<any> {
@@ -31,7 +31,17 @@ export class AppService {
       tBody = document.getElementById('toast-body');
     tTitle.innerText = titleMessage;
     tBody.innerText = bodyMessage;
-    setTimeout(function(){ x.className = x.className.replace('show', ''); }, 4000);
+    setTimeout(function(){ x.className = x.className.replace('show', ''); }, 5000);
+  }
+  errorHandling(err) {
+    if (err['error'] && err['error']['_error']) {
+      const er = err['error']['_error'];
+      this.toast(er['message'], 'Status code: ' + er['code'], 'e');
+    }
+  }
+  dateFormat(date) {
+    const dt = new Date(date);
+    return dt.getFullYear() + '/' + dt.getMonth() + '/' + dt.getDate();
   }
 
 }

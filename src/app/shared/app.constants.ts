@@ -8,16 +8,16 @@ export class AppUrls {
   public register = this.baseUrl + 'auth/signup';
   public me = this.baseUrl + 'auth/me';
   public confirmEmail = this.baseUrl + 'account/ConfirmEmailAndSetPassword';
-  public resetPassword = this.baseUrl + 'reset';
+  public change_password = this.baseUrl + 'auth/change-password';
   public sendForgotPasswordLink = this.baseUrl + 'auth/send-forgot-password-link';
 
   public book_details = this.baseUrl + 'books?where=';
+  public search_books = this.baseUrl + 'books';
   public books_list = this.baseUrl + 'books';
   // public getChipDetails = 'http://demo3039112.mockable.io/chipDashboard';
   public categories = this.baseUrl + 'categories';
   public authors = this.baseUrl + 'authors';
   public users = this.baseUrl + 'persons';
-  public user_details = this.baseUrl + 'user_details';
 }
 
 

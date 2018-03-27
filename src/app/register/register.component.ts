@@ -4,6 +4,7 @@ import {AppService} from '../shared/app.service';
 import {AppUrls} from '../shared/app.constants';
 import {AuthService} from '../shared/auth.service';
 import {Router} from '@angular/router';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-register',
@@ -12,16 +13,16 @@ import {Router} from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
   rForm = new FormGroup({
-    email: new FormControl('', [Validators.required]),
-    password: new FormControl(),
-    c_password: new FormControl(),
-    first_name: new FormControl(),
-    last_name: new FormControl(),
-    mobile_number: new FormControl(),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required]),
+    c_password: new FormControl('', [Validators.required]),
+    first_name: new FormControl('', [Validators.required]),
+    last_name: new FormControl('', [Validators.required]),
+    mobile_number: new FormControl('', [Validators.required]),
     gender: new FormControl('male'),
     status: new FormControl('inactive'),
     city: new FormControl(''),
-    age: new FormControl(),
+    age: new FormControl('', [Validators.required]),
     user_level: new FormControl('user')
   });
   constructor(private appService: AppService,
@@ -30,17 +31,19 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
   }
-  register(user: any) {
+  register(user: any, valid: any) {
     console.log(user);
     user['user_level'] = [user['user_level']];
     delete user['c_password'];
     user = [user];
     this.appService.post(this.appUrls.register, user).then((data) => {
       if (data['data'] && data['data'].length) {
+        this.appService.toast(user['email'], 'Successfully registered!', 's');
         this.router.navigate(['/welcome']);
       }
-    }).catch((err) => {
-      console.log(err);
+    }).catch((err: HttpErrorResponse) => {
+      console.log(err, err['error']['_error']);
+      this.appService.errorHandling(err);
     });
   }
 

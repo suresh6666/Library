@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AppService} from '../shared/app.service';
 import {AppUrls} from '../shared/app.constants';
 import {Router} from '@angular/router';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-forgot-password',
@@ -11,7 +12,7 @@ import {Router} from '@angular/router';
 })
 export class ForgotPasswordComponent implements OnInit {
   fForm = new FormGroup({
-    email: new FormControl('')
+    email: new FormControl('', [Validators.email, Validators.required])
   });
   constructor(private appService: AppService,
               private appUrls: AppUrls,
@@ -28,8 +29,9 @@ export class ForgotPasswordComponent implements OnInit {
         this.appService.toast(title, message, 's');
         this.router.navigate(['/welcome']);
       }
-    }).catch((err) => {
+    }).catch((err: HttpErrorResponse) => {
       console.log(err);
+      this.appService.errorHandling(err);
     });
   }
 

@@ -27,6 +27,7 @@ export class WelcomeComponent implements OnInit {
       console.log(data);
       const items: any = data['_items'];
       items.forEach((item, index) => {
+        item['book_url'] = item['book_title'].replace(/\//g, '').replace(/ /g, '-');
         if (index <= 9) {
           this.booksList.push(item);
         }

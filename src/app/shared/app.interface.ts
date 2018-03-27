@@ -55,3 +55,12 @@ export interface NewAddress {
   phone: string
 }
 
+export interface Membership {
+  membership_type: string;
+  status: boolean;
+  account_balance: number;
+  plan_balance: number;
+  issue_pending: number;
+  return_pending: number;
+  return_ready: number;
+}

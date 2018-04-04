@@ -5,16 +5,20 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class AppService {
-  constructor(private http: HttpClient) {}
+  public options: any;
+  constructor(private http: HttpClient) {
+    this.options = new Headers({'Content-Type': 'application/json'});
+  }
   // Get Method to get the Data from Server
   get(url?: string, parameters?: any): Promise<any> {
-    return this.http.get(url).toPromise();
+    return this.http.get(url, parameters).toPromise();
   }
-  post(url: string, data: any, params?: any): Promise<any> {
-    return this.http.post(url, data).toPromise();
+  post(url: string, data: any, noHeaders?: any): Promise<any> {
+    this.options = (noHeaders) ? new Headers({'Content-Type': undefined}) : this.options;
+    return this.http.post(url, data, this.options).toPromise();
   }
-  put(url: string, data: any, params: any): Promise<any> {
-    return this.http.put(url, data).toPromise();
+  patch(url: string, data: any, params?: any): Promise<any> {
+    return this.http.patch(url, data).toPromise();
   }
   delete(url: string, data: any): Promise<any> {
     return this.http.delete(url, data).toPromise();

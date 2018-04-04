@@ -14,6 +14,8 @@ import {ShippingComponent} from '../profile/shipping/shipping.component';
 import {LoginComponent} from '../login/login.component';
 import {ForgotPasswordComponent} from '../forgot-password/forgot-password.component';
 import {ChangePasswordComponent} from '../change-password/change-password.component';
+import {OrdersComponent} from '../orders/orders.component';
+import {OrderSuccessComponent} from '../order-success/order-success.component';
 
 export const routes: Routes = [
   {path: 'welcome', component: WelcomeComponent},
@@ -24,6 +26,7 @@ export const routes: Routes = [
   {path: 'search', component: SearchbooksComponent},
   {path: 'checkout/:book_id', component: CheckoutComponent},
   {path: 'mycredit', component: MycreditComponent},
+  {path: 'order-success/:order_id', component: OrderSuccessComponent},
   {
     path: 'profile', component: ProfileComponent,
     children: [
@@ -32,6 +35,7 @@ export const routes: Routes = [
       {path: 'settings', component: SettingsComponent},
       {path: 'shipping', component: ShippingComponent},
       {path: 'change-password', component: ChangePasswordComponent},
+      {path: 'my-orders', component: OrdersComponent}
     ]
   },
   {

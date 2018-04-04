@@ -29,6 +29,9 @@ export class AuthService {
     localStorage.removeItem('user');
     return true;
   }
+  public getUser(): any {
+    return JSON.parse(localStorage.getItem('user'));
+  }
 }
 
 

@@ -18,6 +18,8 @@ export class AppUrls {
   public categories = this.baseUrl + 'categories';
   public authors = this.baseUrl + 'authors';
   public users = this.baseUrl + 'persons';
+  public payments = this.baseUrl + 'payments';
+  public orders = this.baseUrl + 'orders';
 }
 
 

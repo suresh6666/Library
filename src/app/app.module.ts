@@ -25,6 +25,8 @@ import {ProfileComponent} from './profile/profile.component';
 import { LoginComponent } from './login/login.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { OrderSuccessComponent } from './order-success/order-success.component';
+import { OrdersComponent } from './orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
     ShippingComponent,
     LoginComponent,
     ForgotPasswordComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    OrderSuccessComponent,
+    OrdersComponent
   ],
   imports: [
     FormsModule,

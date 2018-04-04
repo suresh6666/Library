@@ -14,10 +14,11 @@ export class ProfileComponent implements OnInit {
   constructor(private appService: AppService,
               private router: Router,
               private appUrls: AppUrls,
-              private authService: AuthService) {}
+              private authService: AuthService,
+              private activatedRoute: ActivatedRoute) {}
   ngOnInit() {
     if (!this.authService.isAuthenticated()) {
-      this.router.navigate(['/login-now'])
+      this.router.navigate(['/login-now']);
     }
   }
 }

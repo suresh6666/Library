@@ -14,6 +14,7 @@ import {AuthService} from '../shared/auth.service';
 export class NavbarComponent implements OnInit, AfterViewInit {
   searchForBook: string;
   showVar: boolean;
+  userInfo: any = {email: ''};
   constructor(private route: Router,
               public authService: AuthService) {
     this.route.events.subscribe((val) => {
@@ -25,8 +26,11 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     this.route.navigate(['/search'], {queryParams: {q: searchText, author: author, category: cat}});
     this.searchForBook = '';
   }
-  ngOnInit() {}
+  ngOnInit() {this.getUser()}
   ngAfterViewInit() {}
+  getUser() {
+    this.userInfo = this.authService.getUser();
+  }
   logout() {
     this.authService.removeToken();
     this.route.navigate(['/welcome']);

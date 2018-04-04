@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row row1">
       <ul class="largenav top-nav-links">
-        <li class="upper-links">
+        <li class="upper-links" *ngIf="authService.isAuthenticated()">
           <a class="links" routerLink="/profile/membership">Membership</a>
         </li>
         <li class="upper-links"><a class="links">Circulations</a></li>
@@ -16,10 +16,13 @@
             <li class="profile-li"><a class="profile-links">Change password</a></li>
           </ul>
         </li>
-        <li class="upper-links authentication-links">
+        <li class="upper-links authentication-links" *ngIf="!authService.isAuthenticated()">
           Welcome!
           <a routerLink="/login-now">Login</a> or
           <a routerLink="/register-now">Create an Account</a>
+        </li>
+        <li class="upper-links authentication-links" *ngIf="authService.isAuthenticated()">
+          Logged in as <span>{{ userInfo['email'] }}</span>
         </li>
       </ul>
     </div>
@@ -48,11 +51,14 @@
       <ul class="nav navbar-nav" *ngIf="authService.isAuthenticated()">
         <li>
           <a routerLink="/profile/settings" routerLinkActive="profile-active">
+            <i class="fa fa-user-circle-o"></i>&nbsp;
             My profile/settings
           </a>
         </li>
         &nbsp;
-        <li (click)="logout()" class="pointer"><a>Logout</a></li>
+        <li (click)="logout()" class="pointer">
+          <a><i class="fa fa-power-off"></i>&nbsp;Logout</a>
+        </li>
       </ul>
     </div>
   </div>

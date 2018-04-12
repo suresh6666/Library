@@ -64,3 +64,9 @@ export interface Membership {
   return_pending: number;
   return_ready: number;
 }
+
+
+export interface ICart {
+  bId: string,
+  bType: string
+}

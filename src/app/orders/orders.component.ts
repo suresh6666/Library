@@ -28,5 +28,8 @@ export class OrdersComponent implements OnInit {
       console.log(err);
     });
   }
+  removeChars(url) {
+    return url.replace(/\//g, '').replace(/ /g, '-');
+  }
 
 }

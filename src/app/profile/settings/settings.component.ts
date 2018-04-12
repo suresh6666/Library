@@ -49,5 +49,14 @@ export class SettingsComponent implements OnInit {
       });
     }
   }
+  update(user) {
+    this.appService.patch(this.appUrls.users, user).then((data) => {
+      console.log(data);
+      this.appService.toast(user['email'], 'Successfully Updated!', 's');
+    }).catch((err) => {
+      console.log('Error', err);
+      this.appService.toast(user['email'], 'Something went wrong!', 'e');
+    });
+  }
 
 }

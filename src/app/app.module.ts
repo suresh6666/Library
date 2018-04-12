@@ -27,6 +27,9 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { OrderSuccessComponent } from './order-success/order-success.component';
 import { OrdersComponent } from './orders/orders.component';
+import { PaymentComponent } from './payment/payment.component';
+import { WalletComponent } from './wallet/wallet.component';
+import { MycartComponent } from './mycart/mycart.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +51,10 @@ import { OrdersComponent } from './orders/orders.component';
     ForgotPasswordComponent,
     ChangePasswordComponent,
     OrderSuccessComponent,
-    OrdersComponent
+    OrdersComponent,
+    PaymentComponent,
+    WalletComponent,
+    MycartComponent
   ],
   imports: [
     FormsModule,

@@ -8,6 +8,10 @@
   padding: 7px 10px;
   cursor: pointer;
 }
+.btn {
+  border-radius: 0 2px 2px 0;
+  padding: 7px 10px;
+}
 .panel-heading, .panel-footer {
   padding: 15px;
   display: flex;

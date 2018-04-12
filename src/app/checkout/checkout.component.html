@@ -78,91 +78,34 @@
           </form>
         </div>
       </div>
-      <div class="panel panel-default">
-        <div class="panel-heading" (click)="toggle = {address: false, payment: true}">
-          <h3 class="panel-title">
-            Payment Details
-          </h3>
-          <div class="checkbox pull-right">
-            <label>
-              <input type="checkbox" />
-              Remember
-            </label>
-          </div>
-        </div>
-        <div class="panel-body" *ngIf="toggle.payment">
-          <div class="row">
-            <div class="col-lg-6 col-md-6">
-              <form role="form" [formGroup]="pForm" (submit)="doPayment(details['total_fee'])">
-                <div class="form-group">
-                  <label for="cardNumber">CARD NUMBER</label>
-                  <div class="input-group">
-                    <input type="text" class="form-control" id="cardNumber" placeholder="Valid Card Number"
-                           required formControlName="cardNumber" />
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-7 col-md-7">
-                    <div class="form-group">
-                      <label for="expityMonth">EXPIRY DATE</label>
-                      <div class="col-xs-6 col-lg-6 pl-ziro">
-                        <input type="text" class="form-control" id="expityMonth" placeholder="MM"
-                               required maxlength="2" formControlName="mm" />
-                      </div>
-                      <div class="col-xs-6 col-lg-6 pl-ziro">
-                        <input type="text" class="form-control" id="expityYear" placeholder="YY"
-                               required maxlength="2" formControlName="yy" />
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-xs-5 col-md-5 pull-right">
-                    <div class="form-group">
-                      <label for="cvCode">CVV CODE</label>
-                      <input type="password" class="form-control" id="cvCode" placeholder="CVV"
-                             required maxlength="3" formControlName="cvv" />
-                    </div>
-                  </div>
-                </div>
-                <ul class="nav nav-pills nav-stacked">
-                  <li>
-                    <a><span class="badge pull-right">Rs. {{ details['total_fee'] }}</span> Final Payment</a>
-                  </li>
-                </ul>
-                <br>
-                <button class="btn btn-primary btn-lg btn-block" role="button" type="submit">
-                  Pay (Rs. {{ details['total_fee'] }})
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
     </div> <!-- end col -->
     <div class="col-lg-4 col-md-4">
-      <div class="card price-card">
+      <!--<div class="card price-card">
         <div class="card-body">
           <h5 class="text-uppercase"><b>Order Summary</b></h5>
           <h5><b>{{ details.book_title }}</b></h5>
           <h6>By <a>{{ details['book_authors'] }}</a></h6>
         </div>
-      </div>
+      </div>-->
       <br>
       <div class="card price-card">
         <div class="card-header">
           <h5 class="text-uppercase"><b>Price details</b></h5>
         </div>
         <div class="card-body">
-          <p class="card-text text-uppercase">
-            Price <b class="float-right pull-right">Rs. {{ details['reading_fee'] }}</b>
-          </p>
-          <p class="card-text text-uppercase">
-            Delivery Charges <b class="float-right pull-right">Rs. {{ appConstants['del_charges'] }}</b>
-          </p>
+          <h5>
+            Price ({{ cartResults.length }} items)
+            <span class="pull-right"><b>₹ {{ totalPrice}}</b></span>
+          </h5>
+          <h5>
+            Delivery charges
+            <span class="pull-right"><b>₹ {{ appConstants.del_charges }}</b></span>
+          </h5>
           <hr>
-          <p class="card-text text-uppercase">
-            <b>Amount Payable <span class="float-right pull-right">Rs. {{ details['total_fee'] }}</span></b>
-          </p>
+          <h5>
+            Amount payable
+            <span class="pull-right"><b>₹ {{ totalPrice + appConstants.del_charges }}</b></span>
+          </h5>
         </div>
       </div>
     </div> <!-- end col -->

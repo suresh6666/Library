@@ -20,6 +20,12 @@ export class AppUrls {
   public users = this.baseUrl + 'persons';
   public payments = this.baseUrl + 'payments';
   public orders = this.baseUrl + 'orders';
+  public membership = this.baseUrl + 'membership';
+  /*
+  * ------------- Parse API -----------------
+  * */
+  public parseAPI = 'http://localhost:1337/parse/classes/';
+  public cart = this.parseAPI + 'cart';
 }
 
 
@@ -27,4 +33,6 @@ export class AppUrls {
 export class AppConstants {
   public lease_rate = 12.00;
   public del_charges = 40.00;
+  public mAmount = 500;
+  public mPlanExpiry = 12;
 }

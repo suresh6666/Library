@@ -11,18 +11,19 @@ import {FormControl, FormGroup} from '@angular/forms';
   styleUrls: ['./checkout.component.css']
 })
 export class CheckoutComponent implements OnInit {
-  public book_id: string;
-  public localUser: any = {};
   public toggle: any = {address: true, payment: false};
   public newAddress: any = {clicked: false};
-  public details: any = {};
   public shipping_address: any = {};
   public userInfo: any = {};
+  public totalPrice: any = 0;
+  public cartResults = [];
   pForm = new FormGroup({
     cvv: new FormControl(),
     mm: new FormControl(),
     yy: new FormControl(),
-    cardNumber: new FormControl()
+    card_type: new FormControl('Credit'),
+    card_number: new FormControl(),
+    name_on_card: new FormControl()
   });
   constructor(private appService: AppService,
               private appUrls: AppUrls,
@@ -30,25 +31,29 @@ export class CheckoutComponent implements OnInit {
               public appConstants: AppConstants,
               private authService: AuthService,
               private router: Router) {
-    this.activatedRoute.params.subscribe((params) => {
-      console.log(params);
-      this.book_id = params['book_id'];
-    });
-    this.localUser = this.authService.getUser();
+    this.userInfo = this.authService.getUser();
   }
 
   ngOnInit() {
-    // get book Details
-    this.appService.get(this.appUrls.baseUrl + 'books/' + this.book_id).then((data: any) => {
-      console.log(data);
-      this.details = data;
-      this.details['reading_fee'] = (( this.details['lease_price'] / this.appConstants['lease_rate'])).toFixed(2);
-      this.details['total_fee'] = (Number(this.details['reading_fee']) + this.appConstants['del_charges']).toFixed(2);
-    }).catch((err) => {
-      console.log(err);
-    });
+    if (this.authService.isAuthenticated()) {
+      this.appService.cartCast.subscribe((results) => {
+        this.cartResults = results;
+        for (let i = 0; i < results.length; i ++) {
+          this.appService.get(this.appUrls.books_list + '/' + results[i]['bId']).then((book) => {
+            results.filter((item) => {
+              if (item.bId === book._id) {
+                const bPrice = (item['bType'] === 'ecopy') ? book['ecopy_price'] : book['hcopy_price'];
+                book.book_price = Number((( bPrice / this.appConstants['lease_rate'])).toFixed(2));
+                book.book_price = Number((( bPrice / this.appConstants['lease_rate'])).toFixed(2));
+                this.totalPrice = this.totalPrice + book.book_price;
+              }
+            });
+          });
+        }
+      });
+    }
     // Get User info
-    this.appService.get(this.appUrls.users + '/' + this.localUser._id).then((data) => {
+    this.appService.get(this.appUrls.users + '/' + this.userInfo._id).then((data) => {
       console.log(data);
       this.userInfo = data;
       this.shipping_address = data['shipping_address'];
@@ -60,14 +65,24 @@ export class CheckoutComponent implements OnInit {
     const pObj = {
       total_amount: payment,
       payment_date: new Date().toISOString(),
-      payment_status: 'active'
+      payment_status: 'active',
+      card_details: {
+        user_id: this.authService.getUser()['_id'],
+        card_number: this.pForm.get('card_number').value,
+        card_type: this.pForm.get('card_type').value,
+        expire_date: this.pForm.get('mm').value + '/' + this.pForm.get('yy').value,
+        cvv: this.pForm.get('cvv').value,
+        name_on_card: this.pForm.get('name_on_card').value
+      }
     };
     this.appService.post(this.appUrls.payments, pObj).then((data) => {
       console.log('Hello Payment', data);
       const date = new Date();
       const order_object = {
         total_amount: payment,
-        book_id: this.details['_id'],
+        // book_id: this.details['_id'],
+        user_id: this.authService.getUser()['_id'],
+        shipping_address: this.shipping_address,
         ordered_date: date.toISOString(),
         delivery_date: new Date(date.setDate(date.getDate() + 2)).toISOString(),
         delivery_status: 'progress',

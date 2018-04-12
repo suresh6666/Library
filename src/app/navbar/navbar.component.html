@@ -21,7 +21,7 @@
           <a routerLink="/login-now">Login</a> or
           <a routerLink="/register-now">Create an Account</a>
         </li>
-        <li class="upper-links authentication-links" *ngIf="authService.isAuthenticated()">
+        <li class="upper-links authentication-links" *ngIf="authService.isAuthenticated() && userInfo">
           Logged in as <span>{{ userInfo['email'] }}</span>
         </li>
       </ul>
@@ -50,19 +50,37 @@
       </div>
       <ul class="nav navbar-nav" *ngIf="authService.isAuthenticated()">
         <li>
-          <a routerLink="/profile/settings" routerLinkActive="profile-active">
+          <!--<a routerLink="/profile/settings" routerLinkActive="profile-active">
             <i class="fa fa-user-circle-o"></i>&nbsp;
             My profile/settings
-          </a>
+          </a>-->
+
+          <div class="dropdown">
+            <button class="dropbtn">
+              <i class="fa fa-user-circle-o"></i>&nbsp;
+              My Profile
+            </button>
+            <div class="dropdown-content">
+              <a routerLink="/profile/settings">Settings</a>
+              <a routerLink="/profile/my-orders">My Orders</a>
+              <a routerLink="/my-wallet">My Wallet</a>
+              <a class="pointer" (click)="logout()"><i class="fa fa-power-off"></i>&nbsp;Logout</a>
+            </div>
+          </div>
         </li>
         &nbsp;
-        <li (click)="logout()" class="pointer">
-          <a><i class="fa fa-power-off"></i>&nbsp;Logout</a>
+        <li routerLinkActive="none" class="pointer my-cart" *ngIf="authService.isAuthenticated()">
+          <a routerLink="/my-cart">
+            <i class="fa fa-cart-plus"></i>
+            &nbsp;Cart
+            <span #cart class="cart-legth">{{ myCart.length }}</span>
+          </a>
         </li>
       </ul>
     </div>
   </div>
 </div>
+
 <div id="mySidenav" class="sidenav">
   <div class="container" style="background-color: #2874f0; padding-top: 10px;">
     <span class="sidenav-heading">Home</span>

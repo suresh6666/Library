@@ -52,6 +52,9 @@ body {
   content: '';
   -webkit-transition: all .4s;
 }
+.none {
+  display: none !important;
+}
 .book-details-checkout, .book-details-checkout:hover {
   background-color: #FF4081 !important;
   border: 1px solid #FF4081 !important;
@@ -61,7 +64,9 @@ body {
 div.panel.card {
   margin-bottom: 10px !important;
 }
-
+.panel-footer {
+  background-color: #ffffff !important;
+}
 #toast {
   visibility: hidden;
   min-width: 250px;
@@ -94,5 +99,16 @@ div.panel.card {
 }
 input[type=password], input[type=text], select.form-control, input[type=email], input[type=number] {
   height: 40px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  outline: none;
+  border: 1px solid #dddddd;
+}
+.form-control:focus {
+  border-color: #dddddd !important;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none !important;
 }
 

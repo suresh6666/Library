@@ -16,12 +16,12 @@
           </p>
           <p>
             Leasing Price: {{ book.lease_price }},
-            <b>Reading Price: {{ (( book['lease_price']/appConstants['lease_rate'])).toFixed(2) }}</b>
-            <span class="book-cost"> ({{ appConstants['lease_rate'] }}% of {{ book.lease_price }})</span>
+            <b>Reading Price: {{ (( book['hcopy_price']/appConstants['lease_rate'])).toFixed(2) }}</b>
+            <span class="book-cost"> ({{ appConstants['lease_rate'] }}% of {{ book.hcopy_price }})</span>
           </p>
           <div>
-            <button class="btn btn-primary btn-sm book-details-checkout">Request hard copy!</button>
-            <button class="btn btn-primary btn-sm req-ecopy">Request E-copy!</button>
+            <button (click)="requestCopy(book['_id'], 'hardcopy')" class="btn btn-primary btn-sm book-details-checkout">Request hard copy!</button>
+            <button (click)="requestCopy(book['_id'], 'ecopy')" class="btn btn-primary btn-sm req-ecopy">Request E-copy!</button>
           </div>
         </div> <!-- end of Search desc -->
       </div> <!-- end of Search card -->

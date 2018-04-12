@@ -16,6 +16,8 @@ import {ForgotPasswordComponent} from '../forgot-password/forgot-password.compon
 import {ChangePasswordComponent} from '../change-password/change-password.component';
 import {OrdersComponent} from '../orders/orders.component';
 import {OrderSuccessComponent} from '../order-success/order-success.component';
+import {WalletComponent} from '../wallet/wallet.component';
+import {MycartComponent} from '../mycart/mycart.component';
 
 export const routes: Routes = [
   {path: 'welcome', component: WelcomeComponent},
@@ -24,7 +26,7 @@ export const routes: Routes = [
   {path: 'login-now', component: LoginComponent},
   {path: 'forgot-password', component: ForgotPasswordComponent},
   {path: 'search', component: SearchbooksComponent},
-  {path: 'checkout/:book_id', component: CheckoutComponent},
+  {path: 'checkout', component: CheckoutComponent},
   {path: 'mycredit', component: MycreditComponent},
   {path: 'order-success/:order_id', component: OrderSuccessComponent},
   {
@@ -38,6 +40,8 @@ export const routes: Routes = [
       {path: 'my-orders', component: OrdersComponent}
     ]
   },
+  {path: 'my-cart', component: MycartComponent},
+  {path: 'my-wallet', component: WalletComponent},
   {
     path: '',
     redirectTo: '/welcome',

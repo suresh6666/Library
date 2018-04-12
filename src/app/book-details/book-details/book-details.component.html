@@ -5,9 +5,9 @@
       <div class="card border-default">
         <div class="card-body">
           <div class="row">
-            <div class="col-lg-4">
+            <div class="col-lg-3">
               <div class="img-thumbnail book-details-img">
-                <img src="http://html.crunchpress.com/book-store/images/image41.jpg" alt="">
+                <img src="{{ details.image_thumbnail }}" alt="{{ details.book_title }}">
               </div> <!-- thumbnail -->
               <br>
             </div> <!-- end col -->
@@ -18,10 +18,10 @@
               <p>By <a routerLink="/search" [queryParams]="{q: '', author: details['book_authors'], category: ''}">{{ details['book_authors'] }}</a> &nbsp;(Author)</p>
 
               <div class="lease-details">
-                <p class="book-cost">MRP  Rs. {{ details['lease_price'] }}  (Inclusive of all taxes)</p>
+                <p class="book-cost">MRP  Rs. {{ details['hcopy_price'] }}  (Inclusive of all taxes)</p>
                 <h5 class="lease-details-h">
-                  <span class="lease-details-price">Rs. {{ (( details['lease_price']/appConstants['lease_rate'])).toFixed(2) }} </span>
-                  <span class="lease-calc">({{ appConstants['lease_rate'] }}% of {{ details['lease_price'] }}.00)</span>
+                  <span class="lease-details-price">Rs. {{ (( details['hcopy_price']/appConstants['lease_rate'])).toFixed(2) }} </span>
+                  <span class="lease-calc">({{ appConstants['lease_rate'] }}% of {{ details['hcopy_price'] }}.00)</span>
                 </h5>
               </div>
 
@@ -38,10 +38,11 @@
                 </p>
                 <br>
                 <div class="request-copy-area">
-                  <button routerLink="/checkout/{{ details._id }}" [queryParams]="{type: 'hardcopy'}" class="btn btn-primary btn-md book-details-checkout req-btn">
+                  <button (click)="requestCopy(details, 'hardcopy')"
+                          class="btn btn-primary btn-md book-details-checkout req-btn">
                     Request hard copy!
                   </button>
-                  <button routerLink="/checkout/{{ details._id }}" [queryParams]="{type: 'ecopy'}" class="btn btn-primary btn-md req-btn req-ecopy">
+                  <button (click)="requestCopy(details, 'ecopy')" class="btn btn-primary btn-md req-btn req-ecopy">
                     Request E-copy!
                   </button>
                 </div>

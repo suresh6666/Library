@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-declare var $: any;
 import {AppService} from '../shared/app.service';
 import {AppUrls} from '../shared/app.constants';
+import * as Parse from 'parse';
 
 @Component({
   selector: 'app-welcome',

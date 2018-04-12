@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AppUrls} from '../shared/app.constants';
 import {AppService} from '../shared/app.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, NavigationStart, Router} from '@angular/router';
 import {AuthService} from '../shared/auth.service';
 import {HttpErrorResponse} from '@angular/common/http';
+import 'rxjs/add/operator/filter';
 
 @Component({
   selector: 'app-login',
@@ -16,10 +17,24 @@ export class LoginComponent implements OnInit {
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required])
   });
+  public returnUrl: any = null;
   constructor(private appService: AppService,
               private appUrls: AppUrls,
               private router: Router,
-              private authService: AuthService) {}
+              private authService: AuthService,
+              private activatedRoute: ActivatedRoute) {
+    this.router.events
+      .subscribe(e => {
+        // console.log(e);
+      });
+    this.activatedRoute.queryParams.subscribe((params) => {
+      // console.log(params);
+      this.returnUrl = params;
+    });
+    if (this.authService.isAuthenticated()) {
+      this.router.navigate(['/profile/membership']);
+    }
+  }
 
   ngOnInit() {
   }
@@ -32,7 +47,7 @@ export class LoginComponent implements OnInit {
         const obj = JSON.stringify({email: data['data']['email'], _id: data['data']['_id']});
         localStorage.setItem('user', obj);
         this.appService.toast(data['data']['email'], 'Successfully Logged in!', 's');
-        this.router.navigate(['profile']);
+        this.router.navigate(['/profile/membership']);
       }
     }).catch((err: HttpErrorResponse) => {
       console.log(err);

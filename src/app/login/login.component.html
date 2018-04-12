@@ -6,7 +6,7 @@
       <div class="col-lg-4">
         <div class="form-group">
           <label>Email</label>
-          <input type="email" class="form-control" placeholder="Email" formControlName="email" email />
+          <input type="email" class="form-control" placeholder="Email" formControlName="email" email autofocus />
           <div *ngIf="lForm.controls['email'].errors && !lForm.controls['email'].pristine" class="error-msg">
             <div [hidden]="!lForm.controls['email'].errors.required">Email is required.</div>
             <div [hidden]="!lForm.controls['email'].errors.patternInvalid">Email is invalid.</div>

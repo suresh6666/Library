@@ -35,9 +35,6 @@ export class NavbarComponent implements OnInit, AfterViewInit {
       this.appService.cartCast.subscribe((data) => {
         console.log('myCast data', data);
         this.myCart = data;
-        setTimeout(() => {
-          this.cart.nativeElement.classList.add('blink-me');
-        }, 2000);
       }, (error) => {
         console.log(error);
       });

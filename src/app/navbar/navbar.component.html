@@ -73,7 +73,7 @@
           <a routerLink="/my-cart">
             <i class="fa fa-cart-plus"></i>
             &nbsp;Cart
-            <span #cart class="cart-legth">{{ myCart.length }}</span>
+            <span #cart class="cart-legth" [ngClass]="{'blink-me': myCart.length}">{{ myCart.length }}</span>
           </a>
         </li>
       </ul>

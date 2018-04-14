@@ -13,6 +13,7 @@ export class BookDetailsComponent implements OnInit {
   bookParams: any = {};
   details: any = {};
   myDetails: any = {};
+  cartItems: any = [];
   constructor(private appUrls: AppUrls,
               private appService: AppService,
               private authService: AuthService,
@@ -28,6 +29,9 @@ export class BookDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.getBookDetails();
+    this.appService.cartCast.subscribe((data) => {
+      this.cartItems = data;
+    });
   }
   getBookDetails() {
     const url = this.appUrls.book_details + JSON.stringify({'ISBN_13': this.bookParams['isbn']});
@@ -44,21 +48,25 @@ export class BookDetailsComponent implements OnInit {
     if (!this.authService.isAuthenticated()) {
       this.router.navigate(['/login-now']);
     } else {
-      // this.router.navigate(['/checkout/' + id], {queryParams: {type: type}});
-      const cart = {
-        bId: book._id,
-        bType: type,
-        uId: this.myDetails['_id']
-      };
-      this.appService.postParse(this.appUrls.cart, cart).subscribe((data) => {
-        const url = '?where=' + JSON.stringify({uId: cart['_id']});
-        this.appService.getParse(this.appUrls.cart + url).subscribe((cartData) => {
-          this.appService.updateCart(cartData['results']);
-          this.appService.toast(book.book_title, 'Added to cart', 's');
-        }, (error) => {
-          console.log(error);
-        });
+      const found = this.cartItems.filter((cartItem) => {
+        return cartItem.bId === book._id;
       });
+      if (found.length) {
+        this.appService.toast(book.book_title, 'Already added in Cart', 'e');
+      } else {
+        const cart = {
+          bId: book._id,
+          bType: type,
+          uId: this.myDetails['_id']
+        };
+        this.appService.postParse(this.appUrls.cart, cart).subscribe((data) => {
+          cart['objectId'] = data['objectId'];
+          cart['createdAt'] = data['createdAt'];
+          this.cartItems.push(cart);
+          this.appService.updateCart(this.cartItems);
+          this.appService.toast(book.book_title, 'Added to cart', 's');
+        });
+      }
     }
   }
 

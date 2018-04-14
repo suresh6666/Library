@@ -4,7 +4,7 @@
     <div class="col-lg-8">
       <div class="panel panel-default">
         <div class="panel-title text-uppercase">
-          <h5><b>My cart</b></h5>
+          <h5><b>My cart ({{ books.length }})</b></h5>
         </div>
         <hr>
         <div class="panel-body">
@@ -14,14 +14,15 @@
                 <img src="{{ book.image_thumbnail }}" alt="{{ book.book_title }}">
               </div>
             </div>
-            <div class="col-lg-7">
+            <div class="col-lg-7 col-md-7">
               <h5><b>{{ book.book_title }}</b></h5>
               <h6>{{ book.book_authors }}</h6>
               <h6>Publisher: {{ book.publisher }}</h6>
               <h4><b>₹ {{ book.book_price }}</b></h4>
             </div>
-            <div class="col-lg-2 col-md-2">
+            <div class="col-lg-3 col-md-3">
               <button class="btn btn-sm btn-default" (click)="removeFromCart(book._id)">Remove from Cart</button>
+              <h6>Requested for <b>{{ book['book_type'] }}</b></h6>
             </div>
           </div>
         </div>

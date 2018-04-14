@@ -27,6 +27,8 @@ export class MycartComponent implements OnInit {
           this.appService.get(this.appUrls.books_list + '/' + results[i]['bId']).then((book) => {
             results.filter((item) => {
               if (item.bId === book._id) {
+                book['book_type'] = (item['bType'] === 'ecopy') ? 'E-Copy' : 'Hard Copy';
+                console.log('My items from parse: ', item);
                 this.totalPrice = this.totalPrice + this.getTotalPrice(item, book);
               }
             });

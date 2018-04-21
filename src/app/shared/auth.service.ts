@@ -3,12 +3,13 @@ import 'rxjs/add/operator/toPromise';
 import {AppUrls} from './app.constants';
 import {CanActivate, Router} from '@angular/router';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-declare var $: any;
 
 @Injectable()
 export class AuthService {
   private headers: HttpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
-  constructor(private http: HttpClient, private appUrls: AppUrls) {}
+  constructor(private http: HttpClient,
+              private appUrls: AppUrls,
+              private router: Router) {}
   login(user): Promise<any> {
     return this.http.post(this.appUrls.login, user, {headers: this.headers}).toPromise();
   }
@@ -24,9 +25,13 @@ export class AuthService {
     localStorage.setItem('access_token', token);
     return true;
   }
+  public getToken(token: string): string {
+    return localStorage.getItem(token);
+  }
   public removeToken(): boolean {
     localStorage.removeItem('access_token');
     localStorage.removeItem('user');
+    this.router.navigate(['/welcome']);
     return true;
   }
   public getUser(): any {

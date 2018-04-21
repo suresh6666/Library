@@ -20,7 +20,7 @@
               <div class="lease-details">
                 <p class="book-cost">MRP  Rs. {{ details['hcopy_price'] }}  (Inclusive of all taxes)</p>
                 <h5 class="lease-details-h">
-                  <span class="lease-details-price">Rs. {{ (( details['hcopy_price']/appConstants['lease_rate'])).toFixed(2) }} </span>
+                  <span class="lease-details-price">Rs. {{ (( details['hcopy_price']/100)*appConstants['lease_rate']).toFixed(2) }} </span>
                   <span class="lease-calc">({{ appConstants['lease_rate'] }}% of {{ details['hcopy_price'] }}.00)</span>
                 </h5>
               </div>
@@ -38,11 +38,12 @@
                 </p>
                 <br>
                 <div class="request-copy-area">
-                  <button (click)="requestCopy(details, 'hardcopy')"
+                  <button [disabled]="!details.availability" (click)="requestCopy(details, 'hardcopy')"
                           class="btn btn-primary btn-md book-details-checkout req-btn">
                     Request hard copy!
                   </button>
-                  <button (click)="requestCopy(details, 'ecopy')" class="btn btn-primary btn-md req-btn req-ecopy">
+                  <button [disabled]="!details.availability || !details.ecopy" (click)="requestCopy(details, 'ecopy')"
+                          class="btn btn-primary btn-md req-btn req-ecopy">
                     Request E-copy!
                   </button>
                 </div>

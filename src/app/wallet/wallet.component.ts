@@ -10,6 +10,16 @@ import {AppUrls} from '../shared/app.constants';
   styleUrls: ['./wallet.component.css']
 })
 export class WalletComponent implements OnInit {
+  public tra = {
+    MERCHANT_KEY: 'am7eBpic',
+    key: 'am7eBpic',
+    SALT: 'KJ5oWHOUni',
+    txnid: '847d045dccebbea4eb99',
+    PAYU_BASE_URL: 'https://sandboxsecure.payu.in/_payment',
+    hashSequence: 'key|txnid|amount|productinfo|firstname|email|udf1|udf2|udf3|udf4|udf5|udf6|udf7|udf8|udf9|udf10',
+    furl: 'http://localhost:4200/fauiluretransaction',
+    surl: 'http://localhost:4200/successtransaction'
+  };
   public userInfo: any = {};
   public user: any = {};
   constructor(private appService: AppService,

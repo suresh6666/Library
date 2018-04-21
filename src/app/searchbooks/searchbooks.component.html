@@ -2,13 +2,19 @@
   <br>
   <div class="row">
     <div class="col-lg-8 col-md-8">
+      <div class="search-card no-search-results text-center" *ngIf="!books.length">
+        <div>
+          <i class="fa fa-smile-o"></i>
+        </div>
+        <h4>No Search results found for your criteria! </h4>
+      </div>
       <div class="search-card" *ngFor="let book of books">
         <div class="img-sec">
-          <img src="http://html.crunchpress.com/book-store/images/image41.jpg" alt="{{ book.title }}">
+          <img src="{{ book.image_thumbnail }}" alt="{{ book.title }}">
         </div> <!-- end of img-sec -->
         <div class="search-desc">
           <p class="search-title" title="{{ book.book_title }}">
-            <a style="color: #333333; font-weight: 400;" routerLink="/book_details/{{ book.book_title }}">{{ book.book_title }}</a>
+            <a style="color: #333333; font-weight: 400;" routerLink="/book_details/{{ book.book_url }}/{{ book.ISBN_13 }}">{{ book.book_title }}</a>
           </p>
           <p class="search-author">By <a href="" style="text-decoration: underline;">{{ book.book_authors }}</a></p>
           <p class="book-desc">
@@ -16,7 +22,7 @@
           </p>
           <p>
             Leasing Price: {{ book.lease_price }},
-            <b>Reading Price: {{ (( book['hcopy_price']/appConstants['lease_rate'])).toFixed(2) }}</b>
+            <b>Reading Price: {{ (( book['hcopy_price']/100) * appConstants['lease_rate']).toFixed(2) }}</b>
             <span class="book-cost"> ({{ appConstants['lease_rate'] }}% of {{ book.hcopy_price }})</span>
           </p>
           <div>

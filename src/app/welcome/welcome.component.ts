@@ -13,20 +13,12 @@ export class WelcomeComponent implements OnInit {
   resourceItems: any = [];
   constructor (private appService: AppService, private appUrls: AppUrls) {}
   ngOnInit () {
-    // get the List of categories
-    this.appService.get(this.appUrls.categories).then((data: any) => {
-      console.log(data);
-      const items: any = data['_items'];
-      items.forEach((item, index) => {
-        if (index <= 12) {
-          this.resourceItems.push(item);
-        }
-      });
-    }, (err) => {});
     this.appService.get(this.appUrls.books_list).then((data: any) => {
       console.log(data);
       const items: any = data['_items'];
       items.forEach((item, index) => {
+        item['image_thumbnail'] = this.appService.checkHttps(item['image_thumbnail']);
+        item['image_small_thumbnail'] = this.appService.checkHttps(item['image_small_thumbnail']);
         item['book_url'] = item['book_title'].replace(/\//g, '').replace(/ /g, '-');
         if (index <= 9) {
           this.booksList.push(item);

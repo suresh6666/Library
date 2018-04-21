@@ -19,10 +19,18 @@ export class SearchbooksComponent implements OnInit {
               private authService: AuthService,
               private router: Router) {
     this.activatedRoute.queryParams.subscribe(params => {
-      const query = '?where=' + JSON.stringify({'book_title': {'$regex': '.' + params['q'] + '.'}});
-      this.appService.get(this.appUrls.search_books + query).then((data) => {
+      const myQuery = {
+        where: {book_title: {$regex: '.*' + params['q'] + '.*', '$options': 'i'}}
+      };
+      this.appService.get(this.appUrls.search_books, myQuery).then((data: any) => {
         console.log(data);
-        this.books = data['_items'];
+        const items = data['_items'];
+        items.forEach((book) => {
+          book['image_thumbnail'] = this.appService.checkHttps(book['image_thumbnail']);
+          book['image_small_thumbnail'] = this.appService.checkHttps(book['image_small_thumbnail']);
+          book['book_url'] = book['book_title'].replace(/\//g, '').replace(/ /g, '-');
+          this.books.push(book);
+        });
       }).catch((err) => {
         console.log(err);
       });

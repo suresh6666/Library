@@ -30,6 +30,7 @@ import { OrdersComponent } from './orders/orders.component';
 import { PaymentComponent } from './payment/payment.component';
 import { WalletComponent } from './wallet/wallet.component';
 import { MycartComponent } from './mycart/mycart.component';
+import { CategoriesComponent } from './categories/categories.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { MycartComponent } from './mycart/mycart.component';
     OrdersComponent,
     PaymentComponent,
     WalletComponent,
-    MycartComponent
+    MycartComponent,
+    CategoriesComponent
   ],
   imports: [
     FormsModule,

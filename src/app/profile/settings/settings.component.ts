@@ -3,6 +3,7 @@ import {ActivatedRoute, Params} from '@angular/router';
 import {AppService} from '../../shared/app.service';
 import {AppUrls} from '../../shared/app.constants';
 import {HttpErrorResponse} from '@angular/common/http';
+import {AuthService} from '../../shared/auth.service';
 
 @Component({
   selector: 'app-settings',
@@ -16,7 +17,8 @@ export class SettingsComponent implements OnInit {
   public queryParams: {};
   constructor(private appService: AppService,
               private appUrls: AppUrls,
-              private activateRoute: ActivatedRoute) {
+              private activateRoute: ActivatedRoute,
+              private authService: AuthService) {
     this.activateRoute.queryParams.subscribe((params: Params) => {
       this.queryParams = params;
     });
@@ -38,10 +40,11 @@ export class SettingsComponent implements OnInit {
     };
     const user = JSON.parse(localStorage.getItem('user'));
     if (user) {
-      this.appService.get(this.appUrls.users + '/' + user['_id']).then((data) => {
+      const token = this.authService.getToken('access_token');
+      this.appService.get(this.appUrls.me, {login_token: token}).then((data) => {
         console.log(data);
-        this.user = data;
-        const date = new Date(data['created_date']);
+        this.user = data['data'];
+        const date = new Date(data['data']['created_date']);
         this.registeredOn = date;
       }).catch((err: HttpErrorResponse) => {
         console.log(err);
@@ -50,7 +53,7 @@ export class SettingsComponent implements OnInit {
     }
   }
   update(user) {
-    this.appService.patch(this.appUrls.users, user).then((data) => {
+    this.appService.patch(this.appUrls.me, user).then((data) => {
       console.log(data);
       this.appService.toast(user['email'], 'Successfully Updated!', 's');
     }).catch((err) => {

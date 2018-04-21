@@ -2,6 +2,7 @@
 
 // API End points
 export class AppUrls {
+  public staticPath = 'http://ec2-18-220-81-9.us-east-2.compute.amazonaws.com/';
   public baseUrl = 'http://ec2-18-220-81-9.us-east-2.compute.amazonaws.com/api/1.0/';
   // REST End points
   public login = this.baseUrl + 'auth/login';
@@ -10,6 +11,7 @@ export class AppUrls {
   public confirmEmail = this.baseUrl + 'account/ConfirmEmailAndSetPassword';
   public change_password = this.baseUrl + 'auth/change-password';
   public sendForgotPasswordLink = this.baseUrl + 'auth/send-forgot-password-link';
+  public logout = this.baseUrl + 'auth/logout';
 
   public book_details = this.baseUrl + 'books?where=';
   public search_books = this.baseUrl + 'books';
@@ -21,11 +23,7 @@ export class AppUrls {
   public payments = this.baseUrl + 'payments';
   public orders = this.baseUrl + 'orders';
   public membership = this.baseUrl + 'membership';
-  /*
-  * ------------- Parse API -----------------
-  * */
-  public parseAPI = 'http://localhost:1337/parse/classes/';
-  public cart = this.parseAPI + 'cart';
+  public cart = this.baseUrl + 'cart';
 }
 
 

@@ -2,6 +2,31 @@
   <br>
   <div class="panel panel-default">
     <div class="panel-body">
+      <form ngNoForm action="{{ tra.PAYU_BASE_URL }}" method="GET" name="payuForm">
+        <input type="hidden" name="key" value="{{ tra.key }}" />
+        <input type="hidden" name="hash" value="am7eBpic|f23b118be0500854f90d|200|hello|surya|suryamuppalla@gmail.com|||||||||||KJ5oWHOUni"/>
+        <input type="hidden" name="txnid" value="f23b118be0500854f90d" />
+        <input type="hidden" name="furl" value="{{ tra.furl }}" size="64" />
+        <input type="hidden" name="service_provider" value="payu_paisa" size="64" />
+        <input type="hidden" name="surl" value="{{ tra.surl }}" size="64" />
+        <input type="hidden" name="productinfo" value="hello" />
+        <input type="hidden" name="firstname" id="firstname" value="surya" />
+        <input type="hidden" name="email" id="email" value="{{ userInfo['email'] }}" />
+        <input type="hidden" name="phone" value="8500011686" />
+        <table>
+          <tr>
+            <td><input name="amount" value="" /></td>
+          </tr>
+          <tr>
+            <td colspan="4"><input type="submit" value="Submit" /></td>
+          </tr>
+        </table>
+      </form>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-body">
       <div class="row wallet-addition">
         <div class="col-lg-3">
           <div class="wallet-container">

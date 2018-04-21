@@ -8,7 +8,7 @@
   <div class="genre flex-center">
     <div class="genre-item popular-genre-item flex-center" *ngFor="let i of booksList; let index = index">
       <div class="genre-item-img">
-        <img src="https://picsum.photos/100?image={{ index}}{{index + 2}}" alt="{{ i.book_title }}">
+        <img src="{{ i.image_thumbnail }}" alt="{{ i.book_title }}">
       </div>
       <div class="genre-item-text">
         <h5><a routerLink="/book_details/{{i.book_url}}/{{ i.ISBN_13 }}">{{ i.book_title }}</a></h5>
@@ -24,7 +24,7 @@
     <div class="flex-center grid-view">
       <div class="grid-view-item" *ngFor="let item of booksList; let index = index;">
         <div class="grid-view-item-img flex-center">
-          <img src="https://picsum.photos/300/250?image={{ index}}{{index + 3}}" alt="">
+          <img src="{{ item.image_thumbnail }}" alt="">
         </div>
         <div class="grid-view-item-text">
           <h5><a routerLink="/book_details/{{ item.book_url }}/{{ item.ISBN_13 }}">{{ item.book_title }}</a></h5>
@@ -33,7 +33,7 @@
       </div>
     </div>
     <div class="text-center show-more bottom-30">
-      <a href="" class="btn btn-md btn-danger text-uppercase">
+      <a routerLink="/search" class="btn btn-md btn-danger text-uppercase show-more-btn">
         Show more &nbsp;<i class="fa fa-arrow-right"></i>
       </a>
     </div>

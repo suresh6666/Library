@@ -33,22 +33,23 @@ export class CheckoutComponent implements OnInit {
               private router: Router) {
     this.userInfo = this.authService.getUser();
   }
-
+  getTotalPrice(item, book) {
+    const bPrice = (item['book_type'] === 'ecopy') ? book['ecopy_price'] : book['hcopy_price'];
+    book.book_price = Number((( bPrice / 100) * this.appConstants['lease_rate']).toFixed(2));
+    return book.book_price;
+  }
   ngOnInit() {
     if (this.authService.isAuthenticated()) {
       this.appService.cartCast.subscribe((results) => {
         this.cartResults = results;
         for (let i = 0; i < results.length; i ++) {
-          this.appService.get(this.appUrls.books_list + '/' + results[i]['bId']).then((book) => {
-            results.filter((item) => {
-              if (item.bId === book._id) {
-                const bPrice = (item['bType'] === 'ecopy') ? book['ecopy_price'] : book['hcopy_price'];
-                book.book_price = Number((( bPrice / this.appConstants['lease_rate'])).toFixed(2));
-                book.book_price = Number((( bPrice / this.appConstants['lease_rate'])).toFixed(2));
-                this.totalPrice = this.totalPrice + book.book_price;
-              }
-            });
-          });
+          const book = results[i]['book'],
+            cartItem = results[i];
+          book['image_thumbnail'] = this.appService.checkHttps(book['image_thumbnail']);
+          book['image_small_thumbnail'] = this.appService.checkHttps(book['image_small_thumbnail']);
+          book['book_type'] = (cartItem['book_type'] === 'ecopy') ? 'E-Copy' : 'Hard Copy';
+          console.log('My items from parse: ', cartItem);
+          this.totalPrice = this.totalPrice + this.getTotalPrice(cartItem, book);
         }
       });
     }

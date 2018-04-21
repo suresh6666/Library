@@ -51,17 +51,17 @@ export class BookDetailsComponent implements OnInit {
       const found = this.cartItems.filter((cartItem) => {
         return cartItem.bId === book._id;
       });
-      if (found.length) {
+      if (found.length && book.availability) {
         this.appService.toast(book.book_title, 'Already added in Cart', 'e');
       } else {
         const cart = {
-          bId: book._id,
-          bType: type,
-          uId: this.myDetails['_id']
+          book: book._id,
+          book_type: type,
+          user_id: this.myDetails['_id']
         };
-        this.appService.postParse(this.appUrls.cart, cart).subscribe((data) => {
-          cart['objectId'] = data['objectId'];
-          cart['createdAt'] = data['createdAt'];
+        this.appService.post(this.appUrls.cart, cart).then((data) => {
+          cart['_id'] = data['_id'];
+          cart['_created'] = data['_created'];
           this.cartItems.push(cart);
           this.appService.updateCart(this.cartItems);
           this.appService.toast(book.book_title, 'Added to cart', 's');

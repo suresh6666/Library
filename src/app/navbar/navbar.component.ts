@@ -25,9 +25,11 @@ export class NavbarComponent implements OnInit, AfterViewInit {
               private appUrls: AppUrls) {
     this.showVar = false;
   }
-  searchBooks(searchText, cat, author) {
-    this.route.navigate(['/search'], {queryParams: {q: searchText, author: author, category: cat}});
-    this.searchForBook = '';
+  searchBooks(searchText, cat, author, event?: any) {
+    if (!event || event.keyCode === 13) {
+      this.route.navigate(['/search'], {queryParams: {q: searchText, author: author, category: cat}});
+      this.searchForBook = '';
+    }
   }
   ngOnInit() {
     if (this.authService.isAuthenticated()) {
@@ -46,14 +48,24 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     this.userInfo = this.authService.getUser();
   }
   logout() {
-    this.authService.removeToken();
-    this.route.navigate(['/welcome']);
+    const lToken = this.authService.getToken('access_token');
+    this.appService.get(this.appUrls.logout, {login_token: lToken}).then((success) => {
+      this.authService.removeToken();
+      this.route.navigate(['/welcome']);
+      this.appService.toast('Successfully logged out', '', 's');
+    }).catch((err) => {
+      console.log(err);
+    });
   }
   getCartValues() {
     if (this.authService.isAuthenticated()) {
-      const url = '?where=' + JSON.stringify({uId: this.userInfo['_id']});
-      this.appService.getParse(this.appUrls.cart + url).subscribe((data) => {
-        this.myCart = data['results'];
+      const myQuery = {
+        where: {user_id: this.userInfo['_id']},
+        embedded: {book: 1}
+      };
+      this.appService.get(this.appUrls.cart, myQuery).then((data) => {
+        console.log('Cart items: ', data['_items']);
+        this.myCart = data['_items'];
         this.appService.updateCart(this.myCart);
       });
     }

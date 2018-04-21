@@ -18,6 +18,7 @@ import {OrdersComponent} from '../orders/orders.component';
 import {OrderSuccessComponent} from '../order-success/order-success.component';
 import {WalletComponent} from '../wallet/wallet.component';
 import {MycartComponent} from '../mycart/mycart.component';
+import {CategoriesComponent} from '../categories/categories.component';
 
 export const routes: Routes = [
   {path: 'welcome', component: WelcomeComponent},
@@ -27,6 +28,7 @@ export const routes: Routes = [
   {path: 'forgot-password', component: ForgotPasswordComponent},
   {path: 'search', component: SearchbooksComponent},
   {path: 'checkout', component: CheckoutComponent},
+  {path: 'categories', component: CategoriesComponent},
   {path: 'mycredit', component: MycreditComponent},
   {path: 'order-success/:order_id', component: OrderSuccessComponent},
   {

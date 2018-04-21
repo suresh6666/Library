@@ -22,7 +22,6 @@ export class RegisterComponent implements OnInit {
     gender: new FormControl('male'),
     status: new FormControl('inactive'),
     city: new FormControl(''),
-    age: new FormControl('', [Validators.required]),
     user_level: new FormControl('user')
   });
   constructor(private appService: AppService,
@@ -35,6 +34,7 @@ export class RegisterComponent implements OnInit {
     console.log(user);
     user['user_level'] = [user['user_level']];
     delete user['c_password'];
+    user['email_confirmed'] = true;
     user = [user];
     this.appService.post(this.appUrls.register, user).then((data) => {
       if (data['data'] && data['data'].length) {

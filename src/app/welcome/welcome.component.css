@@ -38,6 +38,10 @@ img {
 .show-more {
   padding: 8px;
 }
+.show-more-btn, .show-more-btn:hover, .show-more-btn:focus, .show-more-btn:active {
+  background-color: #FF4081;
+  border: 1px solid #FF4081;
+}
 /*-------*/
 .genre {
   flex-direction: inherit;
@@ -54,6 +58,10 @@ img {
   -ms-flex-pack: start;
   justify-content: flex-start;
   margin: 8px;
+}
+.genre-item:hover .genre-item-text a, .grid-view-item:hover .grid-view-item-text a {
+  color: #2874f0;
+  text-decoration: none;
 }
 .genre-item-img {
   width: 25%;
@@ -89,6 +97,8 @@ img {
   width: 18.5%;
   height: auto;
   margin: 0 8px 20px 8px;
+  border: 1px solid #eaeaea;
+  padding: 15px;
 }
 .grid-view-item-img {
   width: 100%;

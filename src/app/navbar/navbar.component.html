@@ -5,7 +5,7 @@
         <li class="upper-links" *ngIf="authService.isAuthenticated()">
           <a class="links" routerLink="/profile/membership">Membership</a>
         </li>
-        <li class="upper-links"><a class="links">Circulations</a></li>
+        <li class="upper-links"><a class="links" routerLink="/categories">Categories</a></li>
         <li class="upper-links"><a class="links">Publications</a></li>
         <li class="upper-links"><a class="links">Library</a></li>
         <li class="upper-links dropdown"><a class="links">Financials..</a>
@@ -39,7 +39,7 @@
       </div>
       <div class="flipkart-navbar-search smallsearch col-sm-7 col-xs-12">
         <div class="row">
-          <input [(ngModel)]="searchForBook" class="flipkart-navbar-input col-xs-11" id="search-typeahead"
+          <input (keydown)="searchBooks(searchForBook, '', '', $event)" [(ngModel)]="searchForBook" class="flipkart-navbar-input col-xs-11" id="search-typeahead"
                   placeholder="Search for Books, Audios, Videos..." data-provide="typeahead" autocomplete="off">
           <button (click)="searchBooks(searchForBook, '', '')" class="flipkart-navbar-button col-xs-1">
             <svg width="15px" height="15px">

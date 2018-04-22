@@ -13,7 +13,7 @@ const ngExpressEngine = require('@nguniversal/express-engine').ngExpressEngine;
 const AppServerModuleNgFactory = require(`./dist-server/main.bundle`).AppServerModuleNgFactory;
 
 const app = express();
-const port = 8000;
+const port = process.env.PORT || 8080;
 const baseUrl = `http://localhost:${port}`;
 
 // Set the engine

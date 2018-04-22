@@ -27,10 +27,10 @@ app.set('views', './');
 app.use('/', express.static('./', {index: false}));
 
 app.get('*', (req, res) => {
-  res.render('index', {
-  req,
-  res
-});
+	res.render('index', {
+		req,
+		res
+	});
 });
 
 app.listen(port, () => {

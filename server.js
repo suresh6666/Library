@@ -3,13 +3,14 @@ require('reflect-metadata');
 const express = require('express');
 const fs = require('fs');
 
-const { platformServer, renderModuleFactory } = require('@angular/platform-server');
-const { ngExpressEngine } = require('@nguniversal/express-engine');
+const platformServer = require('@angular/platform-server').platformServer;
+const renderModuleFactory = require('@angular/platform-server').renderModuleFactory;
+const ngExpressEngine = require('@nguniversal/express-engine').ngExpressEngine;
 
 
 // Import the AOT compiled factory for your AppServerModule.
 // This import will change with the hash of your built server bundle.
-const { AppServerModuleNgFactory } = require(`./dist-server/main.bundle`);
+const AppServerModuleNgFactory = require(`./dist-server/main.bundle`).AppServerModuleNgFactory;
 
 const app = express();
 const port = 8000;

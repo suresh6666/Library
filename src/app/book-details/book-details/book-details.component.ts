@@ -62,6 +62,7 @@ export class BookDetailsComponent implements OnInit {
         this.appService.post(this.appUrls.cart, cart).then((data) => {
           cart['_id'] = data['_id'];
           cart['_created'] = data['_created'];
+          cart['book'] = book;
           this.cartItems.push(cart);
           this.appService.updateCart(this.cartItems);
           this.appService.toast(book.book_title, 'Added to cart', 's');

@@ -6,16 +6,16 @@
           <a class="links" routerLink="/profile/membership">Membership</a>
         </li>
         <li class="upper-links"><a class="links" routerLink="/categories">Categories</a></li>
-        <li class="upper-links"><a class="links">Publications</a></li>
-        <li class="upper-links"><a class="links">Library</a></li>
-        <li class="upper-links dropdown"><a class="links">Financials..</a>
+        <!--<li class="upper-links"><a class="links">Publications</a></li>
+        <li class="upper-links"><a class="links">Library</a></li>-->
+        <!--<li class="upper-links dropdown"><a class="links">Financials..</a>
           <ul class="dropdown-menu">
             <li class="profile-li"><a class="profile-links">My account transactions</a></li>
             <li class="profile-li"><a class="profile-links">My receipts</a></li>
             <li class="profile-li"><a class="profile-links">My account settings</a></li>
             <li class="profile-li"><a class="profile-links">Change password</a></li>
           </ul>
-        </li>
+        </li>-->
         <li class="upper-links authentication-links" *ngIf="!authService.isAuthenticated()">
           Welcome!
           <a routerLink="/login-now">Login</a> or

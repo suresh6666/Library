@@ -9,7 +9,9 @@ import {AppUrls} from './app.constants';
 export class AppService {
   public options: any;
   private Cart = new BehaviorSubject<any>([]);
+  private CurrentUser = new BehaviorSubject<any>({});
   cartCast = this.Cart.asObservable();
+  userCast = this.CurrentUser.asObservable();
   constructor(private http: HttpClient,
               private Urls: AppUrls) {
     this.options = new HttpHeaders({'Content-Type': 'application/json'});
@@ -81,6 +83,9 @@ export class AppService {
   }
   updateCart(value) {
     this.Cart.next(value);
+  }
+  updateUser(value) {
+    this.CurrentUser.next(value);
   }
 
 }

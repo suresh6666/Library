@@ -38,18 +38,12 @@ export class SettingsComponent implements OnInit {
       'email': null,
       'mobile_number': null,
     };
-    const user = JSON.parse(localStorage.getItem('user'));
-    if (user) {
-      const token = this.authService.getToken('access_token');
-      this.appService.get(this.appUrls.me, {login_token: token}).then((data) => {
-        console.log(data);
-        this.user = data['data'];
-        const date = new Date(data['data']['created_date']);
-        this.registeredOn = date;
-      }).catch((err: HttpErrorResponse) => {
-        console.log(err);
-        this.appService.errorHandling(err);
-      });
+    if (this.authService.isAuthenticated()) {
+      this.appService.userCast.subscribe((castUser) => {
+        console.log('current User', castUser);
+        this.user = castUser;
+        this.registeredOn = new Date(castUser['created_date']);
+      })
     }
   }
   update(user) {

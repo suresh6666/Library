@@ -6,6 +6,7 @@ import {FilterArray} from '../shared/app.pipes';
 import {AuthService} from '../shared/auth.service';
 import {AppService} from '../shared/app.service';
 import {AppUrls} from '../shared/app.constants';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-navbar',
@@ -33,6 +34,14 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   }
   ngOnInit() {
     if (this.authService.isAuthenticated()) {
+      // check user is logged in or not from the server
+      const token = this.authService.getToken('access_token');
+      this.appService.get(this.appUrls.me, {login_token: token}).then((data) => {
+        console.log(data);
+        this.appService.updateUser(data['data']);
+      }).catch((err: HttpErrorResponse) => {
+        this.logout();
+      });
       this.getUser();
       this.appService.cartCast.subscribe((data) => {
         console.log('myCast data', data);
@@ -49,13 +58,14 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   }
   logout() {
     const lToken = this.authService.getToken('access_token');
-    this.appService.get(this.appUrls.logout, {login_token: lToken}).then((success) => {
-      this.authService.removeToken();
-      this.route.navigate(['/welcome']);
-      this.appService.toast('Successfully logged out', '', 's');
-    }).catch((err) => {
-      console.log(err);
-    });
+    this.appService.get(this.appUrls.logout, {login_token: lToken})
+      .then((data) => {})
+      .catch((err: HttpErrorResponse) => {});
+    this.authService.removeToken();
+    this.route.navigate(['/welcome']);
+    this.appService.updateUser({});
+    this.appService.updateCart([]);
+    this.appService.toast('Successfully logged out', '', 's');
   }
   getCartValues() {
     if (this.authService.isAuthenticated()) {

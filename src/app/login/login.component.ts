@@ -47,6 +47,7 @@ export class LoginComponent implements OnInit {
         const obj = JSON.stringify({email: data['data']['email'], _id: data['data']['_id']});
         localStorage.setItem('user', obj);
         this.appService.toast(data['data']['email'], 'Successfully Logged in!', 's');
+        this.appService.updateUser(data['data']);
         this.router.navigate(['/profile/membership']);
       }
     }).catch((err: HttpErrorResponse) => {

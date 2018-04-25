@@ -1,6 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Router, NavigationEnd, NavigationStart} from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
+import {HttpErrorResponse} from '@angular/common/http';
+import {AppService} from './shared/app.service';
+import {AuthService} from './shared/auth.service';
+import {AppUrls} from './shared/app.constants';
 
 
 @Component({

@@ -19,10 +19,16 @@ export class SearchbooksComponent implements OnInit {
               private authService: AuthService,
               private router: Router) {
     this.activatedRoute.queryParams.subscribe(params => {
+      const where = {};
+      if (params['category']) {
+        where['book_categories'] = {'$in': [params['category']]};
+      }
+      where['book_title'] = {$regex: '.*' + params['q'] + '.*', '$options': 'i'};
       const myQuery = {
-        where: {book_title: {$regex: '.*' + params['q'] + '.*', '$options': 'i'}}
+        where: where
       };
       this.appService.get(this.appUrls.search_books, myQuery).then((data: any) => {
+        this.books = [];
         console.log(data);
         const items = data['_items'];
         items.forEach((book) => {

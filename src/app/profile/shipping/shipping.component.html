@@ -59,11 +59,11 @@
   </div>
 
   <br>
-  <div class="row">
+  <div class="row" *ngFor="let shipping_address of shipping_address">
     <div class="col-lg-12">
       <div class="address-area">
         <div class="address-info">
-          <span class="address-type">Home</span>
+          <!--<span class="address-type">Home</span>-->
           <div class="address-owner">
             <p><b>{{ shipping_address.name }} &nbsp;&nbsp;{{ shipping_address.phone_number }}</b></p>
             <p>{{ shipping_address.address }}</p>

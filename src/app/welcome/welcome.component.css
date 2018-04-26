@@ -100,6 +100,14 @@ img {
   border: 1px solid #eaeaea;
   padding: 15px;
 }
+.grid-view-item:hover, .genre-item:hover {
+  z-index: 50;
+  cursor: pointer;
+  border-radius: 3px;
+  text-decoration: none;
+  box-shadow: 0 7px 17px 0 rgba(23,84,116,0.18);
+  border: solid 0.9px #f3f3f3;
+}
 .grid-view-item-img {
   width: 100%;
   margin: 0 auto;

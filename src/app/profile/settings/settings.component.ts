@@ -47,8 +47,12 @@ export class SettingsComponent implements OnInit {
     }
   }
   update(user) {
-    this.appService.patch(this.appUrls.me, user).then((data) => {
-      console.log(data);
+    delete user['_updated'];
+    delete user['modified_date'];
+    delete user['created_date'];
+    const url = this.appUrls.users + '/' + user['_id'];
+    this.appService.patch(url, user).then((data) => {
+      console.log('After update ..', data);
       this.appService.toast(user['email'], 'Successfully Updated!', 's');
     }).catch((err) => {
       console.log('Error', err);

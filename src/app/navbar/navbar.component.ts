@@ -59,8 +59,10 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   logout() {
     const lToken = this.authService.getToken('access_token');
     this.appService.get(this.appUrls.logout, {login_token: lToken})
-      .then((data) => {})
-      .catch((err: HttpErrorResponse) => {});
+      .then((data) => {
+      })
+      .catch((err: HttpErrorResponse) => {
+      });
     this.authService.removeToken();
     this.route.navigate(['/welcome']);
     this.appService.updateUser({});

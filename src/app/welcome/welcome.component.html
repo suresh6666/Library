@@ -6,7 +6,8 @@
     <span class="h-line"></span>
   </div>
   <div class="genre flex-center">
-    <div class="genre-item popular-genre-item flex-center" *ngFor="let i of booksList; let index = index">
+    <div class="genre-item popular-genre-item flex-center" routerLink="/book_details/{{i.book_url}}/{{ i.ISBN_13 }}"
+         *ngFor="let i of booksList; let index = index">
       <div class="genre-item-img">
         <img src="{{ i.image_thumbnail }}" alt="{{ i.book_title }}">
       </div>
@@ -22,7 +23,8 @@
     <h4 class="text-center">Hear what’s trending for reading in a while.!</h4>
     <hr>
     <div class="flex-center grid-view">
-      <div class="grid-view-item" *ngFor="let item of booksList; let index = index;">
+      <div class="grid-view-item" routerLink="/book_details/{{ item.book_url }}/{{ item.ISBN_13 }}"
+           *ngFor="let item of booksList; let index = index;">
         <div class="grid-view-item-img flex-center">
           <img src="{{ item.image_thumbnail }}" alt="">
         </div>

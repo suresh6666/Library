@@ -14,7 +14,7 @@ export class ShippingComponent implements OnInit {
     clicked: false
   };
   shipping_address: any = {};
-  userInfo: any = {};
+  user: any = {};
   sForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
     address: new FormControl('', [Validators.required]),
@@ -26,27 +26,20 @@ export class ShippingComponent implements OnInit {
   constructor(private appService: AppService,
               private appUrls: AppUrls,
               private authService: AuthService) {
-    this.userInfo = this.authService.getUser();
+    this.appService.userCast.subscribe((myUser) => {
+      this.user = myUser;
+      this.shipping_address = myUser['shipping_address'];
+    });
   }
 
-  ngOnInit() {
-    this.shippingAddress();
-  }
-  shippingAddress() {
-    this.appService.get(this.appUrls.users + '/' + this.userInfo._id).then((data) => {
-      console.log('------- User info', data);
-      this.shipping_address = data['shipping_address'];
-    }).catch((err) => {
-      console.log(err);
-    });
-  }
+  ngOnInit() {}
   submit(formData, formValid) {
-    console.log(formData, formValid);
-    const obj = {shipping_address: formData};
-    this.appService.patch(this.appUrls.users + '/' + this.userInfo._id, obj).then((data) => {
-      console.log(data);
-    }).catch((err) => {
-      console.log(err);
-    });
+    this.shipping_address.push(formData);
+    this.appService.patch(this.appUrls.users + '/' + this.user['_id'], {shipping_address: this.shipping_address})
+      .then((data) => {
+        console.log(data);
+      }).catch((err) => {
+        console.log(err);
+      });
   }
 }

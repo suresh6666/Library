@@ -38,6 +38,11 @@ export class RegisterComponent implements OnInit {
     user = [user];
     this.appService.post(this.appUrls.register, user).then((data) => {
       if (data['data'] && data['data'].length) {
+        const myUser = data['data'][0];
+        const myObj = {amount: 0, user_id: myUser['_id']};
+        this.appService.postParse(this.appUrls.wallet, myObj).then((success) => {
+          console.log(success);
+        });
         this.appService.toast(user['email'], 'Successfully registered!', 's');
         this.router.navigate(['/welcome']);
       }

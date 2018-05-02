@@ -1,10 +1,16 @@
 <div class="container">
   <br>
+  <ol class="breadcrumb">
+    <li><a routerLink="/welcome">Home</a></li>
+    <li><a routerLink="/profile/my-orders">My orders</a></li>
+    <li *ngIf="myOrder" class="active">{{ myOrder['_id'] }}</li>
+  </ol>
+
   <div class="panel panel-default">
     <div class="panel-body">
       <div class="row">
         <div class="col-lg-4 col-md-4">
-          <h4>Order details</h4>
+          <h5 class="text-uppercase">Order details</h5>
           <table class="table">
             <tr>
               <td>Order Id</td>
@@ -12,7 +18,7 @@
             </tr>
             <tr>
               <td>Order date</td>
-              <td>{{ appService.dateFormat(myOrder['ordered_date']) }}</td>
+              <td>{{ myOrder['ordered_date'] | date: 'yyyy-MM-dd hh:mm a' }}</td>
             </tr>
             <tr>
               <td>Total amount</td>
@@ -21,7 +27,7 @@
           </table>
         </div>
         <div class="col-lg-4 col-md-4" *ngIf="myOrder['shipping_address']">
-          <h4>Delivery address</h4>
+          <h5 class="text-uppercase">Delivery address</h5>
           <h5><b>{{ myOrder['shipping_address']['name'] }}</b></h5>
           <p>Phone: {{ myOrder['shipping_address']['phone_number'] }}</p>
           <p>{{ myOrder['shipping_address']['address']}}</p>
@@ -31,9 +37,9 @@
             {{ myOrder['shipping_address']['pin_code'] }}</p>
         </div>
         <div class="col-lg-4 col-md-4">
-          <h4>Manage Order</h4>
+          <h5 class="text-uppercase">Manage Order</h5>
           <div>
-            <button class="btn btn-primary">
+            <button class="btn btn-primary my-button">
               Request Invoice <i class="fa fa-question"></i>
             </button>
           </div>
@@ -53,6 +59,26 @@
           <h2>Total Rs. {{ myOrder['total_amount'] }}/-</h2>
         </div>
       </div> <!-- end row-->
+    </div>
+  </div>
+  <!-- Books details -->
+  <div class="panel panel-default" *ngIf="myOrder">
+    <div class="panel-body">
+      <div *ngFor="let item of myOrder.books">
+        <div class="row">
+          <div class="col-lg-2">
+            <div class="thumbnail book-thumbnail">
+              <img src="{{ item['image_thumbnail'] }}" alt="{{ item['book_title'] }}" />
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <h5 class="text-uppercase"><b>{{ item['book_title'] }}</b></h5>
+            <h6>{{ item['book_authors'] }}</h6>
+            <h6>Price: Rs {{ item['hcopy_price'] }}</h6>
+          </div>
+        </div>
+        <hr />
+      </div>
     </div>
   </div>
 </div>

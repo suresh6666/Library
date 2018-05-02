@@ -11,19 +11,29 @@ import {AppUrls} from '../shared/app.constants';
 })
 export class OrdersComponent implements OnInit {
   public orders: any = [];
+  public user: any = {};
   constructor(public appService: AppService,
               public authService: AuthService,
               private router: Router,
               private appUrls: AppUrls) { }
 
   ngOnInit() {
-    this.getOrders();
+    this.appService.userCast.subscribe((user) => {
+      if (Object.keys(user).length > 0) {
+        this.user = user;
+        this.getOrders();
+      }
+    })
   }
   getOrders() {
-    const embedd = '?embedded=' + JSON.stringify({book_id: 1, payment_id: 1});
-    this.appService.get(this.appUrls.orders + embedd).then((data) => {
-      console.log(data);
+    const query = {
+      where: {user_id: this.user['id']},
+      sort: '-_created',
+      embedded: {books: 1}
+    };
+    this.appService.get(this.appUrls.orders, query).then((data) => {
       this.orders = data['_items'];
+      console.log('My orders ----- ', this.orders);
     }).catch((err) => {
       console.log(err);
     });

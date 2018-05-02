@@ -12,11 +12,14 @@ import {FormControl, FormGroup} from '@angular/forms';
 })
 export class CheckoutComponent implements OnInit {
   public toggle: any = {address: true, payment: false};
-  public newAddress: any = {clicked: false};
-  public shipping_address: any = {};
-  public userInfo: any = {};
+  public shipping_address: any = [];
+  public myShippingAddress: any = {};
+  public selectedShipping: any;
+  public user: any = {};
   public totalPrice: any = 0;
   public cartResults = [];
+  public wallet: any = {};
+  public disableWallet: boolean;
   pForm = new FormGroup({
     cvv: new FormControl(),
     mm: new FormControl(),
@@ -30,9 +33,7 @@ export class CheckoutComponent implements OnInit {
               private activatedRoute: ActivatedRoute,
               public appConstants: AppConstants,
               private authService: AuthService,
-              private router: Router) {
-    this.userInfo = this.authService.getUser();
-  }
+              private router: Router) {}
   getTotalPrice(item, book) {
     const bPrice = (item['book_type'] === 'ecopy') ? book['ecopy_price'] : book['hcopy_price'];
     book.book_price = Number((( bPrice / 100) * this.appConstants['lease_rate']).toFixed(2));
@@ -52,51 +53,90 @@ export class CheckoutComponent implements OnInit {
           this.totalPrice = this.totalPrice + this.getTotalPrice(cartItem, book);
         }
       });
-    }
-    // Get User info
-    this.appService.get(this.appUrls.users + '/' + this.userInfo._id).then((data) => {
-      console.log(data);
-      this.userInfo = data;
-      this.shipping_address = data['shipping_address'];
-    }).catch((err) => {
-      console.log(err)
-    });
-  }
-  doPayment(payment: any) {
-    const pObj = {
-      total_amount: payment,
-      payment_date: new Date().toISOString(),
-      payment_status: 'active',
-      card_details: {
-        user_id: this.authService.getUser()['_id'],
-        card_number: this.pForm.get('card_number').value,
-        card_type: this.pForm.get('card_type').value,
-        expire_date: this.pForm.get('mm').value + '/' + this.pForm.get('yy').value,
-        cvv: this.pForm.get('cvv').value,
-        name_on_card: this.pForm.get('name_on_card').value
-      }
-    };
-    this.appService.post(this.appUrls.payments, pObj).then((data) => {
-      console.log('Hello Payment', data);
-      const date = new Date();
-      const order_object = {
-        total_amount: payment,
-        // book_id: this.details['_id'],
-        user_id: this.authService.getUser()['_id'],
-        shipping_address: this.shipping_address,
-        ordered_date: date.toISOString(),
-        delivery_date: new Date(date.setDate(date.getDate() + 2)).toISOString(),
-        delivery_status: 'progress',
-        payment_id: data['_id']
-      };
-      this.appService.post(this.appUrls.orders, order_object).then((orderSuccess) => {
-        console.log(orderSuccess);
-        this.router.navigate(['/order-success', orderSuccess._id]);
-      }).catch((orderErr) => {
-        console.log(orderErr);
+      // get user details from cast
+      this.appService.userCast.subscribe((user) => {
+        console.log('My User info ---- ', user);
+        this.user = user;
+        this.shipping_address = user['shipping_address'];
+        if (this.shipping_address) {
+          this.shipping_address.forEach((address, index) => {
+            if (address['default']) {
+              this.myShippingAddress = address;
+              this.selectedShipping = index;
+            }
+          });
+        }
+        if (Object.keys(this.user).length > 0) {
+          const query = {
+            where: {user_id: this.user['_id']}
+          };
+          // Get wallet information
+          this.appService.get(this.appUrls.wallet, query).then((walletInfo) => {
+            console.log('Wallet information: ', walletInfo);
+            this.wallet = walletInfo['_items'][0];
+            this.disableWallet = this.wallet['amount'] < (this.totalPrice + this.appConstants.del_charges);
+          });
+        }
       });
-    }).catch((err) => {
-      console.log(err);
-    });
+    }
+  }
+  selectAddress(address) {
+    this.myShippingAddress = address;
+  }
+  orderNow () {
+    console.log('Order now Wallet!');
+    if (this.disableWallet) {
+      return true;
+    }
+    const deductionAmount = this.totalPrice + this.appConstants.del_charges;
+    const myTransaction = {
+      wallet_id: this.wallet['_id'],
+      amount: deductionAmount,
+      transaction_type: 'debit',
+      transaction_for: 'wallet',
+      email: this.user['email'],
+      status: 'success',
+      name: this.user['first_name'],
+      txnid: Math.floor(Math.random() * 1000000000).toString(),
+      product_info: 'Book(s) purchased!'
+    };
+    this.appService.post(this.appUrls.transactions, myTransaction).then((sTrans) => {
+      console.log('Success transaction', sTrans);
+      return sTrans;
+    }).then((transaction) => {
+      const url = this.appUrls.wallet + '/' + this.wallet['_id'],
+        amount = this.wallet['amount'] - deductionAmount;
+      this.appService.patch(url, {amount: amount}).then((successWallet) => {
+        console.log('Success wallet update', successWallet);
+        // Place order after successful deduction from Wallet!
+        const date = new Date();
+        delete this.myShippingAddress['default'];
+        const bookIds = [];
+        // Push the Book ids
+        this.cartResults.forEach((cartItem) => {bookIds.push(cartItem['book']['_id'])});
+        const order_object = {
+          total_amount: deductionAmount,
+          books: bookIds,
+          user_id: this.user['_id'],
+          shipping_address: this.myShippingAddress,
+          ordered_date: date.toISOString(),
+          delivery_date: new Date(date.setDate(date.getDate() + 2)).toISOString(),
+          delivery_status: 'progress',
+          transaction_id: transaction['_id']
+        };
+        this.appService.post(this.appUrls.orders, order_object).then((orderSuccess) => {
+          console.log(orderSuccess);
+          this.appService.toast('Order Placed successfully!',
+            'Rs ' + deductionAmount + ' deducted from your Wallet!', 's');
+          // Delete all the items from the cart using for loop
+          this.cartResults.forEach((cartItem, index) => {
+            this.appService.delete(this.appUrls.cart + '/' + cartItem['_id']);
+          });
+          this.router.navigate(['/order-success', orderSuccess._id]);
+        }).catch((orderErr) => {
+          console.log(orderErr);
+        });
+      });
+    })
   }
 }

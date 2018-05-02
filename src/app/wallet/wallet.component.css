@@ -35,7 +35,7 @@
   align-items: center;
   position: relative;
 }
-.money-transac .icon-sec i.fa-plus {
+.money-transac .icon-sec i.fa-plus, .money-transac .icon-sec i.fa-minus {
   position: absolute;
   top: -4px;
   right: -6px;

@@ -21,9 +21,10 @@ export class OrderSuccessComponent implements OnInit {
   }
   ngOnInit() {
     this.getOrder();
+    this.appService.updateCart([]);
   }
   getOrder() {
-    const embedded = JSON.stringify({book_id: 1, payment_id: 1});
+    const embedded = JSON.stringify({books: 1, payment_id: 1});
     const query = '/' + this.urlParams['order_id'] + '?embedded=' + embedded;
     this.appService.get(this.appUrls.orders + query).then((data) => {
       console.log(data);

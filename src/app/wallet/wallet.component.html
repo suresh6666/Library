@@ -34,7 +34,7 @@
               <i class="fa fa-shopping-bag"></i>&nbsp;
             </div>
             <div class="wallet-text">
-              <h4><b>Rs 300</b></h4>
+              <h4><b>Rs {{ wallet['amount'] }}</b></h4>
               <h5>Your wallet balance</h5>
             </div>
           </div>
@@ -42,9 +42,10 @@
         <div class="col-lg-5">
           <form>
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="Enter Amount...">
+              <input type="number" class="form-control" name="loadMoney" placeholder="Enter Amount..."
+                     [(ngModel)]="loadMoney">
               <span class="input-group-btn">
-                <button class="btn btn-primary submit" type="submit">Add money</button>
+                <button class="btn btn-primary submit" (click)="addMoney(loadMoney)" type="submit">Add money</button>
               </span>
             </div><!-- /input-group  -->
           </form>
@@ -65,31 +66,39 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let item of [1, 2, 3, 4, 5, 6]">
+              <tr *ngFor="let item of transactions">
                 <td class="money-transac">
                   <div class="icon-sec">
                     <i class="fa fa-rupee"></i>&nbsp;
-                    <i class="fa fa-plus"></i>
+                    <i class="fa"
+                       [ngClass]="{'fa-plus': item.transaction_type === 'credit', 'fa-minus': item.transaction_type === 'debit'}"></i>
                   </div>
                   <div class="content-sec">
-                    <h6><b>Money added to Wallet</b></h6>
-                    <h6>From: HDFC</h6>
-                    <h6>Transaction ID: 3820480328480328</h6>
-                    <h6>2018-04-09 10:41:19 AM</h6>
+                    <h6>
+                      <b>
+                        {{ (item.transaction_type === 'credit') ? 'Added to ' : 'Deducted from ' }} Wallet
+                      </b>
+                    </h6>
+                    <h6>Transaction ID: {{ item.txnid }}</h6>
+                    <h6>{{ item._created | date: 'yyyy-MM-dd hh:mm a' }}</h6>
                   </div>
                 </td>
-                <td>-</td>
                 <td>
-                  <h6>Rs 2000</h6>
+                  {{ (item.transaction_type === 'debit') ? 'Rs ' + item.amount : '-' }}
                 </td>
                 <td>
                   <h6>
-                    SUCCESS
+                    {{ (item.transaction_type === 'credit') ? 'Rs ' + item.amount : '-' }}
+                  </h6>
+                </td>
+                <td>
+                  <h6 class="text-uppercase">
+                    {{ item.status }}
                   </h6>
                 </td>
                 <td>
                   <h6>
-                    Bank Txn ID: 135734401080990
+                    {{ item.product_info }}
                   </h6>
                 </td>
               </tr>

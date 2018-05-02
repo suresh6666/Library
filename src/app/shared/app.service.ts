@@ -8,6 +8,7 @@ import {AppUrls} from './app.constants';
 @Injectable()
 export class AppService {
   public options: any;
+  public parseHeaders: any;
   private Cart = new BehaviorSubject<any>([]);
   private CurrentUser = new BehaviorSubject<any>({});
   cartCast = this.Cart.asObservable();
@@ -15,6 +16,10 @@ export class AppService {
   constructor(private http: HttpClient,
               private Urls: AppUrls) {
     this.options = new HttpHeaders({'Content-Type': 'application/json'});
+    this.parseHeaders = new HttpHeaders({
+      'X-Parse-Application-Id': 'myAppId', 'X-Parse-REST-API-Key': 'hello_master',
+      'Content-Type': 'application/json'
+    });
   }
   // Get Method to get the Data from Server
   get(url?: string, parameters?: any): Promise<any> {
@@ -88,4 +93,34 @@ export class AppService {
     this.CurrentUser.next(value);
   }
 
+  /*
+  * --------------- PARSE API REQUESTS
+  * */
+  getParse(url, parameters?: any) {
+    let params: any;
+    // Setup log namespace query parameter
+    params = new HttpParams();
+    if (parameters) {
+      for (const key in parameters) {
+        if (parameters.hasOwnProperty(key)) {
+          if (typeof parameters[key] === 'object') {
+            params = params.set(key, JSON.stringify(parameters[key]));
+          } else {
+            params = params.set(key, parameters[key]);
+          }
+        }
+      }
+    }
+    return this.http.get(url, {headers: this.parseHeaders, params: params}).toPromise();
+  }
+  postParse(url, data) {
+    return this.http.post(url, data, {headers: this.parseHeaders}).toPromise();
+  }
+  updateParse(url, data) {
+    console.log('update Parse service called');
+    return this.http.put(url, data, {headers: this.parseHeaders}).toPromise();
+  }
+  deleteParse(url) {
+    return this.http.delete(url, {headers: this.parseHeaders}).toPromise();
+  }
 }

@@ -23,13 +23,8 @@ export class LoginComponent implements OnInit {
               private router: Router,
               private authService: AuthService,
               private activatedRoute: ActivatedRoute) {
-    this.router.events
-      .subscribe(e => {
-        // console.log(e);
-      });
     this.activatedRoute.queryParams.subscribe((params) => {
-      // console.log(params);
-      this.returnUrl = params;
+      this.returnUrl = params['return_url'];
     });
     if (this.authService.isAuthenticated()) {
       this.router.navigate(['/profile/membership']);
@@ -48,7 +43,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('user', obj);
         this.appService.toast(data['data']['email'], 'Successfully Logged in!', 's');
         this.appService.updateUser(data['data']);
-        this.router.navigate(['/profile/membership']);
+        this.router.navigate([(this.returnUrl) ? this.returnUrl : '/profile/membership']);
       }
     }).catch((err: HttpErrorResponse) => {
       console.log(err);

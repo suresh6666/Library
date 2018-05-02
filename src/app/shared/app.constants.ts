@@ -24,6 +24,13 @@ export class AppUrls {
   public orders = this.baseUrl + 'orders';
   public membership = this.baseUrl + 'membership';
   public cart = this.baseUrl + 'cart';
+  public wallet = this.baseUrl + 'wallet';
+  public transactions = this.baseUrl + 'transactions';
+  /*
+  * ------------- Parse Queries
+  * */
+  /*public wallet = 'http://localhost:1337/parse/classes/wallet';
+  public transactions = 'http://localhost:1337/parse/classes/transactions';*/
 }
 
 

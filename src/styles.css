@@ -55,11 +55,18 @@ body {
 .none {
   display: none !important;
 }
-.book-details-checkout, .book-details-checkout:hover {
+.book-details-checkout, .book-details-checkout:hover, .my-button, .my-button:hover,
+.my-button:active, .my-button:focus{
   background-color: #FF4081 !important;
   border: 1px solid #FF4081 !important;
-  /*-webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.26), inset 1px 1px 0 0 hsla(0, 0%, 100%, .2);
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.26), inset 1px 1px 0 0 hsla(0, 0%, 100%, .2);*/
+  color: #ffffff;
+  outline: none !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow:  none !important;
+  box-shadow:  none !important;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
 }
 div.panel.card {
   margin-bottom: 10px !important;

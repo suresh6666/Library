@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AppConstants, AppUrls} from '../../shared/app.constants';
 import {AppService} from '../../shared/app.service';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, NavigationStart, Router} from '@angular/router';
 import {AuthService} from '../../shared/auth.service';
 
 @Component({
@@ -14,6 +14,7 @@ export class BookDetailsComponent implements OnInit {
   details: any = {};
   myDetails: any = {};
   cartItems: any = [];
+  currentRoute: any = '';
   constructor(private appUrls: AppUrls,
               private appService: AppService,
               private authService: AuthService,
@@ -21,8 +22,8 @@ export class BookDetailsComponent implements OnInit {
               public appConstants: AppConstants,
               private router: Router) {
     this.activatedRoute.params.subscribe((params) => {
-      console.log(params);
-      this.bookParams = {book_name: params['book_name'], isbn: params['isbn']}
+      this.bookParams = {book_name: params['book_name'], isbn: params['isbn']};
+      this.currentRoute = this.router.url;
     });
     this.myDetails = this.authService.getUser();
   }
@@ -46,7 +47,7 @@ export class BookDetailsComponent implements OnInit {
   }
   requestCopy(book, type) {
     if (!this.authService.isAuthenticated()) {
-      this.router.navigate(['/login-now']);
+      this.router.navigate(['/login-now'], {queryParams: {return_url: this.currentRoute}});
     } else {
       const found = this.cartItems.filter((cartItem) => {
         return cartItem.bId === book._id;

@@ -6,16 +6,25 @@
   font-size: 60px;
   color: #FF4081;
 }
+.panel-body {
+  padding: 10px;
+}
+.filter-heading {
+  margin-bottom: 0;
+}
+hr {
+  margin: 10px 0;
+}
 .search-card {
   border: 1px solid #EEEEEE;
   margin-bottom: 20px;
   min-height: 220px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: flex-start;
+  padding: 10px;
 }
 div.img-sec {
-  width: 35%;
+  width: 18%;
   height: 150px;
   text-align: center;
 }

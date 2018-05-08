@@ -40,9 +40,15 @@ export class RegisterComponent implements OnInit {
       if (data['data'] && data['data'].length) {
         const myUser = data['data'][0];
         const myObj = {amount: 0, user_id: myUser['_id']};
-        this.appService.postParse(this.appUrls.wallet, myObj).then((success) => {
-          console.log(success);
-        });
+        // ---- Create wallet to the registered user!
+        this.appService.post(this.appUrls.wallet, myObj);
+        // ---- Create membership to the registered user!
+        const memberObj = {
+          plan_balance: 0, user_id: myUser['_id'],
+          membership_type: 'Individual', status: true
+        };
+        this.appService.post(this.appUrls.membership, memberObj);
+        // Toast service
         this.appService.toast(user['email'], 'Successfully registered!', 's');
         this.router.navigate(['/welcome']);
       }

@@ -6,16 +6,6 @@
           <a class="links" routerLink="/profile/membership">Membership</a>
         </li>
         <li class="upper-links"><a class="links" routerLink="/categories">Categories</a></li>
-        <!--<li class="upper-links"><a class="links">Publications</a></li>
-        <li class="upper-links"><a class="links">Library</a></li>-->
-        <!--<li class="upper-links dropdown"><a class="links">Financials..</a>
-          <ul class="dropdown-menu">
-            <li class="profile-li"><a class="profile-links">My account transactions</a></li>
-            <li class="profile-li"><a class="profile-links">My receipts</a></li>
-            <li class="profile-li"><a class="profile-links">My account settings</a></li>
-            <li class="profile-li"><a class="profile-links">Change password</a></li>
-          </ul>
-        </li>-->
         <li class="upper-links authentication-links" *ngIf="!authService.isAuthenticated()">
           Welcome!
           <a routerLink="/login-now">Login</a> or
@@ -50,11 +40,6 @@
       </div>
       <ul class="nav navbar-nav" *ngIf="authService.isAuthenticated()">
         <li>
-          <!--<a routerLink="/profile/settings" routerLinkActive="profile-active">
-            <i class="fa fa-user-circle-o"></i>&nbsp;
-            My profile/settings
-          </a>-->
-
           <div class="dropdown">
             <button class="dropbtn">
               <i class="fa fa-user-circle-o"></i>&nbsp;
@@ -73,12 +58,16 @@
           <a routerLink="/my-cart">
             <i class="fa fa-cart-plus"></i>
             &nbsp;Cart
-            <span #cart class="cart-legth" [ngClass]="{'blink-me': myCart.length}">{{ myCart.length }}</span>
+            <span *ngIf="myCart.length" class="cart-legth"
+                  [ngClass]="{'blink-me': myCart.length}">{{ myCart.length }}</span>
           </a>
         </li>
       </ul>
     </div>
   </div>
+  <!--<div class="go-top pointer w3-animate-bottom" (click)="goTop()">
+    <i class="fa fa-arrow-up"></i>
+  </div>-->
 </div>
 
 <div id="mySidenav" class="sidenav">

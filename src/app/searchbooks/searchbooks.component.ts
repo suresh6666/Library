@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AppConstants, AppUrls} from '../shared/app.constants';
-import {ActivatedRoute, Params, Router} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import {AppService} from '../shared/app.service';
-import {AuthService} from '../shared/auth.service';
 
 @Component({
   selector: 'app-searchbooks',
@@ -11,31 +10,45 @@ import {AuthService} from '../shared/auth.service';
 })
 export class SearchbooksComponent implements OnInit {
   public books = [];
-  public queryParams: any = {};
+  public filter: any = {
+    book_authors: []
+  };
+  public searchFilter: any = {authors: {}, stock: true};
   constructor(private activatedRoute: ActivatedRoute,
               public appConstants: AppConstants,
               private appUrls: AppUrls,
-              private appService: AppService,
-              private authService: AuthService,
-              private router: Router) {
-    this.activatedRoute.queryParams.subscribe(params => {
-      const where = {};
+              private appService: AppService) {
+    this.activatedRoute.queryParams.subscribe(parameters => {
+      const where = {}, params = parameters;
       if (params['category']) {
         where['book_categories'] = {'$in': [params['category']]};
       }
-      where['book_title'] = {$regex: '.*' + params['q'] + '.*', '$options': 'i'};
+      if (params['author']) {
+        where['book_authors'] = {'$in': [params['author']]}
+      }
+      const query = (params['q']) ? params['q'] : '';
+      where['book_title'] = {$regex: '.*' + query + '.*', '$options': 'i'};
       const myQuery = {
         where: where
       };
       this.appService.get(this.appUrls.search_books, myQuery).then((data: any) => {
         this.books = [];
-        console.log(data);
+        this.filter = {book_authors: []};
+        this.searchFilter = {authors: {}, stock: true};
         const items = data['_items'];
         items.forEach((book) => {
           book['image_thumbnail'] = this.appService.checkHttps(book['image_thumbnail']);
           book['image_small_thumbnail'] = this.appService.checkHttps(book['image_small_thumbnail']);
           book['book_url'] = book['book_title'].replace(/\//g, '').replace(/ /g, '-');
           this.books.push(book);
+
+          // Get list of Unique categories for filter purpose
+          book['book_authors'].forEach((author) => {
+            if (this.filter['book_authors'].indexOf(author) === -1) {
+              this.searchFilter['authors'][author] = false;
+              this.filter['book_authors'].push(author);
+            }
+          });
         });
       }).catch((err) => {
         console.log(err);
@@ -44,11 +57,10 @@ export class SearchbooksComponent implements OnInit {
   }
 
   ngOnInit() {}
-  requestCopy(id, type) {
-    if (!this.authService.isAuthenticated()) {
-      this.router.navigate(['/login-now']);
-    } else {
-      this.router.navigate(['/checkout/' + id], {queryParams: {type: type}});
-    }
+  stockChange(value) {
+    this.searchFilter['stock'] = value;
+  }
+  authorChange(author) {
+    this.searchFilter['authors'][author] = !this.searchFilter['authors'][author];
   }
 }

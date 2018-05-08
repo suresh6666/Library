@@ -32,10 +32,6 @@
                   Vivamus felis dolor, consectetur vel condimentum sit amet, iaculis in orci.
                 </p>
                 <p><a href="">Read more..</a></p>
-                <p style="display: none;">
-                  Phasellus sed vehicula justo nunc quis erat vel ante ornare pulvinar cras tristique facilisis tincidunt quisque felis erat iaculis at fringilla vitae rutrum id magna. Nam pharetra scelerisque justo at vehicula aliquam erat
-                  volutpat. Quisque vulputate justo eu mattis interdum magna erat porta risus tincidunt
-                </p>
                 <br>
                 <div class="request-copy-area">
                   <button [disabled]="!details.availability" (click)="requestCopy(details, 'hardcopy')"
@@ -49,7 +45,7 @@
                 </div>
                 <p class="book-cost" style="margin: 10px 0;">
                   Book is {{ (details.availability) ? 'Available': 'Not available' }},
-                  {{ (details.availability) ? 'Generally delivered by 2 days': '' }}
+                  {{ (details.availability) ? 'Generally delivered in 2 days': '' }}
                 </p>
               </div>
 

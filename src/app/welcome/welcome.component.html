@@ -13,7 +13,11 @@
       </div>
       <div class="genre-item-text">
         <h5><a routerLink="/book_details/{{i.book_url}}/{{ i.ISBN_13 }}">{{ i.book_title }}</a></h5>
-        <h6>By <span *ngFor="let author of i.book_authors"><a href="">{{ author }}</a>,&nbsp;</span></h6>
+        <h6>
+          By
+          <span *ngFor="let author of i.book_authors">
+            <a routerLink="/search" [queryParams]="{q: '', author: author, category: ''}">{{ author }}</a>&nbsp;
+          </span></h6>
       </div>
     </div>
   </div>
@@ -30,7 +34,9 @@
         </div>
         <div class="grid-view-item-text">
           <h5><a routerLink="/book_details/{{ item.book_url }}/{{ item.ISBN_13 }}">{{ item.book_title }}</a></h5>
-          <h6 class="author">By <span *ngFor="let author of item.book_authors"><a href="">{{ author }}</a>, &nbsp;</span></h6>
+          <h6 class="author">By <span *ngFor="let author of item.book_authors">
+            <a routerLink="/search" [queryParams]="{q: '', author: author, category: ''}">{{ author }}</a> &nbsp;
+          </span></h6>
         </div>
       </div>
     </div>

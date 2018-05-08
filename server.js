@@ -18,7 +18,7 @@ const baseUrl = `http://localhost:${port}`;
 
 // Set the engine
 app.engine('html', ngExpressEngine({
-  bootstrap: AppServerModuleNgFactory,
+  bootstrap: AppServerModuleNgFactory
 }));
 
 app.set('view engine', 'html');
@@ -28,9 +28,9 @@ app.use('/', express.static('./', {index: false}));
 
 app.get('*', (req, res) => {
   res.render('index', {
-  req,
-  res
-});
+    req: req,
+    res: res
+  });
 });
 
 app.listen(port, () => {

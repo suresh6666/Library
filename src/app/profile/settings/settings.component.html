@@ -18,7 +18,8 @@
       </div> <!-- form-group-->
       <div class="form-group">
         <label class="control-label" for="first_name">Registred on</label>
-        <input name="last_name" type="text" placeholder="last_name" value="{{ registeredOn }}"
+        <input name="last_name" type="text" placeholder="last_name"
+               value="{{ user['created_date'] | date: 'yyyy-MM-dd hh:mm a' }}"
                class="form-control input-md" disabled />
       </div> <!-- form-group-->
     </div> <!-- end col -->

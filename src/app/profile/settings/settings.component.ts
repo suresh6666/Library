@@ -42,7 +42,6 @@ export class SettingsComponent implements OnInit {
       this.appService.userCast.subscribe((castUser) => {
         console.log('current User', castUser);
         this.user = castUser;
-        this.registeredOn = new Date(castUser['created_date']);
       })
     }
   }

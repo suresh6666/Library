@@ -19,6 +19,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   showVar: boolean;
   userInfo: any = {email: null};
   myCart: any = [];
+  membership: any = {};
   @ViewChild('cart', {read: ElementRef}) cart: ElementRef;
   constructor(private route: Router,
               public authService: AuthService,
@@ -28,6 +29,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   }
   searchBooks(searchText, cat, author, event?: any) {
     if (!event || event.keyCode === 13) {
+      searchText = (searchText) ? searchText : '';
       this.route.navigate(['/search'], {queryParams: {q: searchText, author: author, category: cat}});
       this.searchForBook = '';
     }
@@ -42,27 +44,14 @@ export class NavbarComponent implements OnInit, AfterViewInit {
       }).catch((err: HttpErrorResponse) => {
         this.logout();
       });
-      this.getUser();
-      this.appService.cartCast.subscribe((data) => {
-        console.log('myCast data', data);
-        this.myCart = data;
-      }, (error) => {
-        console.log(error);
-      });
+      this.userInfo = this.authService.getUser();
       this.getCartValues();
     }
   }
   ngAfterViewInit() {}
-  getUser() {
-    this.userInfo = this.authService.getUser();
-  }
   logout() {
     const lToken = this.authService.getToken('access_token');
-    this.appService.get(this.appUrls.logout, {login_token: lToken})
-      .then((data) => {
-      })
-      .catch((err: HttpErrorResponse) => {
-      });
+    this.appService.get(this.appUrls.logout, {login_token: lToken});
     this.authService.removeToken();
     this.route.navigate(['/welcome']);
     this.appService.updateUser({});
@@ -81,6 +70,9 @@ export class NavbarComponent implements OnInit, AfterViewInit {
         this.appService.updateCart(this.myCart);
       });
     }
+  }
+  goTop() {
+    window.scrollTo(0, 0);
   }
 }
 

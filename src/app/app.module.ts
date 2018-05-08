@@ -31,6 +31,7 @@ import { PaymentComponent } from './payment/payment.component';
 import { WalletComponent } from './wallet/wallet.component';
 import { MycartComponent } from './mycart/mycart.component';
 import { CategoriesComponent } from './categories/categories.component';
+import {FilterPipe} from './app.pipe';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { CategoriesComponent } from './categories/categories.component';
     PaymentComponent,
     WalletComponent,
     MycartComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    FilterPipe
   ],
   imports: [
     FormsModule,

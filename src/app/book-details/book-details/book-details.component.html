@@ -18,27 +18,38 @@
               <p>By <a routerLink="/search" [queryParams]="{q: '', author: details['book_authors'], category: ''}">{{ details['book_authors'] }}</a> &nbsp;(Author)</p>
 
               <div class="lease-details">
-                <p class="book-cost">MRP  Rs. {{ details['hcopy_price'] }}  (Inclusive of all taxes)</p>
-                <h5 class="lease-details-h">
-                  <span class="lease-details-price">Rs. {{ (( details['hcopy_price']/100)*appConstants['lease_rate']).toFixed(2) }} </span>
-                  <span class="lease-calc">({{ appConstants['lease_rate'] }}% of {{ details['hcopy_price'] }}.00)</span>
-                </h5>
+                <div class="row">
+                  <div class="col-lg-6 col-md-6 lease-details-colum">
+                    <!--<p class="book-cost">MRP  Rs. {{ details['hcopy_price'] }}  (Inclusive of all taxes)</p>-->
+                    <h5 class="lease-details-h">
+                      <span class="lease-details-price">Rs. {{ (( details['hcopy_price']/100)*appConstants['lease_rate']).toFixed(2) }} </span>
+                      <span class="lease-calc">({{ appConstants['lease_rate'] }}% of {{ details['hcopy_price'] }}.00)</span>
+                    </h5>
+                    <p class="book-cost">For Hard Copy</p>
+                  </div>
+                  <div class="col-lg-6 col-md-6">
+                    <!--<p class="book-cost">MRP  Rs. {{ details['ecopy_price'] }}  (Inclusive of all taxes)</p>-->
+                    <h5 class="lease-details-h">
+                      <span class="lease-details-price">Rs. {{ (( details['ecopy_price']/100)*appConstants['lease_rate']).toFixed(2) }} </span>
+                      <span class="lease-calc">({{ appConstants['lease_rate'] }}% of {{ details['ecopy_price'] }}.00)</span>
+                    </h5>
+                    <p class="book-cost">For E - Copy</p>
+                  </div>
+                </div>
               </div>
 
               <div class="book-summary">
                 <p><b>Book Summary</b></p>
-                <p>
-                  Sed molestie semper ligula vitae pellentesque duis laoreet erat a pretium pulvinar, justo nisi fermentum risus, sed condimentum nisl elit vel risus.
-                  Vivamus felis dolor, consectetur vel condimentum sit amet, iaculis in orci.
-                </p>
-                <p><a href="">Read more..</a></p>
+                <p [innerHtml]="details.book_summary"></p>
+                <p><a>Read more..</a></p>
                 <br>
                 <div class="request-copy-area">
                   <button [disabled]="!details.availability" (click)="requestCopy(details, 'hardcopy')"
                           class="btn btn-primary btn-md book-details-checkout req-btn">
                     Request hard copy!
                   </button>
-                  <button [disabled]="!details.availability || !details.ecopy" (click)="requestCopy(details, 'ecopy')"
+                  <button [title]="(details.ecopy) ? '' : 'E-copy is not available'"
+                          [disabled]="!details.availability || !details.ecopy" (click)="requestCopy(details, 'ecopy')"
                           class="btn btn-primary btn-md req-btn req-ecopy">
                     Request E-copy!
                   </button>

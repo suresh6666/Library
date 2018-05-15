@@ -1,4 +1,6 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {AppService} from '../shared/app.service';
+import {AppUrls} from '../shared/app.constants';
 
 @Component({
   selector: 'app-footer',
@@ -6,11 +8,25 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent implements OnInit {
-  helpSection: any;
+  public copyDate: any = new Date();
+  public categories: any = [];
   @ViewChild('getHelp') getHelp: ElementRef;
   @ViewChild('contactForm') contactForm: ElementRef;
-  constructor(private elRef: ElementRef) { }
-  ngOnInit() {}
+  constructor(private elRef: ElementRef,
+              private appService: AppService,
+              private appUrls: AppUrls) { }
+  ngOnInit() {
+    const query = {
+      max_results: 5,
+      sort: '-_updated'
+    };
+    this.appService.get(this.appUrls.categories, query).then((success) => {
+      console.log(success);
+      this.categories = success['_items'];
+    }).catch((err) => {
+      console.log(err);
+    });
+  }
   getHelpEvent () {
     if (this.contactForm.nativeElement.classList.contains('show-profile') === false) {
       this.contactForm.nativeElement.classList.add('show-profile');

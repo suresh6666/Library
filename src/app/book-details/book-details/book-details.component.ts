@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Title} from '@angular/platform-browser';
 import {AppConstants, AppUrls} from '../../shared/app.constants';
 import {AppService} from '../../shared/app.service';
 import {ActivatedRoute, NavigationStart, Router} from '@angular/router';
@@ -20,11 +21,12 @@ export class BookDetailsComponent implements OnInit {
               private authService: AuthService,
               private activatedRoute: ActivatedRoute,
               public appConstants: AppConstants,
-              private router: Router) {
+              private router: Router,
+              private titleService: Title) {
     this.activatedRoute.params.subscribe((params) => {
       this.bookParams = {book_name: params['book_name'], isbn: params['isbn']};
       this.currentRoute = this.router.url;
-    });
+    })
     this.myDetails = this.authService.getUser();
   }
 
@@ -40,6 +42,8 @@ export class BookDetailsComponent implements OnInit {
       console.log('details ---- ', data['_items']);
       if (data['_items'].length) {
         this.details = data['_items'][0];
+        this.titleService.setTitle(this.details['book_title'] +
+          ' by ' + this.details['book_authors'][0] + ' | ' + this.details['ISBN_13']);
       }
     }).catch((err) => {
       console.log(err);

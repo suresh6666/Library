@@ -7,64 +7,16 @@
           Kupon,travel deals & publishing,with minimal design. We provide you with the latest fresh inspiration straight from the industrie.
         </p>
       </div>
-      <div class="col-sm-4">
-        <h5>
-          COMMON placeS
-        </h5>
-        <ul class="places">
-          <li>
-            <a href="#" class="place">
-              Vacation
-            </a>
-          </li>
-          <li>
-            <a href="#" class="place">
-              Rentals
-            </a>
-          </li>
-          <li>
-            <a href="#" class="place">
-              Deals
-            </a>
-          </li>
-          <li>
-            <a href="#" class="place">
-              Travel deals
-            </a>
-          </li>
-          <li>
-            <a href="#" class="place">
-              Vacation deals
-            </a>
-          </li>
-          <li>
-            <a href="#" class="place">
-              Adriatic coast
-            </a>
-          </li>
-          <li>
-            <a href="#" class="place">
-              Europe
-            </a>
-          </li>
-          <li>
-            <a href="#" class="place">
-              Island
-            </a>
-          </li>
-        </ul>
-      </div>
       <div class="col-sm-2">
         <h5>
           CATEGORIES
         </h5>
         <ul class="list-unstyled categories">
-          <li> <a href="#"> Rental Service </a> </li>
-          <li> <a href="#"> Repair </a> </li>
-          <li> <a href="#"> Hire for a Month </a> </li>
-          <li> <a href="#"> Hire for Construction  </a> </li>
-          <li> <a href="#"> Towing Service </a> </li>
-          <li> <a href="#"> Customer Service</a> </li>
+          <li *ngFor="let item of categories">
+            <a routerLink="/search" [queryParams]="{q: '', category: item['_id'], author: ''}">
+              {{ item['category_name'] }}
+            </a>
+          </li>
         </ul>
       </div>
       <div class="col-sm-2">
@@ -87,7 +39,7 @@
       <div class="col-sm-7">
         <p>
           <strong>
-            Copyright 2015
+            Copyright {{ copyDate | date: 'yyyy' }},
           </strong>
           RRRK Associates.com, All rights reserved.
           <strong>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AppService} from '../shared/app.service';
 import {AppUrls} from '../shared/app.constants';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-categories',
@@ -10,10 +11,12 @@ import {AppUrls} from '../shared/app.constants';
 export class CategoriesComponent implements OnInit {
   categories: any = [];
   constructor(private appService: AppService,
-              private appUrls: AppUrls) { }
+              private appUrls: AppUrls,
+              private titleService: Title) { }
 
   ngOnInit() {
     this.getCategories();
+    this.titleService.setTitle('New categories - Brand.com');
   }
   getCategories () {
     this.appService.get(this.appUrls.categories).then((data: any) => {

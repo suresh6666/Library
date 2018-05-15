@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AppConstants, AppUrls} from '../shared/app.constants';
 import {ActivatedRoute} from '@angular/router';
 import {AppService} from '../shared/app.service';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-searchbooks',
@@ -17,8 +18,10 @@ export class SearchbooksComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute,
               public appConstants: AppConstants,
               private appUrls: AppUrls,
-              private appService: AppService) {
+              private appService: AppService,
+              private titleService: Title) {
     this.activatedRoute.queryParams.subscribe(parameters => {
+      this.titleService.setTitle('Brand.com: ' + parameters['q'] + ' :Books');
       const where = {}, params = parameters;
       if (params['category']) {
         where['book_categories'] = {'$in': [params['category']]};

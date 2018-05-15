@@ -23,6 +23,17 @@ hr {
   justify-content: flex-start;
   padding: 10px;
 }
+.show-more {
+  padding: 8px;
+}
+.show-more-btn, .show-more-btn:hover, .show-more-btn:focus, .show-more-btn:active {
+  background-color: #FF4081;
+  border: 1px solid #FF4081;
+}
+.results-length {
+  color: #818181;
+  font-size: 12px;
+}
 div.img-sec {
   width: 18%;
   height: 150px;

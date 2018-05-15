@@ -6,7 +6,8 @@
     <span class="h-line"></span>
   </div>
   <div class="genre flex-center">
-    <div class="genre-item popular-genre-item flex-center" routerLink="/book_details/{{i.book_url}}/{{ i.ISBN_13 }}"
+    <div title="{{ i['category_name'] }}" class="genre-item popular-genre-item flex-center"
+         routerLink="/book_details/{{i.book_url}}/{{ i.ISBN_13 }}"
          *ngFor="let i of booksList; let index = index">
       <div class="genre-item-img">
         <img src="{{ i.image_thumbnail }}" alt="{{ i.book_title }}">
@@ -27,7 +28,7 @@
     <h4 class="text-center">Hear what’s trending for reading in a while.!</h4>
     <hr>
     <div class="flex-center grid-view">
-      <div class="grid-view-item" routerLink="/book_details/{{ item.book_url }}/{{ item.ISBN_13 }}"
+      <div class="grid-view-item" title="{{ item['book_title'] }}" routerLink="/book_details/{{ item.book_url }}/{{ item.ISBN_13 }}"
            *ngFor="let item of booksList; let index = index;">
         <div class="grid-view-item-img flex-center">
           <img src="{{ item.image_thumbnail }}" alt="">
@@ -41,9 +42,29 @@
       </div>
     </div>
     <div class="text-center show-more bottom-30">
-      <a routerLink="/search" class="btn btn-md btn-danger text-uppercase show-more-btn">
+      <a routerLink="/search" class="btn btn-sm btn-danger text-uppercase show-more-btn">
         Show more &nbsp;<i class="fa fa-arrow-right"></i>
       </a>
     </div>
   </section>
+
+  <!-- Books by Categories Section -->
+  <div class="heading-bar">
+    <h5 class="text-uppercase"><b>Books by Categories</b></h5>
+    <span class="h-line"></span>
+  </div>
+  <div class="row">
+    <div class="col-lg-3" *ngFor="let item of categories">
+      <div title="{{ item['category_name'] }}" class="books-category" routerLink="/search" [queryParams]="{q: '', author: '', category: item['_id']}">
+        {{ (item['category_name'].length > 20) ? getSubString(item['category_name']) : item['category_name'] }}
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center show-more bottom-30">
+    <a routerLink="/categories" class="btn btn-sm btn-danger text-uppercase show-more-btn">
+      Show more &nbsp;<i class="fa fa-arrow-right"></i>
+    </a>
+  </div>
+  <!-- End of Books by categories Section -->
 </div>

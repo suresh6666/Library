@@ -141,7 +141,22 @@ img {
 }
 /* --------- End of Grid   ----- */
 
-
+.books-category {
+  border: 1px solid #eeeeeec4;
+  padding: 10px;
+  min-height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+  font-size: 13px;
+}
+.books-category:hover {
+  -webkit-box-shadow: 0 7px 17px 0 rgba(23,84,116,0.18);
+  box-shadow: 0 7px 17px 0 rgba(23,84,116,0.18);
+  border: solid 0.9px #f3f3f3;
+  cursor: pointer;
+}
 @media only screen and (max-device-width: 500px) {
   .genre-item {
     width: 45%;

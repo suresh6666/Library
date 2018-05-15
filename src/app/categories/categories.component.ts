@@ -18,8 +18,12 @@ export class CategoriesComponent implements OnInit {
     this.getCategories();
     this.titleService.setTitle('New categories - Brand.com');
   }
+  getSubString(title: string) {
+    return title.substr(0, 30) + '...';
+  }
   getCategories () {
-    this.appService.get(this.appUrls.categories).then((data: any) => {
+    const query = {sort: 'category_name'};
+    this.appService.get(this.appUrls.categories, query).then((data: any) => {
       console.log(data);
       this.categories = data['_items'];
     }, (err) => {

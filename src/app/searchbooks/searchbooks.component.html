@@ -1,6 +1,11 @@
 <div class="container">
   <br>
   <div class="row">
+    <div class="col-lg-12" *ngIf="(books | filter: searchFilter).length !== 0">
+      <h6 class="results-length">
+        {{ (books | filter: searchFilter).length }} records found!
+      </h6>
+    </div>
     <div class="col-lg-8 col-md-8">
       <div class="search-card no-search-results text-center" *ngIf="(books | filter: searchFilter).length === 0">
         <div>
@@ -33,6 +38,16 @@
           </p>
         </div> <!-- end of Search desc -->
       </div> <!-- end of Search card -->
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <div class="text-center show-more bottom-30">
+            <a (click)="navigate()" class="btn btn-sm btn-danger text-uppercase show-more-btn">
+              Show more &nbsp;<i class="fa fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <br><br><br><br><br>
     </div> <!-- end col -->
     <div class="col-lg-3 col-md-3">
       <div class="panel panel-default">

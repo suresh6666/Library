@@ -55,6 +55,9 @@ body {
 .none {
   display: none !important;
 }
+.pointer {
+  cursor: pointer;
+}
 .book-details-checkout, .book-details-checkout:hover, .my-button, .my-button:hover,
 .my-button:active, .my-button:focus{
   background-color: #FF4081 !important;

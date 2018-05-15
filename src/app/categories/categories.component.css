@@ -1,6 +1,10 @@
 .panel-body a {
   color: #333333;
   font-weight: 500;
+  font-size: 13px;
+}
+.panel-body {
+  cursor: pointer;
 }
 .panel-body a:hover {
   color: #337ab7;

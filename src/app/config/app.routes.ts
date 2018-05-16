@@ -15,7 +15,7 @@ import {LoginComponent} from '../login/login.component';
 import {ForgotPasswordComponent} from '../forgot-password/forgot-password.component';
 import {ChangePasswordComponent} from '../change-password/change-password.component';
 import {OrdersComponent} from '../orders/orders.component';
-import {OrderSuccessComponent} from '../order-success/order-success.component';
+import {OrderDetailsComponent} from '../order-details/order-details.component';
 import {WalletComponent} from '../wallet/wallet.component';
 import {MycartComponent} from '../mycart/mycart.component';
 import {CategoriesComponent} from '../categories/categories.component';
@@ -30,7 +30,7 @@ export const routes: Routes = [
   {path: 'checkout', component: CheckoutComponent},
   {path: 'categories', component: CategoriesComponent},
   {path: 'mycredit', component: MycreditComponent},
-  {path: 'order-success/:order_id', component: OrderSuccessComponent},
+  {path: 'order-details/:order_id', component: OrderDetailsComponent},
   {
     path: 'profile', component: ProfileComponent,
     children: [

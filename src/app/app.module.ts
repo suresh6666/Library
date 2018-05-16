@@ -25,7 +25,7 @@ import {ProfileComponent} from './profile/profile.component';
 import { LoginComponent } from './login/login.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
-import { OrderSuccessComponent } from './order-success/order-success.component';
+import { OrderDetailsComponent } from './order-details/order-details.component';
 import { OrdersComponent } from './orders/orders.component';
 import { PaymentComponent } from './payment/payment.component';
 import { WalletComponent } from './wallet/wallet.component';
@@ -52,7 +52,7 @@ import {FilterPipe} from './app.pipe';
     LoginComponent,
     ForgotPasswordComponent,
     ChangePasswordComponent,
-    OrderSuccessComponent,
+    OrderDetailsComponent,
     OrdersComponent,
     PaymentComponent,
     WalletComponent,

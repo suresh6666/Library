@@ -131,7 +131,7 @@ export class CheckoutComponent implements OnInit {
           this.cartResults.forEach((cartItem, index) => {
             this.appService.delete(this.appUrls.cart + '/' + cartItem['_id']);
           });
-          this.router.navigate(['/order-success', orderSuccess._id]);
+          this.router.navigate(['/order-details', orderSuccess._id]);
         }).catch((orderErr) => {
           console.log(orderErr);
         });

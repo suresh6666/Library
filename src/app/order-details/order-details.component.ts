@@ -6,10 +6,10 @@ import {HttpParams} from '@angular/common/http';
 
 @Component({
   selector: 'app-order-success',
-  templateUrl: './order-success.component.html',
-  styleUrls: ['./order-success.component.css']
+  templateUrl: './order-details.component.html',
+  styleUrls: ['./order-details.component.css']
 })
-export class OrderSuccessComponent implements OnInit {
+export class OrderDetailsComponent implements OnInit {
   urlParams: any = {};
   public myOrder: any = {};
   constructor(private activatedRoute: ActivatedRoute,

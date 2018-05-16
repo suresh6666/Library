@@ -119,7 +119,6 @@ export class CheckoutComponent implements OnInit {
           books: bookIds,
           user_id: this.user['_id'],
           shipping_address: this.myShippingAddress,
-          ordered_date: date.toISOString(),
           delivery_date: new Date(date.setDate(date.getDate() + 2)).toISOString(),
           delivery_status: 'progress',
           transaction_id: transaction['_id']

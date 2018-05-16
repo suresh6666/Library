@@ -17,9 +17,9 @@
                class="form-control input-md" [(ngModel)]="user.last_name" required />
       </div> <!-- form-group-->
       <div class="form-group">
-        <label class="control-label" for="first_name">Registred on</label>
-        <input name="last_name" type="text" placeholder="last_name"
-               value="{{ user['created_date'] | date: 'yyyy-MM-dd hh:mm a' }}"
+        <label class="control-label" for="first_name">Registered on</label>
+        <input name="last_name" type="text" placeholder="Registered Date"
+               value="{{ user['created_date'] | date: 'dd/MM/yyyy' }}"
                class="form-control input-md" disabled />
       </div> <!-- form-group-->
     </div> <!-- end col -->

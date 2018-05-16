@@ -2,9 +2,10 @@
   <h3>List of Categories</h3>
   <br>
   <div class="row">
-    <div class="col-lg-3" *ngFor="let item of categories">
-      <div class="panel panel-default">
-        <div class="panel-body" title="{{ item['category_name'] }}" routerLink="/search" [queryParams]="{q: '', category: item._id, author: ''}">
+    <div class="col-lg-3 pointer" *ngFor="let item of categories"
+         routerLink="/search" [queryParams]="{q: '', category: item._id, author: ''}">
+      <div class="panel panel-default category">
+        <div class="panel-body" title="{{ item['category_name'] }}">
           <a class="text-uppercase">
             {{ (item['category_name'].length > 20) ? getSubString(item['category_name']) : item['category_name'] }}
           </a>

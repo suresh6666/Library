@@ -149,7 +149,6 @@ img {
   justify-content: center;
   align-items: center;
   margin-bottom: 15px;
-  font-size: 13px;
 }
 .books-category:hover {
   -webkit-box-shadow: 0 7px 17px 0 rgba(23,84,116,0.18);

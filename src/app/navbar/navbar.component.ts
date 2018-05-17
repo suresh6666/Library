@@ -15,7 +15,7 @@ import {HttpErrorResponse} from '@angular/common/http';
   providers: [FilterArray]
 })
 export class NavbarComponent implements OnInit, AfterViewInit {
-  searchForBook: string;
+  searchForBook = '';
   showVar: boolean;
   userInfo: any = {email: null};
   myCart: any = [];

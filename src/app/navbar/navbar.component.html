@@ -1,33 +1,44 @@
 <div id="flipkart-navbar">
   <div class="container">
     <div class="row row1">
-      <ul class="largenav top-nav-links">
+      <div class="largenav top-nav-links col-lg-6">
         <li class="upper-links" *ngIf="authService.isAuthenticated()">
           <a class="links" routerLink="/profile/membership">Membership</a>
         </li>
-        <li class="upper-links"><a class="links" routerLink="/categories">Categories</a></li>
-        <li class="upper-links authentication-links" *ngIf="!authService.isAuthenticated()">
-          Welcome!
-          <a routerLink="/login-now">Login</a> or
-          <a routerLink="/register-now">Create an Account</a>
+        <li class="upper-links"><a routerLink="/categories">Categories</a></li>
+        <li class="upper-links">
+          <a href="">Testimonials</a>
         </li>
-        <li class="upper-links authentication-links" *ngIf="authService.isAuthenticated() && userInfo">
-          Logged in as <span>{{ userInfo['email'] }}</span>
+        <li class="upper-links">
+          <a href="">Contact Us</a>
         </li>
-      </ul>
+        <li class="upper-links" *ngIf="!authService.isAuthenticated()">
+          <a routerLink="/register-now">Sign Up</a>
+        </li>
+        <li class="upper-links" *ngIf="!authService.isAuthenticated()">
+          <a routerLink="/login-now">Sign In</a>
+        </li>
+        <li class="upper-links" *ngIf="authService.isAuthenticated()">
+          <a routerLink="/profile/settings">My Profile</a>
+        </li>
+        &nbsp;
+        <li routerLinkActive="none" class="upper-links" *ngIf="authService.isAuthenticated()">
+          <a routerLink="/my-cart">
+            <i class="fa fa-cart-plus"></i>
+            &nbsp;Cart
+            <span *ngIf="myCart.length" class="cart-legth"
+                  [ngClass]="{'blink-me': myCart.length}">{{ myCart.length }}</span>
+          </a>
+        </li>
+      </div>
     </div>
     <div class="row row2">
       <div class="col-sm-2">
-        <h2 class="nav-logo" style="margin:0; cursor: pointer;" routerLink="/">
-          <span class="smallnav menu" onclick="openNav()">☰ Brand</span>
-        </h2>
-        <h1 class="nav-logo" style="margin:0; cursor: pointer;" routerLink="/">
-          <span class="largenav">
-            Brand
-          </span>
-        </h1>
+        <div class="nav-logo" style="margin:0; cursor: pointer;" routerLink="/">
+          <img src="https://images.vexels.com/media/users/3/127141/isolated/lists/c5a45f450c5a779db2fb3f6dc8bb617a-best-price-sale-tag.png" alt="">
+        </div>
       </div>
-      <div class="flipkart-navbar-search smallsearch col-sm-7 col-xs-12">
+      <div class="flipkart-navbar-search smallsearch col-sm-7 col-xs-12 text-center">
         <div class="row">
           <input (keydown)="searchBooks(searchForBook, '', '', $event)" [(ngModel)]="searchForBook" class="flipkart-navbar-input col-xs-11" id="search-typeahead"
                   placeholder="Search for Books, Audios, Videos..." data-provide="typeahead" autocomplete="off">
@@ -38,45 +49,22 @@
           </button>
         </div>
       </div>
-      <ul class="nav navbar-nav" *ngIf="authService.isAuthenticated()">
-        <li>
-          <div class="dropdown">
-            <button class="dropbtn">
-              <i class="fa fa-user-circle-o"></i>&nbsp;
-              My Profile
-            </button>
-            <div class="dropdown-content">
-              <a routerLink="/profile/settings">Settings</a>
-              <a routerLink="/profile/my-orders">My Orders</a>
-              <a routerLink="/my-wallet">My Wallet</a>
-              <a class="pointer" (click)="logout()"><i class="fa fa-power-off"></i>&nbsp;Logout</a>
-            </div>
-          </div>
-        </li>
-        &nbsp;
-        <li routerLinkActive="none" class="pointer my-cart" *ngIf="authService.isAuthenticated()">
-          <a routerLink="/my-cart">
-            <i class="fa fa-cart-plus"></i>
-            &nbsp;Cart
-            <span *ngIf="myCart.length" class="cart-legth"
-                  [ngClass]="{'blink-me': myCart.length}">{{ myCart.length }}</span>
-          </a>
-        </li>
-      </ul>
+      <div class="col-lg-3 col-sm-12 col-md-3">
+        <a routerLink="/talk-to-member" class="btn btn-lg btn-default btn-block talk-to-member"><strong>Talk to a Member </strong></a>
+      </div>
     </div>
   </div>
-  <!--<div class="go-top pointer w3-animate-bottom" (click)="goTop()">
-    <i class="fa fa-arrow-up"></i>
-  </div>-->
 </div>
-
-<div id="mySidenav" class="sidenav">
-  <div class="container" style="background-color: #2874f0; padding-top: 10px;">
-    <span class="sidenav-heading">Home</span>
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+<div class="container">
+  <div class="bottom-navbar">
+    <ul class="nav navbar-nav">
+      <li><a href="">Home</a></li>
+      <li><a href="">About Us</a></li>
+      <li><a href="">Quickstart</a></li>
+      <li><a href="">Browse Catelog</a></li>
+      <li><a href="">Library Features</a></li>
+      <li><a href="">Reading Schemes</a></li>
+      <li><a href="">FAQ's</a></li>
+    </ul>
   </div>
-  <a href="http://clashhacks.in/">Link</a>
-  <a href="http://clashhacks.in/">Link</a>
-  <a href="http://clashhacks.in/">Link</a>
-  <a href="http://clashhacks.in/">Link</a>
 </div>

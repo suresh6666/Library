@@ -50,7 +50,7 @@
   min-width: 100px;
   padding: 10px 30px;
 }
-.nav>li>a:focus, .nav>li>a:hover {
+.nav>li>a:hover {
   background: #FF4081;
   color: #ffffff;
   -webkit-border-radius: 2px;

@@ -19,6 +19,11 @@ import {OrderDetailsComponent} from '../order-details/order-details.component';
 import {WalletComponent} from '../wallet/wallet.component';
 import {MycartComponent} from '../mycart/mycart.component';
 import {CategoriesComponent} from '../categories/categories.component';
+import {AboutusComponent} from '../aboutus/aboutus.component';
+import {QuickstartComponent} from '../quickstart/quickstart.component';
+import {LibraryfeaturesComponent} from '../libraryfeatures/libraryfeatures.component';
+import {ReadingschemesComponent} from '../readingschemes/readingschemes.component';
+import {FaqsComponent} from '../faqs/faqs.component';
 
 export const routes: Routes = [
   {path: 'welcome', component: WelcomeComponent},
@@ -28,6 +33,11 @@ export const routes: Routes = [
   {path: 'forgot-password', component: ForgotPasswordComponent},
   {path: 'search', component: SearchbooksComponent},
   {path: 'checkout', component: CheckoutComponent},
+  {path: 'aboutus', component: AboutusComponent},
+  {path: 'quickstart', component: QuickstartComponent},
+  {path: 'libraryfeatures', component: LibraryfeaturesComponent},
+  {path: 'readingschemes', component: ReadingschemesComponent},
+  {path: 'faq', component: FaqsComponent},
   {path: 'categories', component: CategoriesComponent},
   {path: 'mycredit', component: MycreditComponent},
   {path: 'order-details/:order_id', component: OrderDetailsComponent},

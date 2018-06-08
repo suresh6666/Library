@@ -32,6 +32,11 @@ import { WalletComponent } from './wallet/wallet.component';
 import { MycartComponent } from './mycart/mycart.component';
 import { CategoriesComponent } from './categories/categories.component';
 import {FilterPipe} from './app.pipe';
+import { AboutusComponent } from './aboutus/aboutus.component';
+import { QuickstartComponent } from './quickstart/quickstart.component';
+import { LibraryfeaturesComponent } from './libraryfeatures/libraryfeatures.component';
+import { ReadingschemesComponent } from './readingschemes/readingschemes.component';
+import { FaqsComponent } from './faqs/faqs.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +63,12 @@ import {FilterPipe} from './app.pipe';
     WalletComponent,
     MycartComponent,
     CategoriesComponent,
-    FilterPipe
+    FilterPipe,
+    AboutusComponent,
+    QuickstartComponent,
+    LibraryfeaturesComponent,
+    ReadingschemesComponent,
+    FaqsComponent
   ],
   imports: [
     FormsModule,

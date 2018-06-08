@@ -10,24 +10,30 @@
           <a href="">Testimonials</a>
         </li>
         <li class="upper-links">
-          <a href="">Contact Us</a>
+          <a routerLink="/contactus">Contact Us</a>
         </li>
-        <li class="upper-links" *ngIf="!authService.isAuthenticated()">
+        <li class="upper-links highlight" *ngIf="!authService.isAuthenticated()">
           <a routerLink="/register-now">Sign Up</a>
         </li>
-        <li class="upper-links" *ngIf="!authService.isAuthenticated()">
+        <li class="upper-links highlight" *ngIf="!authService.isAuthenticated()">
           <a routerLink="/login-now">Sign In</a>
         </li>
-        <li class="upper-links" *ngIf="authService.isAuthenticated()">
+        <li class="upper-links highlight" *ngIf="authService.isAuthenticated()">
           <a routerLink="/profile/settings">My Profile</a>
         </li>
-        &nbsp;
         <li routerLinkActive="none" class="upper-links" *ngIf="authService.isAuthenticated()">
           <a routerLink="/my-cart">
             <i class="fa fa-cart-plus"></i>
             &nbsp;Cart
             <span *ngIf="myCart.length" class="cart-legth"
                   [ngClass]="{'blink-me': myCart.length}">{{ myCart.length }}</span>
+          </a>
+        </li>
+      </div>
+      <div class="col-lg-3 largenav top-nav-links pull-right text-right">
+        <li class="upper-links pull-right" *ngIf="authService.isAuthenticated()">
+          <a (click)="logout()" class="pointer">
+            <i class="fa fa-sign-out"></i>&nbsp;Logout
           </a>
         </li>
       </div>

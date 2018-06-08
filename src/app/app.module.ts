@@ -38,6 +38,7 @@ import { LibraryfeaturesComponent } from './libraryfeatures/libraryfeatures.comp
 import { ReadingschemesComponent } from './readingschemes/readingschemes.component';
 import { FaqsComponent } from './faqs/faqs.component';
 import { TalktomemberComponent } from './talktomember/talktomember.component';
+import { ContactusComponent } from './contactus/contactus.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { TalktomemberComponent } from './talktomember/talktomember.component';
     LibraryfeaturesComponent,
     ReadingschemesComponent,
     FaqsComponent,
-    TalktomemberComponent
+    TalktomemberComponent,
+    ContactusComponent
   ],
   imports: [
     FormsModule,

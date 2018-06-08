@@ -25,6 +25,7 @@ import {LibraryfeaturesComponent} from '../libraryfeatures/libraryfeatures.compo
 import {ReadingschemesComponent} from '../readingschemes/readingschemes.component';
 import {FaqsComponent} from '../faqs/faqs.component';
 import {TalktomemberComponent} from '../talktomember/talktomember.component';
+import {ContactusComponent} from '../contactus/contactus.component';
 
 export const routes: Routes = [
   {path: 'welcome', component: WelcomeComponent},
@@ -40,6 +41,7 @@ export const routes: Routes = [
   {path: 'readingschemes', component: ReadingschemesComponent},
   {path: 'faq', component: FaqsComponent},
   {path: 'talktomember', component: TalktomemberComponent},
+  {path: 'contactus', component: ContactusComponent},
   {path: 'categories', component: CategoriesComponent},
   {path: 'mycredit', component: MycreditComponent},
   {path: 'order-details/:order_id', component: OrderDetailsComponent},

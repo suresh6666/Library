@@ -160,7 +160,6 @@
 .upper-links {
   display: inline-block;
   padding: 6px 10px;
-  background: #FF4081;
   line-height: 23px;
   font-family: 'Roboto', sans-serif;
   letter-spacing: 0;
@@ -170,10 +169,17 @@
   border-radius: 2px;
   outline: none;
   font-size: 12px;
+  background: #dddddd;
+}
+.upper-links.highlight {
+  background: #FF4081;
 }
 .upper-links a {
-  color: #ffffff;
   text-decoration: none;
+  color: #444;
+}
+.upper-links.highlight a {
+  color: #ffffff;
 }
 .dropdown {
   position: relative;

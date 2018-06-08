@@ -18,7 +18,7 @@ export class BookDetailsComponent implements OnInit {
   currentRoute: any = '';
   constructor(private appUrls: AppUrls,
               private appService: AppService,
-              private authService: AuthService,
+              public authService: AuthService,
               private activatedRoute: ActivatedRoute,
               public appConstants: AppConstants,
               private router: Router,
@@ -26,10 +26,15 @@ export class BookDetailsComponent implements OnInit {
     this.activatedRoute.params.subscribe((params) => {
       this.bookParams = {book_name: params['book_name'], isbn: params['isbn']};
       this.currentRoute = this.router.url;
-    })
+    });
     this.myDetails = this.authService.getUser();
   }
-
+  getString (text, length: number) {
+    console.log(text, length);
+    if (text) {
+      this.details.book_description = text.substr(0, length);
+    }
+  }
   ngOnInit() {
     this.getBookDetails();
     this.appService.cartCast.subscribe((data) => {
@@ -42,6 +47,7 @@ export class BookDetailsComponent implements OnInit {
       console.log('details ---- ', data['_items']);
       if (data['_items'].length) {
         this.details = data['_items'][0];
+        this.details['book_description'] = this.details.book_summary.substr(0, 400);
         this.titleService.setTitle(this.details['book_title'] +
           ' by ' + this.details['book_authors'][0] + ' | ' + this.details['ISBN_13']);
       }

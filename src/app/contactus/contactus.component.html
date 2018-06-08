@@ -1,0 +1,55 @@
+<div class="container">
+  <br>
+  <h4>Contact Us</h4>
+  <hr>
+  <h4>
+    What can we help you with?
+  </h4>
+  <p>
+    Whether it is a testimonial to our web site or requesting a piece of information or logging a complaint, we are always here to listen to you.
+  </p>
+  <p>
+    Before you contact us, please refer our <a routerLink="/faq">FAQ's</a> for a possible answer to your question. If you still have a question, please contact us using one of the methods given below.
+  </p>
+  <br>
+  <h4>Send Us an Email</h4>
+  <br>
+  <div class="row">
+    <div class="col-lg-5 col-md-5 col-sm-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <form [formGroup]="contactForm">
+            <div class="form-group">
+              <label>Your Email Address</label>
+              <input type="email" class="form-control" autocomplete="false" name="email" formControlName="email">
+            </div>
+            <div class="form-group">
+              <label for="">Contact Reason</label>
+              <textarea name="description" rows="3" class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-md">Submit</button>
+              <button type="reset" class="btn btn-default btn-md">Reset</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-5 col-md-5 col-sm-12">
+      <h4>Pick-Up the Phone and Call Us</h4>
+
+      <p>0471-406-1965 (Office)</p>
+      <p>97-44-26-19-65 (Mobile)</p>
+      <br>
+      <h4>Visit or Write to Us</h4>
+      <div>
+        LetUsRead.in<br>
+        TC 25/2803(4), 'Pahima', Second Gate<br>
+        Uppalam Road<br>
+        Thiruvananthapuram<br>
+        Kerala - 695001<br>
+        India<br>
+      </div>
+    </div>
+  </div>
+</div>

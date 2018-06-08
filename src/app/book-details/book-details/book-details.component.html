@@ -33,17 +33,22 @@
                       <span class="lease-details-price">Rs. {{ (( details['ecopy_price']/100)*appConstants['lease_rate']).toFixed(2) }} </span>
                       <span class="lease-calc">({{ appConstants['lease_rate'] }}% of {{ details['ecopy_price'] }}.00)</span>
                     </h5>
-                    <p class="book-cost">For E - Copy</p>
+                    <p class="book-cost">For Audio Book</p>
                   </div>
                 </div>
               </div>
 
               <div class="book-summary">
                 <p><b>Book Summary</b></p>
-                <p [innerHtml]="details.book_summary"></p>
-                <p><a>Read more..</a></p>
+                <p>
+                  {{ details.book_description }}
+                  <a class="pointer" *ngIf="details.book_description && (details.book_description.length !== details.book_summary.length)"
+                     (click)="getString(details.book_summary, details.book_summary.length)">More...</a>
+                  <a class="pointer" *ngIf="details.book_description && (details.book_description.length === details.book_summary.length)"
+                     (click)="getString(details.book_summary, 400)">Less...</a>
+                </p>
                 <br>
-                <div class="request-copy-area">
+                <div class="request-copy-area" *ngIf="authService.isAuthenticated()">
                   <button [disabled]="!details.availability" (click)="requestCopy(details, 'hardcopy')"
                           class="btn btn-primary btn-md book-details-checkout req-btn">
                     Request hard copy!
@@ -52,6 +57,12 @@
                           [disabled]="!details.availability || !details.ecopy" (click)="requestCopy(details, 'ecopy')"
                           class="btn btn-primary btn-md req-btn req-ecopy">
                     Request E-copy!
+                  </button>
+                </div>
+                <div class="request-copy-area" *ngIf="!authService.isAuthenticated()">
+                  <button (click)="requestCopy(details, 'hardcopy')"
+                          class="btn btn-primary btn-md book-details-checkout req-btn">
+                    Become a Member
                   </button>
                 </div>
                 <p class="book-cost" style="margin: 10px 0;">

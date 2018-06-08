@@ -1,0 +1,17 @@
+h4, h5 {
+  font-weight: bold;
+  line-height: 20px;
+}
+div.desc-cards {
+  min-height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+div.desc-cards:hover, .tab-active {
+  color: #FF4081;
+}
+.faq-item1 a {
+  line-height: 30px;
+}

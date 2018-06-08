@@ -37,6 +37,7 @@ import { QuickstartComponent } from './quickstart/quickstart.component';
 import { LibraryfeaturesComponent } from './libraryfeatures/libraryfeatures.component';
 import { ReadingschemesComponent } from './readingschemes/readingschemes.component';
 import { FaqsComponent } from './faqs/faqs.component';
+import { TalktomemberComponent } from './talktomember/talktomember.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { FaqsComponent } from './faqs/faqs.component';
     QuickstartComponent,
     LibraryfeaturesComponent,
     ReadingschemesComponent,
-    FaqsComponent
+    FaqsComponent,
+    TalktomemberComponent
   ],
   imports: [
     FormsModule,

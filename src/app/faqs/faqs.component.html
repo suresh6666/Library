@@ -1,0 +1,701 @@
+<div class="container">
+  <br>
+  <h4>Frequently Asked Questions</h4>
+  <hr>
+  <div class="row">
+    <div class="col-lg-2" (click)="libraryCondition = {membership: true};">
+      <div class="thumbnail desc-cards text-uppercase" [ngClass]="{'tab-active': libraryCondition['membership']}">
+        Library
+      </div>
+    </div>
+    <div class="col-lg-2" (click)="libraryCondition = {barrowing: true};">
+      <div class="thumbnail desc-cards text-uppercase" [ngClass]="{'tab-active': libraryCondition['barrowing']}">
+        Membership
+      </div>
+    </div>
+    <div class="col-lg-2" (click)="libraryCondition = {circulation: true};">
+      <div class="thumbnail desc-cards text-uppercase" [ngClass]="{'tab-active': libraryCondition['circulation']}">
+        Reading plans
+      </div>
+    </div>
+    <div class="col-lg-2" (click)="libraryCondition = {financials: true};">
+      <div class="thumbnail desc-cards text-uppercase" [ngClass]="{'tab-active': libraryCondition['financials']}">
+        Circulation
+      </div>
+    </div>
+    <div class="col-lg-2" (click)="libraryCondition = {catelog: true};">
+      <div class="thumbnail desc-cards text-uppercase" [ngClass]="{'tab-active': libraryCondition['catelog']}">
+        Financials
+      </div>
+    </div>
+    <div class="col-lg-2" (click)="libraryCondition = {catelog1: true};">
+      <div class="thumbnail desc-cards text-uppercase" [ngClass]="{'tab-active': libraryCondition['catelog1']}">
+        Catelog
+      </div>
+    </div>
+  </div>
+  <!------------------------------------->
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default" *ngIf="libraryCondition['membership']">
+        <div class="panel-body">
+          <div id="faq-library" class="faq-item1" style="overflow: auto; border-style: none; color: black; line-height: 12.2pt; padding-right: 4px; text-align: justify; margin-left: 10px;">
+
+            <h3>
+              <span id="MainContent_rptReadingPlans_0_lblSection" style="color:Orange;font-weight:bold;"></span>
+            </h3>
+
+            <span id="MainContent_rptReadingPlans_0_lblSectionID_0" style="color:Orange;font-size:Large;font-weight:bold;">Most Frequently Asked Questions</span>
+            <br>
+            <br>
+
+
+            <a>
+              <span id="MainContent_rptReadingPlans_0_rptReadingPlansContent_0_lblQuestion_0">1. How to add an address to my membership?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_0_rptReadingPlansContent_0_lblAnswer_0"><p>You can add an address to your membership from 'My Addresses' menu available under 'Membership' main menu from your membership home page.</p>
+              <p>First, click on the 'Add New Address' button.</p>
+              <p>Second, search and select your location and add your address record.</p>
+              <p>Now update your address by clicking the pencil icon. Please add a landmark and directions to get your address.</p>
+
+            </span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_0_rptReadingPlansContent_0_lblQuestion_1">2. How do I pay my dues?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_0_rptReadingPlansContent_0_lblAnswer_1"><p>At any time, you will know how much you owe to the library by looking at your account transactions. The negative balance (if any) is what you owe to the library.</p>
+            <p>You can access your account transactions from the 'My Account Transactions'  menu available under the 'Financials' main-menu from your membership home page.</p>
+            <p>You can pay the due on your account either by using credit/debit cards online or by handing over the money to the person who is delivering books for you. Please remember there is a 7% fee for using cards online.</p>
+            </span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_0_rptReadingPlansContent_0_lblQuestion_2">3. What is pay-on-time (14-day) reading plan?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_0_rptReadingPlansContent_0_lblAnswer_2"><p>Pay-on-time is the default plan.
+              <br><br>
+              When you check out, books are checked out on pay-on-time plan unless there is a pay-in-advance plan exists.
+              <br><br>
+              You have 14 days to read your books.
+              <br><br>
+              Aftere 14 days, you can renew your books by paying its reading fee again.
+              <br><br>
+              If book is not renewed, there will be a late fee on a daily basis.</p></span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_0_rptReadingPlansContent_0_lblQuestion_3">4. What is pay-in-advance (monthly) reading plan?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_0_rptReadingPlansContent_0_lblAnswer_3"><p>We charge you 170 rupees a month as reading fee in advance as long as you have any of our publications with you.
+<br><br>
+You can spend this amount any time you want.
+<br><br>
+There are no due dates or late fees for your books.
+<br><br>
+This plan is recommended for those who read regularly.</p>
+
+
+<p></p></span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_0_rptReadingPlansContent_0_lblQuestion_4">5. How do I return books (and order for more books)?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_0_rptReadingPlansContent_0_lblAnswer_4"><p>If you are planning a drop-off, you can visit the library during our working hours and drop-off the book.</p>
+<p>If you want the book to be collected from you, go to 'My Checked Out Materials' and click 'Done Reading' action icon for the book you want to return. We will collect the material from you within three business days.</p>
+<p>Once you mark the materials as done reading, you will be able to check out more publications.</p>
+</span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_0_rptReadingPlansContent_0_lblQuestion_5">6. How reservation works?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_0_rptReadingPlansContent_0_lblAnswer_5"><p>You can reserve a book that is either in 'Coming Soon' or 'In Circulation' status.
+<br><br>
+You reserve a book only if you want the book to be automatically and immediately checked out and issued to you when it is available.
+
+
+
+
+</p></span>
+
+
+            <span id="MainContent_rptReadingPlans_0_lblSectionID_1" style="color:Orange;font-size:Large;font-weight:bold;">Login</span>
+            <br>
+            <br>
+
+
+            <a>
+              <span id="MainContent_rptReadingPlans_0_rptReadingPlansContent_1_lblQuestion_0">1. When I try to register, I am getting a message 'Your Email is already in use', why?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_0_rptReadingPlansContent_1_lblAnswer_0"><p>The chances are that someone else is accidently or knowingly try to register with your Email-Id and that is preventing you from registering successfully with LetUsRead. But they cannot go too far. Please wait for a few days and try again. We will delete all non-verified emails from the system three days from the day they are added to the system. If you still cannot register, please contact our customer care.</p></span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_0_rptReadingPlansContent_1_lblQuestion_1">2. I forgot my LetUsRead login password, how do I retrieve it?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_0_rptReadingPlansContent_1_lblAnswer_1"><p>If you forgot your password, please contact us from your registered mobile number or your EmailId.</p></span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_0_rptReadingPlansContent_1_lblQuestion_2">3. Can I change my login Email Id?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_0_rptReadingPlansContent_1_lblAnswer_2"><p>Please give a call to change your login EmailID</p></span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_0_rptReadingPlansContent_1_lblQuestion_3">4. Can I change my login password?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_0_rptReadingPlansContent_1_lblAnswer_3"><p>You can change your password from your profile page. </p></span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_0_rptReadingPlansContent_1_lblQuestion_4">5. I tried to register with LetUsRead but not receiving registration email, why?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_0_rptReadingPlansContent_1_lblAnswer_4"><p>Sometimes the registration confirmation mail go to your junk/spam mail folder. Please check in those folders of your email application and confirm that mails from LetUsRead are not spam.</p></span>
+
+
+            <span id="MainContent_rptReadingPlans_0_lblSectionID_2" style="color:Orange;font-size:Large;font-weight:bold;">Material Sharing</span>
+            <br>
+            <br>
+
+
+            <a>
+              <span id="MainContent_rptReadingPlans_0_rptReadingPlansContent_2_lblQuestion_0">1. What is book sharing program?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_0_rptReadingPlansContent_2_lblAnswer_0"><p>You as a member of our library could share your personal collection of books with us and get a share of its reading fee credited to your membership account when they are leased.</p>
+
+<p>You can maintain your list of shared books yourself.  You can set the books for sale if you want to sell any.</p>
+</span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_0_rptReadingPlansContent_2_lblQuestion_1">2. When I share a book, what share of its reading-fee or sale-price I get?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_0_rptReadingPlansContent_2_lblAnswer_1"><p>The library’s profit-share-rate percentage of the material’s reading fee or sale price is immediately credited to your account as soon as the book is lent or sold.
+</p></span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_0_rptReadingPlansContent_2_lblQuestion_2">3. What about late and damage fees of shared books, shall I get a share of those too?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_0_rptReadingPlansContent_2_lblAnswer_2"><p>No. Late and damage fees belong to LetUsRead. However, you will get the full lost price if the book is lost in circulation.
+</p></span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_0_rptReadingPlansContent_2_lblQuestion_3">4. Can I get my shared books back if I want to?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_0_rptReadingPlansContent_2_lblAnswer_3"><p>No. Once the books are given to LetUsRead, they belong to the library and cannot be given back to its owners. If you want to read your materials, you will have to follow the same procedure that you would follow for reading any other publications.
+</p></span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_0_rptReadingPlansContent_2_lblQuestion_4">5. What kind of books are accepted from the members as shared books?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_0_rptReadingPlansContent_2_lblAnswer_4"><p>We accept only genuine books that are from original publishers and that have ISBN numbers. Books that are in good condition only accepted. LetUsRead can reject a shared book for any reason.</p></span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_0_rptReadingPlansContent_2_lblQuestion_5">6. I want to share some books with LetUsRead, can they come and collect them from us?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_0_rptReadingPlansContent_2_lblAnswer_5"><p>Of Course! Reach us using the 'Contact Us' page using the reason 'Sharing of personal collection of books with LetUsRead' with your details. We are more than happy to come and collect them from your address.</p></span>
+
+
+            <span id="MainContent_rptReadingPlans_0_lblSectionID_3" style="color:Orange;font-size:Large;font-weight:bold;">Members</span>
+            <br>
+            <br>
+
+
+            <a>
+              <span id="MainContent_rptReadingPlans_0_rptReadingPlansContent_3_lblQuestion_0">1. How do I become a member of LetUsRead?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_0_rptReadingPlansContent_3_lblAnswer_0"><p>You can become a member of LetUsRead by successfully registering as user of the site LetUsRead.in. Your membership is automatically created when your login account is verified. If you have no access to computers, you can contact LetUsRead to add you as a managed member and to create a membership for you.
+</p></span>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default" *ngIf="libraryCondition['barrowing']">
+        <div class="panel-body">
+          <div id="faq-library" class="faq-item1" style="overflow: auto; border-style: none;
+									color: Black; line-height: 12.2pt; padding-right: 4px; text-align: justify; margin-left: 10px;">
+
+            <h3>
+              <span id="MainContent_rptReadingPlans_1_lblSection" style="color:Orange;font-weight:bold;"></span>
+            </h3>
+
+            <span id="MainContent_rptReadingPlans_1_lblSectionID_0" style="color:Orange;font-size:Large;font-weight:bold;">Membership</span>
+            <br>
+            <br>
+
+
+            <a>
+              <span id="MainContent_rptReadingPlans_1_rptReadingPlansContent_0_lblQuestion_0">1. I live outside Thiruvananthapuram city; can I still become a member?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_1_rptReadingPlansContent_0_lblAnswer_0"><p>Anyone can become our library member and avail its services. However, delivery/collection services are available only to a limited locations. So, if you live outside our delivery area, you will have to visit our library to get/return publications. However, you must have an address in Thiruvananthapuram district to activate your membership.
+</p></span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_1_rptReadingPlansContent_0_lblQuestion_1">2. How do I close my membership?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_1_rptReadingPlansContent_0_lblAnswer_1"><p>You can close your membership at any time from your membership info page provided the following conditions are satisfied. 1) Your membership must have been active for a year 2) No materials should be outstanding against your membership and 3) No active plan must exist on your membership. When a membership is closed, the security deposit will be refunded back to your membership account. All the awarded incentive and sponsorship amount will be debited from your account. You can then request LetUsRead for a payment for the remaining amount on your account.
+</p></span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_1_rptReadingPlansContent_0_lblQuestion_2">3. How do I get my security deposit back?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_1_rptReadingPlansContent_0_lblAnswer_2"><p>When your membership is closed, your security deposit is credited back to your membership account. Library will issue a payment for the remaining balance on the account within three business days with or without a payment fee.
+</p></span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_1_rptReadingPlansContent_0_lblQuestion_3">4. Can I rejoin after I close my membership?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_1_rptReadingPlansContent_0_lblAnswer_3"><p>Your membership will not be removed from the system when you close your membership. So, you can always reopen when needed. You do so from your membership page. When you re-open, your membership goes back to the initiated status. You must activate your membership in order to start borrowing again.
+</p></span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_1_rptReadingPlansContent_0_lblQuestion_4">5. How many memberships can I have?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_1_rptReadingPlansContent_0_lblAnswer_4"><p>You can have only one membership per login account.
+</p></span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_1_rptReadingPlansContent_0_lblQuestion_5">6. What is a group-membership?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_1_rptReadingPlansContent_0_lblAnswer_5"><p>For people living in apartment complexes or working together in offices or associated together in any other way, group membership is the best bet.</p>
+
+<p>Instead of each person having their own membership, a group of people with similar reading interests can have one single membership with higher borrowing limit and longer reading period. This helps them read many publications by exchanging them among themselves without having to order them individually from LetUsRead. By having one membership, members of the group share all the cost. </p>
+
+<p>But for LetUsRead, there is only one type of membership account for every type of membership.</p>
+</span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_1_rptReadingPlansContent_0_lblQuestion_6">7. What is incentive-amount?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_1_rptReadingPlansContent_0_lblAnswer_6"><p>From time to time your library may award you with incentive amount to encourage you to read more. This amount is directly credited to your membership account. However, when a membership is closed, all the awarded incentive amount is recovered from the membership account. Referral-Incentive and Borrow-Again-Incentive are the two incentive amounts that are awarded by the system.
+</p></span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_1_rptReadingPlansContent_0_lblQuestion_7">8. What is a sponsorship-amount?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_1_rptReadingPlansContent_0_lblAnswer_7"><p>LetUsRead has a sponsorship account to which members can contribute amount. This amount is awarded to less privileged readers (especially school kids) on a case by case basis.
+</p></span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_1_rptReadingPlansContent_0_lblQuestion_8">9. What is service-fee?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_1_rptReadingPlansContent_0_lblAnswer_8"><p>LetUsRead is designed in such a way that its members can perform all the membership functions themselves online. However, members can request the library to perform those functions for them when members don’t have access to computers. In such cases, library charges a fee for those services. You can see a list of all membership functions on our home page.</p>
+
+<p>Managed members always have to use LetUsRead's help for performing any of their membership functions as they don’t have login accounts with us.</p>
+
+<p>You can access all your service charges and its details from your membership page.</p>
+</span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_1_rptReadingPlansContent_0_lblQuestion_9">10. What is wish-list?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_1_rptReadingPlansContent_0_lblAnswer_9"><p>You add publications to your wish list that you want to read later. </p>
+
+<p>Members can add books to their wish list even if the library does not have an active stock of that publication. Libraries use the member wish list statistics as an indication of how popular a particular book is and may decide to add those books to their collection.</p>
+</span>
+
+
+            <span id="MainContent_rptReadingPlans_1_lblSectionID_1" style="color:Orange;font-size:Large;font-weight:bold;">Borrowing</span>
+            <br>
+            <br>
+
+
+            <a>
+              <span id="MainContent_rptReadingPlans_1_rptReadingPlansContent_1_lblQuestion_0">1. How many publications can I borrow on my membership?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_1_rptReadingPlansContent_1_lblAnswer_0"><p>That depends on your security deposit. You can increase your deposit by 500 rupees at any time.</p></span>
+
+
+            <span id="MainContent_rptReadingPlans_1_lblSectionID_2" style="color:Orange;font-size:Large;font-weight:bold;">Down Payment</span>
+            <br>
+            <br>
+
+
+            <a>
+              <span id="MainContent_rptReadingPlans_1_rptReadingPlansContent_2_lblQuestion_0">1. What is down-payment?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_1_rptReadingPlansContent_2_lblAnswer_0"><p>Down payment is a deposit that you make with the library for ‘pleading’ us to get copies of an out-of-stock book. You make down payments from your wish-list section. Down payment required for a book is same as its purchase price with a minimum amount required which is available on the library parameters page. Down payments are automatically credited back to membership accounts when members borrow, read and return the materials for which they have made the down payments.</p>
+
+<p>You add an out-of-stock book to your wish-list while searching for it in the master catalog. You cannot find an out-of-stock item in the library catalog.</p>
+</span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_1_rptReadingPlansContent_2_lblQuestion_1">2. How do I make down-payment for a book that is not available with LetUsRead?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_1_rptReadingPlansContent_2_lblAnswer_1"><p>You must make a request for the book first with an option to add it to your wish-list once cataloged. After cataloging, you can go to your out-of-stock section of your book wish-list and make a down payment for it.
+</p></span>
+
+
+            <span id="MainContent_rptReadingPlans_1_lblSectionID_3" style="color:Orange;font-size:Large;font-weight:bold;">Donw Payment</span>
+            <br>
+            <br>
+
+
+            <a>
+              <span id="MainContent_rptReadingPlans_1_rptReadingPlansContent_3_lblQuestion_0">1. Can I cancel a down-payment that I made?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_1_rptReadingPlansContent_3_lblAnswer_0"><p>Cancelling a down payment is not a membership function and so you cannot perform it yourself. You will have to send a request to the library. However decision to reverse it solely lies with the library.
+</p></span>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default" *ngIf="libraryCondition['circulation']">
+        <div class="panel-body">
+          <div id="faq-library" class="faq-item1">
+
+            <h3>
+              <span id="MainContent_rptReadingPlans_2_lblSection" style="color:Orange;font-weight:bold;"></span>
+            </h3>
+
+            <span id="MainContent_rptReadingPlans_2_lblSectionID_0" style="color:Orange;font-size:Large;font-weight:bold;">Reading Plans</span>
+            <br>
+            <br>
+
+
+            <a>
+              <span id="MainContent_rptReadingPlans_2_rptReadingPlansContent_0_lblQuestion_0">1. How much should I pay for reading a publication?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_2_rptReadingPlansContent_0_lblAnswer_0"><p>The amount you have to pay for borrowing a publication is called its reading-fee. </p>
+
+<p>Reading-fee of a publication is calculated as a percentage of the lease-price of the publication. The percentage is based on the material-group of the publication. You can see all material groups and its lease rates on the 'Reading Schemes' page.</p>
+
+<p>Reading-fees are charged for a period (multiples of months) in advance through membership plans instead of charging on individual material at the time of check out. Then when materials are checked out, its’ reading-fees are reduced from the plan amount until the plan amount runs out.</p>
+</span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_2_rptReadingPlansContent_0_lblQuestion_1">2. What is lease-price and how it is fixed for a publication?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_2_rptReadingPlansContent_0_lblAnswer_1"><p>Lease price of a publication mostly is its purchase price. Lease price of out-of-stock books may be tentative but for in-stock books, lease price once fixed will never changes. So, members always know how much they have to pay for reading a publication.
+</p></span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_2_rptReadingPlansContent_0_lblQuestion_2">3. For some books, why lease price of different copies of the same book different?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_2_rptReadingPlansContent_0_lblAnswer_2"><p>Since LetUsRead procure copies of the same book at different times from different vendors, purchase prices of them could be different. Since lease prices of the books are same as its purchase price, lease price could be different for different copies of the same book.</p>
+
+<p>But rest assured that the lease price of a book once fixed never changes and that means the reading fee of it will be same always.</p></span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_2_rptReadingPlansContent_0_lblQuestion_3">4. What is a reading-plan and how it is different from a membership-plan?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_2_rptReadingPlansContent_0_lblAnswer_3"><p>Members create their membership plan from the available reading plans of LetUsRead. All the available reading plans are listed on our Reading Schemes page.
+</p></span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_2_rptReadingPlansContent_0_lblQuestion_4">5. What are the different reading-plans available with LetUsRead?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_2_rptReadingPlansContent_0_lblAnswer_4"><p>There are twelve reading plans available with LetUsRead each convering a period of one month to twelve months. The details of the reading plans are available at our 'Reading Schemes' page.
+</p></span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_2_rptReadingPlansContent_0_lblQuestion_5">6. What happens to the remaining plan amount at the end of the plan period?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_2_rptReadingPlansContent_0_lblAnswer_5"><p>Remaining plan amount carries over to the new plan period if the plan is renewed else the entire remaining plan amount is forfeited at the end of the plan period.
+</p></span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_2_rptReadingPlansContent_0_lblQuestion_6">7. Can my membership use more amount than what is left in my plan?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_2_rptReadingPlansContent_0_lblAnswer_6"><p>If your plan balance is greater than zero, system lets you checkout a material even if its reading-fee is more than the balance plan amount. </p>
+
+<p>If the plan is renewed, the negative plan balance gets adjusted with the renewed plan amount. If the plan is not renewed, the over-used plan amount is recovered from the membership account when the plan is closed.</p>
+</span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_2_rptReadingPlansContent_0_lblQuestion_7">8. Can I discontinue reading for a while and start again later?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_2_rptReadingPlansContent_0_lblAnswer_7"><p>Of course! Members chose to read for a period that is multiples of month. They can renew their plan and continue reading or stop at the end of the current period and start again for any period whenever they want.
+</p></span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_2_rptReadingPlansContent_0_lblQuestion_8">9. We live in an apartment and want to share publications from LetUsRead. How do we do it?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_2_rptReadingPlansContent_0_lblAnswer_8"><p>Reading plans with longer periods could be used by apartment complexes and corporates as these plans help them checkout more materials when combined with higher borrowing-limits. </p></span>
+
+
+            <span id="MainContent_rptReadingPlans_2_lblSectionID_1" style="color:Orange;font-size:Large;font-weight:bold;">Plan Renewals &amp; Closure</span>
+            <br>
+            <br>
+
+
+            <a>
+              <span id="MainContent_rptReadingPlans_2_rptReadingPlansContent_1_lblQuestion_0">1. How do I close my active membership plan?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_2_rptReadingPlansContent_1_lblAnswer_0"><p>You can manually close your plan any time if there are no issued materials against your membership. However, you don’t have to manually close your membership plan as doing so has no benefit to the member because when a plan is closed any un-used plan amount is forfeited. If you don’t want to renew your plan, turn off the automatic plan renewal flag so that after the current plan period ends, your active plan will be automatically closed by the system when all the issued materials are returned.
+</p></span>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default" *ngIf="libraryCondition['financials']">
+        <div class="panel-body">
+          <div id="faq-library" class="faq-item1" style="overflow: auto; border-style: none;
+									color: Black; line-height: 12.2pt; padding-right: 4px; text-align: justify; margin-left: 10px;">
+
+            <h3>
+              <span id="MainContent_rptReadingPlans_3_lblSection" style="color:Orange;font-weight:bold;"></span>
+            </h3>
+
+            <span id="MainContent_rptReadingPlans_3_lblSectionID_0" style="color:Orange;font-size:Large;font-weight:bold;">Circulation</span>
+            <br>
+            <br>
+
+
+            <a>
+              <span id="MainContent_rptReadingPlans_3_rptReadingPlansContent_0_lblQuestion_0">1. What are early-due-date and early-return-credit?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_3_rptReadingPlansContent_0_lblAnswer_0"><p>We encourage members to return the materials as soon as they have read them and make them available for other readers. If members return materials within early-due-date, a percentage of the reading fee is credited back to their account or plan as the case may be.
+</p></span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_3_rptReadingPlansContent_0_lblQuestion_1">2. What should I do if I receive damaged publications?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_3_rptReadingPlansContent_0_lblAnswer_1"><p>We take every effort to send you good copies of publications. However, there can be damages on the publications you receive which do not preclude you from reading them. All existing damages are recorded in the system which you can see from accessing your material online from your issued materials. If you notice a damage that is not already listed, please send us a mail with the damage description.
+</p></span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_3_rptReadingPlansContent_0_lblQuestion_2">3. What should I do if materials are damaged from my side?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_3_rptReadingPlansContent_0_lblAnswer_2"><p>You can report those damages when the materials are returned. However, we will scan every publication for new damages and appropriate damage fees are charged accordingly.
+</p></span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_3_rptReadingPlansContent_0_lblQuestion_3">4. Are there any material late and material renewal fees?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_3_rptReadingPlansContent_0_lblAnswer_3"><p>If you are on our pay-on-time plan, there are material late and renewal fees.
+<br><br>
+If you are on our pay-in-advance plan, there are no late fees or material renewals as long as your plan is renewed before being late.
+</p></span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_3_rptReadingPlansContent_0_lblQuestion_4">5. When does LetUsRead recall publications?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_3_rptReadingPlansContent_0_lblAnswer_4"><p>Members are allowed to keep their checked out and issued publications as long as they have active membership plans. However, if other members are waiting for the publications that are on your hand and if its early-due-date is passed, we issue a request that you return the material as soon as possible.
+</p></span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_3_rptReadingPlansContent_0_lblQuestion_5">6. When materials are considered lost?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_3_rptReadingPlansContent_0_lblAnswer_5"><p>There are two situations when materials are considered lost. </p>
+
+<p>A material is considered as lost after it is late for a maximum of 20 days and the lost fee of the material is charged on the membership account. A material is also updated as lost when member informs library of a lost material.</p>
+</span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_3_rptReadingPlansContent_0_lblQuestion_6">7. How often materials are delivered/collected from members?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_3_rptReadingPlansContent_0_lblAnswer_6"><p>Materials are delivered and collected from member addresses within 2-3 business days.
+</p></span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_3_rptReadingPlansContent_0_lblQuestion_7">8. Can I choose different delivery and collection addresses for my materials?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_3_rptReadingPlansContent_0_lblAnswer_7"><p>Sure you can. You are allowed to maintain three addresses in your membership. You could choose any of these addresses as the default delivery/collection address.</p>
+
+<p>You set a default delivery/collection address at membership level which will be used as default delivery/collection address for all checked out materials. However, you could chose different addresses after you have checked out books by going to 'Issue Details' tab of my 'Checked out Materials' by clicking the CirculationId.</p>
+</span>
+
+
+            <span id="MainContent_rptReadingPlans_3_lblSectionID_1" style="color:Orange;font-size:Large;font-weight:bold;">Checkout Queue</span>
+            <br>
+            <br>
+
+
+            <a>
+              <span id="MainContent_rptReadingPlans_3_rptReadingPlansContent_1_lblQuestion_0">1. Can I visit LetUsRead to checkout materials instead of checking them out online?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_3_rptReadingPlansContent_1_lblAnswer_0"><p>Sure you can.
+</p></span>
+
+
+            <span id="MainContent_rptReadingPlans_3_lblSectionID_2" style="color:Orange;font-size:Large;font-weight:bold;">Issuing</span>
+            <br>
+            <br>
+
+
+            <a>
+              <span id="MainContent_rptReadingPlans_3_rptReadingPlansContent_2_lblQuestion_0">1. Will publications be delivered on time?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_3_rptReadingPlansContent_2_lblAnswer_0"><p>We have logistics in place to ensure that all books are delivered on time, that is, within 24 working hours (in most cases). However, the actual delivery time of the books can vary. For more information, please read our Terms and Conditions section.
+</p></span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_3_rptReadingPlansContent_2_lblQuestion_1">2. I received a publication-issued Email, but I haven't got any publications. What should I do?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_3_rptReadingPlansContent_2_lblAnswer_1"><p>Please allow sufficient time for the books to reach you (at least one business day). If you are sure you haven't received it and sufficient time has elapsed, please send an email to cs@letusread.in or call our customer care number.
+</p></span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_3_rptReadingPlansContent_2_lblQuestion_2">3. What do I do if I receive the wrong publication?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_3_rptReadingPlansContent_2_lblAnswer_2"><p>You can call our customer care number. We will send the correct book as soon as possible or, also if you prefer the next available title in your Queue.
+</p></span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_3_rptReadingPlansContent_2_lblQuestion_3">4. What are the conditions for free delivery/collection services?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_3_rptReadingPlansContent_2_lblAnswer_3"><p>LetUsRead charge a nominal delivery fee on 14-day plans. For monthly plan members get one free delivery per month.</p>
+
+</span>
+
+
+            <span id="MainContent_rptReadingPlans_3_lblSectionID_3" style="color:Orange;font-size:Large;font-weight:bold;">Returning</span>
+            <br>
+            <br>
+
+
+            <a>
+              <span id="MainContent_rptReadingPlans_3_rptReadingPlansContent_3_lblQuestion_0">1. Do I have to return all the publications at the same time?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_3_rptReadingPlansContent_3_lblAnswer_0"><p>No. You can return those you have read while keeping the others.
+</p></span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_3_rptReadingPlansContent_3_lblQuestion_1">2. What happens if I don't return old materials when new materials are delivered?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_3_rptReadingPlansContent_3_lblAnswer_1"><p>You are supposed to return old materials that you have marked as ready to return while new ones are delivered; failure to doing so can cause late fees charged on your account.</p></span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_3_rptReadingPlansContent_3_lblQuestion_2">3. Once I'm done reading the materials, how do I return them?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_3_rptReadingPlansContent_3_lblAnswer_2"><p>Go to 'My Checked Out Materials' under Circulation menu and mark those you have read as ready to return by clicking the 'Ready to Return' action icon.</p>
+
+<p>You can also come to the library to drop-off your materials.</p></span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_3_rptReadingPlansContent_3_lblQuestion_3">4. How do I know that LetUsRead has received the materials that I had returned?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_3_rptReadingPlansContent_3_lblAnswer_3"><p>The materials from your ‘My Checked Out Materials' section will be moved to ‘My Circulated Materials’ section. Also, the status of return will be updated as 'Retuned' on the circulation details of the checked out material. All returns are recorded in the membership messages section.</p></span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_3_rptReadingPlansContent_3_lblQuestion_4">5. Can I return the materials directly to LetUsRead instead of scheduling a collection?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_3_rptReadingPlansContent_3_lblAnswer_4"><p>Yes, you are more than welcome to drop them off at our library just as you can check out materials from our library over-the-counter.
+</p></span>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default" *ngIf="libraryCondition['catelog']">
+        <div class="panel-body">
+          <div id="faq-library" class="faq-item1" style="overflow: auto; border-style: none;
+									color: Black; line-height: 12.2pt; padding-right: 4px; text-align: justify; margin-left: 10px;">
+
+            <h3>
+              <span id="MainContent_rptReadingPlans_4_lblSection" style="color:Orange;font-weight:bold;"></span>
+            </h3>
+
+            <span id="MainContent_rptReadingPlans_4_lblSectionID_0" style="color:Orange;font-size:Large;font-weight:bold;">Financials</span>
+            <br>
+            <br>
+
+
+            <a>
+              <span id="MainContent_rptReadingPlans_4_rptReadingPlansContent_0_lblQuestion_0">1. How can I credit my membership account?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_4_rptReadingPlansContent_0_lblAnswer_0"><p>You can use cash, cheque, credit/debit cards for adding funds to your membership account. </p>
+
+<p>Cash receipts are immediately credited to your account. You must visit the library to hand over the cash to the library.</p>
+
+<p>Cheque receipts are credited only after its realization from your bank. Please write cheque to 'LetUsRead.in Private Lending Library'. You can hand over the cheque to the library or send to the library address available on our web site (Contact Us page). Please remember to write your Membership Id on the back of your cheque.</p>
+
+<p>You can use your credit/debit cards to credit your account. Use the 'Credit My Account' link from the 'Financials' menu on your membership home page.</p>
+</span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_4_rptReadingPlansContent_0_lblQuestion_1">2. Why members are charged a fee for card transaction?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_4_rptReadingPlansContent_0_lblAnswer_1"><p>Whether the end-user pays or not, the credit card processing companies charge a fee for every credit card transaction. Normally, this fee is paid by the vendor and is not directly transferred to customers and vendors indirectly recover this fee from customers through the service/product they offer. LetUsRead, following its principle that no charges will be hidden, transfers this fee to its members. Sometimes LetUsRead may offer a rebate on this fee and in that case, the rebate will be credited to membership account immediately.
+
+</p></span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_4_rptReadingPlansContent_0_lblQuestion_2">3. Is my credit card data safe?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_4_rptReadingPlansContent_0_lblAnswer_2"><p>When you opt to pay online, we only connect you to the bank's fully secure payment gateway. Your card information is held only by the bank and not by LetUsRead. So your card data is always safe. Once your payment is made a card receipt record will be added on your membership account in confirmed status.</p></span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_4_rptReadingPlansContent_0_lblQuestion_3">4. What are credit/debit notes?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_4_rptReadingPlansContent_0_lblAnswer_3"><p>Notes are credit/debit transactions that LetUsRead adds to your membership account for a reason especially to correct an erroneous transaction. Membership messages will be created for all notes. Members will also get email notifications on all notes.
+</p></span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_4_rptReadingPlansContent_0_lblQuestion_4">5. What is account transfer feature?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_4_rptReadingPlansContent_0_lblAnswer_4"><p>You can transfer money from your membership account to any other membership account in the library. This is a useful feature for example for parents who are supporting their children’s membership accounts.
+</p></span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_4_rptReadingPlansContent_0_lblQuestion_5">6. Why there is a service tax  and card receipt fees?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_4_rptReadingPlansContent_0_lblAnswer_5"><p>Service tax is the charge that LetUsRead need to pay to the government for doing the business. Credit card charge is the fee that LetUsRead needs to pay to the card processing companies.</p>
+
+<p>Typically, on most businesses, these charges are included in the cost of product/service they offer and thereby ‘hiding’ that information from its customers. Customers may never know the exact price of the service/product they receive in such cases. Customers believe that they are only paying for the product/service where in fact a number of other fees and charges have been included in the price of a product/service.</p>
+
+<p>LetUsRead never makes any charges/fees hidden or over-charge our members and our members will always know how much they have to pay for each service they receive.</p>
+</span>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default" *ngIf="libraryCondition['catelog1']">
+        <div class="panel-body">
+          <div id="faq-library" class="faq-item1" style="overflow: auto; border-style: none;
+									color: Black; line-height: 12.2pt; padding-right: 4px; text-align: justify; margin-left: 10px;">
+
+            <h3>
+              <span id="MainContent_rptReadingPlans_5_lblSection" style="color:Orange;font-weight:bold;"></span>
+            </h3>
+
+            <span id="MainContent_rptReadingPlans_5_lblSectionID_0" style="color:Orange;font-size:Large;font-weight:bold;">Catalog</span>
+            <br>
+            <br>
+
+
+            <a>
+              <span id="MainContent_rptReadingPlans_5_rptReadingPlansContent_0_lblQuestion_0">1. How do I know whether I have read a publication?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_5_rptReadingPlansContent_0_lblAnswer_0"><p>From your membership page, you can access ‘Publications I Read’ to see the full list of publications that you have read so far.</p>
+
+<p>Also, in the detail page of any publication you can see flags that indicate whether you have read it, wish listed, queued or down paid.</p>
+
+<p>Also, when you checkout a publication, you will receive a message if you have already read it.</p>
+</span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_5_rptReadingPlansContent_0_lblQuestion_1">2. How good will the copies of the publication that I receive?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_5_rptReadingPlansContent_0_lblAnswer_1"><p>As you can imagine, only a few would be lucky enough to read fresh copies of publications. As more and more members read them there will be small wear and tear on the publications. Those publications that are not readable, as determined by us, will be taken out of stock immediately.
+</p></span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_5_rptReadingPlansContent_0_lblQuestion_2">3. How do I express interest in a particular magazine?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_5_rptReadingPlansContent_0_lblAnswer_2"><p>If LetUsRead does not have an active subscription to a magazine that you are interested but is listed on the master magazine list, you can express your interest on that magazine. LetUsRead may decide to subscribe to the magazine based on the demand for it from our members. Express your interest only if you are genuinely interested in the magazines and are ready to borrow editions of it when they are made available.
+</p></span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_5_rptReadingPlansContent_0_lblQuestion_3">4. What if the book I want to read is not available with LetUsRead?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_5_rptReadingPlansContent_0_lblAnswer_3"><p>If any title is not available with LetUsRead, you can request for it using the link ‘Request a book’ from your membership page. But, make sure the book you are about to recommend is not available in the master-catalog before suggesting. You can also mention that you want to add it to your wish list when the book is cataloged in LetUsRead.
+</p></span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_5_rptReadingPlansContent_0_lblQuestion_4">5. How do I express interest in a book?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_5_rptReadingPlansContent_0_lblAnswer_4"><p>Go ahead and add the book to your wish list; that way we will know that you are interested in the book. Based on the number of members who added the book to their wish list, we take decision to procure copies of it.
+</p></span>
+
+            <a>
+              <span id="MainContent_rptReadingPlans_5_rptReadingPlansContent_0_lblQuestion_5">6. Are your collection of books genuine copies of the publication from the publisher?</span>
+            </a>
+            <span id="MainContent_rptReadingPlans_5_rptReadingPlansContent_0_lblAnswer_5"><p>Yes. We procure copies of publications only from authentic distributor of its publisher.</p></span>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,413 @@
+<div class="container">
+  <br>
+  <h4>Library Features</h4>
+  <hr>
+  <div class="row">
+    <div class="col-lg-2" (click)="libraryCondition = {membership: true};">
+      <div class="thumbnail desc-cards text-uppercase" [ngClass]="{'tab-active': libraryCondition['membership']}">
+        Memberships
+      </div>
+    </div>
+    <div class="col-lg-2" (click)="libraryCondition = {barrowing: true};">
+      <div class="thumbnail desc-cards text-uppercase" [ngClass]="{'tab-active': libraryCondition['barrowing']}">
+        Barrowing
+      </div>
+    </div>
+    <div class="col-lg-2" (click)="libraryCondition = {circulation: true};">
+      <div class="thumbnail desc-cards text-uppercase" [ngClass]="{'tab-active': libraryCondition['circulation']}">
+        Circulation
+      </div>
+    </div>
+    <div class="col-lg-2" (click)="libraryCondition = {financials: true};">
+      <div class="thumbnail desc-cards text-uppercase" [ngClass]="{'tab-active': libraryCondition['financials']}">
+        Financials
+      </div>
+    </div>
+    <div class="col-lg-2" (click)="libraryCondition = {catelog: true};">
+      <div class="thumbnail desc-cards text-uppercase" [ngClass]="{'tab-active': libraryCondition['catelog']}">
+        Catelog
+      </div>
+    </div>
+  </div>
+  <!------------------------------------->
+  <div class="row">
+    <div class="col-lg-10">
+      <div class="panel panel-default" *ngIf="libraryCondition['membership']">
+        <div class="panel-body">
+          <div class="contentFeatures-div active" id="memberships_link_details" style="display: block;">
+            <div class="content-heading">
+              <h4>
+                Memberships</h4>
+            </div>
+            <div class="content-row">
+              <h5>
+                Member driven Library Management System</h5>
+              <p style="line-height: 12.2pt;">
+                LetUsRead library management system is built in such a way that our members can
+                do all the membership functions themselves; opening and closing of memberships,
+                adding addresses, updating checkout parameters, creating/renewing/closing
+                reading plans, and even checking out of materials.</p>
+            </div>
+            <div class="content-row">
+              <h5>
+                Safe and Secure Membership Accounts</h5>
+              <p style="line-height: 12.2pt;">
+                We have built a financial module for LetUsRead that beats that of a banking application.
+                Membership account keeps track of all financial transactions that are taking place
+                in memberships. Members can see the full details of all transactions all the time.
+                Membership account balance is always safe and secure and belongs to its owners ï¿½
+                the members. Membership account is never debited without its memberï¿½s knowledge.</p>
+            </div>
+            <div class="content-row">
+              <h5>
+                Managed Members</h5>
+              <p style="line-height: 12.2pt;">
+                Members without computers can also become LetUsRead members. All they have to do
+                is to call the library to setup their memberships. Then when a service is needed,
+                they call the library to perform the required membership function for them. This
+                is a very useful feature for senior citizens and others who may not have access
+                to computers.</p>
+            </div>
+            <div class="content-row">
+              <h5>
+                Apartments/Corporate/Group Memberships</h5>
+              <p style="line-height: 12.2pt;">
+                People living in apartments or working together in offices or associated together
+                in other ways as in clubs and shops can have single membership with higher security
+                deposit and longer reading plans to help them check out many materials at a
+                time and share among themselves.</p>
+            </div>
+            <div class="content-row">
+              <h5>
+                Multiple Addresses</h5>
+              <p style="line-height: 12.2pt;">
+                Members are allowed to maintain three addresses. LetUsRead uses Indian postal code
+                based addressing; members can search for their cities and add addresses helping
+                accurate addressing.</p>
+            </div>
+            <div class="content-row">
+              <h5>
+                Referral Scheme</h5>
+              <p style="line-height: 12.2pt;">
+                Spread the joy of reading! Members get referral incentive when the referred members
+                spent a minimum reading fee with LetUsRead. Referral process is fully automated
+                and members always know the statuses of their referrals any time online. There is
+                no limit on the number of referrals one can make.</p>
+            </div>
+            <div class="content-row">
+              <h5>
+                Incentive Amount</h5>
+              <p style="line-height: 12.2pt;">
+                From time to time LetUsRead awards incentive amounts to its members to encourage
+                them read more. Incentive amounts are directly credited to membership accounts.
+              </p>
+            </div>
+            <div class="content-row">
+              <h5>
+                Sponsorship Feature</h5>
+              <p style="line-height: 12.2pt;">
+                LetUsRead also features a sponsorship account towards which members can contribute
+                amount. These funds are awarded to less-privileged school children for their reading needs whose eligibility
+                is determined by working with respective schools.</p>
+            </div>
+            <div class="content-row">
+              <h5>
+                Member Book Requests</h5>
+              <p style="line-height: 12.2pt;">
+                If a book is not available with our master-catalog, members can use the feature
+                ï¿½Request a Bookï¿½ to let LetUsRead know their interest in the book. </p>
+            </div>
+            <div class="content-row">
+              <h5>
+                Wish List Redefined</h5>
+              <p style="line-height: 12.2pt;">
+                LetUsRead employs a multi-purpose wish list to help our members. When members add
+                publications to their wish list, they are automatically grouped into one of the
+                four sections; out-of-stock books, out-of-stock magazines, in-stock books and in-stock
+                magazines.
+                <br>
+                <br>
+                Members can add publications to their wish list even if LetUsRead have no stock
+                of those publications; doing so will help us know what our members like to read
+                and we use this information to stock materials as required.
+                <br>
+                <br>
+                If members opt for, publications from out-of-stock book list can be automatically
+                checked out when they become available.
+              </p>
+            </div>
+            <div class="content-row">
+              <h5>
+                Down Payment</h5>
+              <p style="line-height: 12.2pt;">
+                If LetUsRead donï¿½t have copies of a book that our members want to read, members
+                can make a down payment for it to express their interest to read the book. In that
+                case, LetUsRead make every effort to procure copies of it as soon as possible.
+                <br>
+                <br>
+                Down payments are debited from membership accounts and they are automatically credited
+                back to membership accounts once members borrow, read and return the books for which
+                they have made the down payment.</p>
+            </div>
+            <div class="content-row">
+              <h5>
+                Share Your Books</h5>
+              <p style="line-height: 12.2pt;">
+                Do you have a collection of books that you bought over the years gathering dust
+                on your books shelves? Why not think of sharing those books with us and let other
+                members also read them?
+                <br>
+                <br>
+                When you share books with us, you earn a share of its reading fee when your materials
+                are borrowed.
+                <br>
+                <br>
+                Members can keep track of all their shared materials, its transactions and circulation
+                history from their membership account online.
+              </p>
+            </div>
+            <div class="content-row">
+              <h5>
+                Member Recommended Magazine Subscriptions</h5>
+              <p style="line-height: 12.2pt;">
+                Members can express their interest on any magazines from our master magazine list.
+                Based on the demand, we may decide to subscribe to those magazines.</p>
+            </div>
+            <div class="content-row">
+              <h5>
+                Membership Email Notifications</h5>
+              <p style="line-height: 12.2pt;">
+                All important membership messages are sent to members through emails. Members get
+                plan notification messages, if their plan is not set to renew or if their account
+                does not have sufficient balance to renew their plans.</p>
+            </div>
+            <div class="content-row">
+              <h5>
+                Membership SMS Notifications</h5>
+              <p style="line-height: 12.2pt;">
+                Members can sign up to receive important membership messages through SMS.</p>
+            </div>
+            <div class="content-row">
+              <h5>
+                Membership Messages</h5>
+              <p style="line-height: 12.2pt;">
+                All important membership messages will also be listed on online. These messages
+                include checking out of books, issuing, returning, late fees, renewals warning messages
+                etc.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default" *ngIf="libraryCondition['barrowing']">
+        <div class="panel-body">
+          <div class="contentFeatures-div">
+            <div class="content-heading">
+              <h4>
+                Borrowing</h4>
+            </div>
+            <div class="content-row">
+              <h5>
+                Flexible Security Deposit</h5>
+              <p style="line-height: 12.2pt;">
+                LetUsRead members can choose their security deposit.
+                <br>
+                <br>
+                When members want to check out more
+                books at a time they can increase their deposit. The security deposit determines the number
+                of publications that members can keep at a time.
+                <br>
+              </p>
+            </div>
+            <div class="content-row">
+              <h5>
+                Flexible, Affordable and Sensible Reading Plans</h5>
+              <p style="line-height: 12.2pt;">
+                Pay-on-time and pay-in-advance plans. In pay-on-time plan (the default plan), members can
+                keep the checked out publications for two weeks. In Pay-in-advance plans, members can keep
+                their publications for one month upto 12 months.
+                <br>
+              </p>
+            </div>
+            <div class="content-row">
+              <h5>
+                Early Return Credit</h5>
+              <p style="line-height: 12.2pt;">
+                Though members can keep the issues publications as long as they have an active plan,
+                they are encouraged to return them as soon as they have read them. If publications
+                are returned within a specified number of days (depends on the material group of
+                the publication), as an incentive, a percentage of the reading fee of the publication
+                is credited back to their active plan.
+                <br>
+                <br>
+                Please check the page ï¿½Reading Schemesï¿½ on our home page to know various
+                material groups and its early-return-days and early-return-credit-rates.
+              </p>
+            </div>
+            <div class="content-row">
+              <h5>
+                Borrow Again Incentive</h5>
+              <p style="line-height: 12.2pt;">
+                For some publications, members are awarded borrow again incentive if they borrow
+                the same publications again. Incentive is calculated as a percentage of the reading
+                fee of the publication.
+              </p>
+            </div>
+            <div class="content-row">
+              <h5>
+                Reading Discount</h5>
+              <p style="line-height: 12.2pt;">
+                Some publications are given further discount on the already low reading fees. Members
+                can see the discount on the book details page.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default" *ngIf="libraryCondition['circulation']">
+        <div class="panel-body">
+          <div class="contentFeatures-div">
+            <div class="content-heading">
+              <h4>
+                Circulation</h4>
+            </div>
+            <div class="content-row">
+              <h5>
+                Advanced Reservation System</h5>
+              <p style="line-height: 12.2pt;">
+                LetUsRead has an advanced and dynamic reservation system to process member requests
+                for publications. Members can reserve the publications for checkout if they are
+                not available for immediate checkout.</p>
+            </div>
+            <div class="content-row">
+              <h5>
+                Delivery/Collection Services</h5>
+              <p style="line-height: 12.2pt;">
+                LetUsRead offers delivery/collection services to/from member addresses. A list of
+                pin codes where we serve is listed on our library home page.</p>
+            </div>
+            <div class="content-row">
+              <h5>
+                Multiple Issue/Return Methods</h5>
+              <p style="line-height: 12.2pt;">
+                Members can choose a default issue-method for their memberships. Issue-method can
+                be delivery or pick-up. They can also set issue-method of each individual item on
+                their checkout queue that could be different from their default issue-method. By
+                default return-method is set according to the issue-method. If the issue-method
+                is delivery, return-method is set as collection otherwise return-method is set as
+                drop-off. However, members can set return-method of individual issued materials
+                to their choice.</p>
+            </div>
+            <div class="content-row">
+              <h5>
+                Get New Materials Issued While Holding Old Ones</h5>
+              <p style="line-height: 12.2pt;">
+                You can get the new materials issued to you while holding the old ones. All you
+                have to do is to set the ï¿½Publication ready for returnï¿½ flag on the circulation
+                details of the checked out material. This helps the system to check out more materials
+                than what is allowed by their security deposit on the assumption that when the newly
+                checked out materials are issued to you, you return the old ones.</p>
+            </div>
+            <div class="content-row">
+              <h5>
+                You Will Never Read the Same Book Twice!</h5>
+              <p style="line-height: 12.2pt;">
+                While you are always welcome to read a book any number of times, system will
+                warn you when you are about to add a book to your checkout queue if you have already
+                read it.</p>
+            </div>
+            <div class="content-row">
+              <h5>
+                Automatic Checkout</h5>
+              <p style="line-height: 14.2pt;">
+                Members can opt for automatic checkout feature and add their favourite books to their
+                checkout queue and set the frequecy of checkout and limit of reading fee. Books will automatically
+                checked out and issued to members according to the automatic checkout parameters. This is a good
+                feature for children to make books regualry available to them to encourage reading.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default" *ngIf="libraryCondition['financials']">
+        <div class="panel-body">
+          <div class="contentFeatures-div">
+            <div class="content-heading">
+              <h4>
+                Financials</h4>
+            </div>
+            <div class="content-row">
+              <h5>
+                Account Driven Financial Model</h5>
+              <p style="line-height: 12.2pt;">
+                In LetUsRead, members must first credit their membership account with money before
+                that money can be used for any use within their memberships. Members can maintain
+                a balance in their account and use it for charges and fees when they incur.
+              </p>
+            </div>
+            <div class="content-row">
+              <h5>
+                Payment Gateway</h5>
+              <p style="line-height: 12.2pt;">
+                Members can use their credit/debit cards to credit their membership account. Money
+                is immediately credited and members can see their account balance online.</p>
+            </div>
+            <div class="content-row">
+              <h5>
+                Account Transfer
+              </h5>
+              <p style="line-height: 12.2pt;">
+                Members can transfer amount from their membership accounts to any other membership
+                accounts. This is a useful feature for parents who are supporting their children
+                in their membership fees. Let children activates their login accounts and then parents
+                transfer money from their membership accounts to their childrenï¿½s membership accounts.
+                Children will never have to deal with membership financials.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default" *ngIf="libraryCondition['catelog']">
+        <div class="panel-body">
+          <div class="contentFeatures-div">
+            <div class="content-heading">
+              <h4>
+                Catalog</h4>
+            </div>
+            <div class="content-row">
+              <h5>
+                Catalog</h5>
+              <p style="line-height: 12.2pt;">
+                We keep adding books to our catalog regularly. This will help members to express their
+                wish to read out-of-stock books.
+              </p>
+            </div>
+            <div class="content-row">
+              <h5>
+                Master Magazine List</h5>
+              <p style="line-height: 12.2pt;">
+                Our master magazine list contains all popular magazine information and is updated
+                regularly. Members can express interest on any of these magazine and we will try
+                to subscribe to those magazines based on the demand for it.</p>
+            </div>
+            <div class="content-row">
+              <h5>
+                Popular Magazine Subscriptions</h5>
+              <p style="line-height: 12.2pt;">
+                We have subscribed to a number of popular magazines. Members can express their interest
+                in any non-subscribed magazines from the master magazine list. Based on the number
+                of requests receive, we may decide to subscribe to those magazines.</p>
+            </div>
+            <div class="content-row">
+              <h5>
+                Material Groups</h5>
+              <p style="line-height: 12.2pt;">
+                To give best lending services to our readers, publications are grouped into various
+                material groups with each group having its own lease-rates, early-due-days and early-return-credits-rates.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -27,7 +27,7 @@
                     </h5>
                     <p class="book-cost">For Hard Copy</p>
                   </div>
-                  <div class="col-lg-6 col-md-6">
+                  <div class="col-lg-6 col-md-6" *ngIf="details.ecopy">
                     <!--<p class="book-cost">MRP  Rs. {{ details['ecopy_price'] }}  (Inclusive of all taxes)</p>-->
                     <h5 class="lease-details-h">
                       <span class="lease-details-price">Rs. {{ (( details['ecopy_price']/100)*appConstants['lease_rate']).toFixed(2) }} </span>
@@ -48,6 +48,7 @@
                      (click)="getString(details.book_summary, 400)">Less...</a>
                 </p>
                 <br>
+                <p>Only 5 items left.</p>
                 <div class="request-copy-area" *ngIf="authService.isAuthenticated()">
                   <button [disabled]="!details.availability" (click)="requestCopy(details, 'hardcopy')"
                           class="btn btn-primary btn-md book-details-checkout req-btn">

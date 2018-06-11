@@ -22,7 +22,7 @@
           <a routerLink="/profile/settings">My Profile</a>
         </li>
         <li routerLinkActive="none" class="upper-links" *ngIf="authService.isAuthenticated()">
-          <a routerLink="/my-cart">
+          <a routerLink="/my-cart" class="my-cart-a">
             <i class="fa fa-cart-plus"></i>
             &nbsp;Cart
             <span *ngIf="myCart.length" class="cart-legth"

@@ -39,6 +39,16 @@ import { ReadingschemesComponent } from './readingschemes/readingschemes.compone
 import { FaqsComponent } from './faqs/faqs.component';
 import { TalktomemberComponent } from './talktomember/talktomember.component';
 import { ContactusComponent } from './contactus/contactus.component';
+import { ReadingpromotionComponent } from './readingpromotion/readingpromotion.component';
+import { CorporatemembershipsComponent } from './corporatememberships/corporatememberships.component';
+import { BooksharingprogramComponent } from './booksharingprogram/booksharingprogram.component';
+import { RequestanybookComponent } from './requestanybook/requestanybook.component';
+import { PublicationcareComponent } from './publicationcare/publicationcare.component';
+import { BenifitsofreadingComponent } from './benifitsofreading/benifitsofreading.component';
+import { DeliverylocationsComponent } from './deliverylocations/deliverylocations.component';
+import { PrivacypolicyComponent } from './privacypolicy/privacypolicy.component';
+import { TermsconditionsComponent } from './termsconditions/termsconditions.component';
+import { TestimonialsComponent } from './testimonials/testimonials.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +82,17 @@ import { ContactusComponent } from './contactus/contactus.component';
     ReadingschemesComponent,
     FaqsComponent,
     TalktomemberComponent,
-    ContactusComponent
+    ContactusComponent,
+    ReadingpromotionComponent,
+    CorporatemembershipsComponent,
+    BooksharingprogramComponent,
+    RequestanybookComponent,
+    PublicationcareComponent,
+    BenifitsofreadingComponent,
+    DeliverylocationsComponent,
+    PrivacypolicyComponent,
+    TermsconditionsComponent,
+    TestimonialsComponent
   ],
   imports: [
     FormsModule,

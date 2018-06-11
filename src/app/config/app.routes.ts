@@ -26,6 +26,16 @@ import {ReadingschemesComponent} from '../readingschemes/readingschemes.componen
 import {FaqsComponent} from '../faqs/faqs.component';
 import {TalktomemberComponent} from '../talktomember/talktomember.component';
 import {ContactusComponent} from '../contactus/contactus.component';
+import {ReadingpromotionComponent} from '../readingpromotion/readingpromotion.component';
+import {CorporatemembershipsComponent} from '../corporatememberships/corporatememberships.component';
+import {BooksharingprogramComponent} from '../booksharingprogram/booksharingprogram.component';
+import {RequestanybookComponent} from '../requestanybook/requestanybook.component';
+import {PublicationcareComponent} from '../publicationcare/publicationcare.component';
+import {BenifitsofreadingComponent} from '../benifitsofreading/benifitsofreading.component';
+import {DeliverylocationsComponent} from '../deliverylocations/deliverylocations.component';
+import {TermsconditionsComponent} from '../termsconditions/termsconditions.component';
+import {PrivacypolicyComponent} from '../privacypolicy/privacypolicy.component';
+import {TestimonialsComponent} from '../testimonials/testimonials.component';
 
 export const routes: Routes = [
   {path: 'welcome', component: WelcomeComponent},
@@ -39,9 +49,19 @@ export const routes: Routes = [
   {path: 'quickstart', component: QuickstartComponent},
   {path: 'libraryfeatures', component: LibraryfeaturesComponent},
   {path: 'readingschemes', component: ReadingschemesComponent},
+  {path: 'readingspromotionprogram', component: ReadingpromotionComponent},
+  {path: 'corporatememberships', component: CorporatemembershipsComponent},
+  {path: 'booksharingprogram', component: BooksharingprogramComponent},
+  {path: 'requestanybook', component: RequestanybookComponent},
   {path: 'faq', component: FaqsComponent},
+  {path: 'publicationcare', component: PublicationcareComponent},
   {path: 'talktomember', component: TalktomemberComponent},
   {path: 'contactus', component: ContactusComponent},
+  {path: 'benifitsofreading', component: BenifitsofreadingComponent},
+  {path: 'deliverylocations', component: DeliverylocationsComponent},
+  {path: 'termsconditions', component: TermsconditionsComponent},
+  {path: 'privacypolicy', component: PrivacypolicyComponent},
+  {path: 'testimonials', component: TestimonialsComponent},
   {path: 'categories', component: CategoriesComponent},
   {path: 'mycredit', component: MycreditComponent},
   {path: 'order-details/:order_id', component: OrderDetailsComponent},

@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
   });
   constructor(private appService: AppService,
               private appUrls: AppUrls,
-              private router: Router) {}
+              private route: Router) {}
 
   ngOnInit() {
   }
@@ -45,12 +45,12 @@ export class RegisterComponent implements OnInit {
         // ---- Create membership to the registered user!
         const memberObj = {
           plan_balance: 0, user_id: myUser['_id'],
-          membership_type: 'Individual', status: true
+          membership_type: 'Individual', status: false
         };
         this.appService.post(this.appUrls.membership, memberObj);
         // Toast service
         this.appService.toast(user['email'], 'Successfully registered!', 's');
-        this.router.navigate(['/welcome']);
+        this.route.navigate(['/welcome']);
       }
     }).catch((err: HttpErrorResponse) => {
       console.log(err, err['error']['_error']);

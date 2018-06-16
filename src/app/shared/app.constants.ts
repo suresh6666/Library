@@ -8,7 +8,7 @@ export class AppUrls {
   public login = this.baseUrl + 'auth/login';
   public register = this.baseUrl + 'auth/signup';
   public me = this.baseUrl + 'auth/me';
-  public confirmEmail = this.baseUrl + 'account/ConfirmEmailAndSetPassword';
+  public emailActivation = this.baseUrl + 'auth/email-activation';
   public change_password = this.baseUrl + 'auth/change-password';
   public sendForgotPasswordLink = this.baseUrl + 'auth/send-forgot-password-link';
   public logout = this.baseUrl + 'auth/logout';

@@ -36,11 +36,13 @@ import {DeliverylocationsComponent} from '../deliverylocations/deliverylocations
 import {TermsconditionsComponent} from '../termsconditions/termsconditions.component';
 import {PrivacypolicyComponent} from '../privacypolicy/privacypolicy.component';
 import {TestimonialsComponent} from '../testimonials/testimonials.component';
+import {ActivateemailComponent} from '../activateemail/activateemail.component';
 
 export const routes: Routes = [
   {path: 'welcome', component: WelcomeComponent},
   {path: 'book_details/:book_name/:isbn', component: BookDetailsComponent},
   {path: 'register-now', component: RegisterComponent},
+  {path: 'confirm_account/users/:user_id/confirm/:token', component: ActivateemailComponent},
   {path: 'login-now', component: LoginComponent},
   {path: 'forgot-password', component: ForgotPasswordComponent},
   {path: 'search', component: SearchbooksComponent},

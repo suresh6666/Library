@@ -4,7 +4,7 @@
 # /dist
 /tmp
 /out-tsc
-
+run.sh
 # dependencies
 # /node_modules
 

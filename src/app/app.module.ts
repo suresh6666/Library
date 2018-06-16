@@ -49,6 +49,7 @@ import { DeliverylocationsComponent } from './deliverylocations/deliverylocation
 import { PrivacypolicyComponent } from './privacypolicy/privacypolicy.component';
 import { TermsconditionsComponent } from './termsconditions/termsconditions.component';
 import { TestimonialsComponent } from './testimonials/testimonials.component';
+import { ActivateemailComponent } from './activateemail/activateemail.component';
 
 @NgModule({
   declarations: [
@@ -92,7 +93,8 @@ import { TestimonialsComponent } from './testimonials/testimonials.component';
     DeliverylocationsComponent,
     PrivacypolicyComponent,
     TermsconditionsComponent,
-    TestimonialsComponent
+    TestimonialsComponent,
+    ActivateemailComponent
   ],
   imports: [
     FormsModule,

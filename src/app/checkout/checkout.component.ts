@@ -114,12 +114,17 @@ export class CheckoutComponent implements OnInit {
         const bookIds = [];
         // Push the Book ids
         this.cartResults.forEach((cartItem) => {bookIds.push(cartItem['book']['_id'])});
+        const todayDate = new Date();
         const order_object = {
           total_amount: deductionAmount,
           books: bookIds,
           user_id: this.user['_id'],
           shipping_address: this.myShippingAddress,
-          delivery_date: new Date(date.setDate(date.getDate() + 2)).toISOString(),
+          delivery_date: new Date(todayDate.setDate(todayDate.getDate() + 2)).toISOString(),
+          return_summary: {
+            return_date: new Date(todayDate.setMonth(todayDate.getMonth() + 1)).toISOString(),
+            return_notes: 'You should return this order on or before 30 days, otherwise it is renewed automatically!'
+          },
           delivery_status: 'progress',
           transaction_id: transaction['_id']
         };

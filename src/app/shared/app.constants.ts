@@ -2,8 +2,8 @@
 
 // API End points
 export class AppUrls {
-  public staticPath = 'http://192.169.180.88:8000/';
-  public baseUrl = 'http://192.169.180.88:8000/api/1.0/';
+  public staticPath = 'http://ec2-18-220-81-9.us-east-2.compute.amazonaws.com:8090/';
+  public baseUrl = 'http://ec2-18-220-81-9.us-east-2.compute.amazonaws.com:8090/api/1.0/';
   // REST End points
   public login = this.baseUrl + 'auth/login';
   public register = this.baseUrl + 'auth/signup';

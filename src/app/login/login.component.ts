@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
       this.returnUrl = params['return_url'];
     });
     if (this.authService.isAuthenticated()) {
-      this.router.navigate(['/profile/membership']);
+      this.router.navigate(['/membership']);
     }
   }
 
@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('user', obj);
         this.appService.toast(data['data']['email'], 'Successfully Logged in!', 's');
         this.appService.updateUser(data['data']);
-        this.router.navigate([(this.returnUrl) ? this.returnUrl : '/profile/membership']);
+        this.router.navigate([(this.returnUrl) ? this.returnUrl : '/membership']);
       }
     }).catch((err: HttpErrorResponse) => {
       console.log(err);

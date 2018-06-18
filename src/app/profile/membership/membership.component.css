@@ -11,3 +11,10 @@ label {
   background-color: #eee;
   margin-top: 5px;
 }
+.price-btn {
+  margin-top: -3px;
+}
+.card {
+  padding: 15px;
+  margin: 0 auto;
+}

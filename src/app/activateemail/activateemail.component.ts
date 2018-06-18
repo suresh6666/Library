@@ -23,9 +23,11 @@ export class ActivateemailComponent implements OnInit {
     this.appService.post(this.appUrls.emailActivation, this.myParams)
       .then((data) => {
         console.log(data);
-        this.router.navigate(['/welcome']);
+        this.router.navigate(['/login-now']);
+        this.appService.toast('Email is Activated!', 'Please login to continue!', 's');
       }).catch((error) => {
         console.log(error);
+        this.appService.toast('Something went wrong!', 'Please try again!', 'e');
     });
   }
 

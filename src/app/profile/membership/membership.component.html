@@ -1,64 +1,4 @@
-
-<!--<div *ngIf="!membership">
-  <div class="row">
-    <div class="col-lg-6 col-md-6">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <form role="form" [formGroup]="pForm" (submit)="doPayment(appConstants.mAmount)">
-            <div class="form-group">
-              <label for="cardNumber">CARD NUMBER</label>
-              <div class="input-group">
-                <input type="text" class="form-control" id="cardNumber" placeholder="Valid Card Number"
-                       required formControlName="card_number" />
-                <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-7 col-md-7">
-                <div class="form-group">
-                  <label for="expityMonth">EXPIRY DATE</label>
-                  <div class="col-xs-6 col-lg-6 pl-ziro">
-                    <input type="text" class="form-control" id="expityMonth" placeholder="MM"
-                           required maxlength="2" formControlName="mm" />
-                  </div>
-                  <div class="col-xs-6 col-lg-6 pl-ziro">
-                    <input type="text" class="form-control" id="expityYear" placeholder="YY"
-                           required maxlength="2" formControlName="yy" />
-                  </div>
-                </div>
-              </div>
-              <div class="col-xs-5 col-md-5 pull-right">
-                <div class="form-group">
-                  <label for="cvCode">CVV CODE</label>
-                  <input type="password" class="form-control" id="cvCode" placeholder="CVV"
-                         required maxlength="3" formControlName="cvv" />
-                </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="name_on_card">Name on Card</label>
-              <div class="input-group">
-                <input type="text" class="form-control" id="name_on_card" placeholder="Name on Card"
-                       required formControlName="name_on_card" />
-                <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-              </div>
-            </div>
-            <ul class="nav nav-pills nav-stacked">
-              <li>
-                <a><span class="badge pull-right">Rs. {{ appConstants.mAmount }}</span> Final Payment</a>
-              </li>
-            </ul>
-            <br>
-            <button class="btn btn-primary btn-lg btn-block" role="button" type="submit">
-              Pay (Rs. {{ appConstants.mAmount }})
-            </button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>-->
-
+<!--
 <div *ngIf="membership">
   <h5><b>Membership Summary</b></h5>
   <br>
@@ -93,3 +33,89 @@
     </div>
   </div>
 </div>
+-->
+
+<div class="container" *ngIf="!membership && !myParams['plan']">
+  <br>
+  <div class="row">
+    <div class="col-lg-offset-3 col-lg-6">
+      <h1 class="text-center text-uppercase">
+        <strong>Start reading</strong>
+      </h1>
+      <h4 class="text-center text-uppercase">The more you read the less you Pay</h4>
+      <br><br>
+    </div>
+    <div class="col-lg-2 col-lg-offset-3 col-md-offset-3">
+      <select name="no_of_books" (change)="getPriceDetails(readingCalculation)"
+              class="form-control" id="no_of_books" [(ngModel)]="readingCalculation['books']">
+        <option value="{{ item }}" *ngFor="let item of [3,6,9,12]">{{ item }} book(s) at a time</option>
+      </select>
+    </div>
+    <div class="col-lg-2">
+      <select name="no_of_months" (change)="getPriceDetails(readingCalculation)"
+              class="form-control" id="no_of_months" [(ngModel)]="readingCalculation['months']">
+        <option value="{{ item }}" *ngFor="let item of [3,6,9,12]">{{ item }} month(s)</option>
+      </select>
+    </div>
+    <div class="col-lg-2">
+      <button class="btn btn-lg btn-default price-btn">
+        <strong><i>Rs. {{ readingCalculation['totalFee'] }} /- </i></strong>
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-offset-3 col-lg-6 col-md-offset-3 col-md-6">
+      <h5 class="text-uppercase text-center">
+        <strong>{{ membershipType[readingCalculation['books']] }} </strong>Membership
+      </h5>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-lg-offset-5 col-lg-2 col-md-offset-5 col-md-2">
+      <button *ngIf="!authService.isAuthenticated()"
+              class="btn btn-md btn-primary book-details-checkout" routerLink="/register-now">SIGN UP NOW</button>
+      <button *ngIf="authService.isAuthenticated()"
+              class="btn btn-md btn-primary text-uppercase book-details-checkout"
+              routerLink="/membership" [queryParams]="{plan: membershipType[readingCalculation['books']],
+              months: readingCalculation['months'], books: readingCalculation['books']}">
+        Become a Member now
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="container" *ngIf="myParams && myParams['plan']">
+  <br><br>
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="card text-center">
+        <h5>Membership type</h5>
+        <h1>{{ myParams['plan'] }}</h1>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card text-center">
+        <h5>No.of books you can order</h5>
+        <h1>{{ myParams['books'] }} Books</h1>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card text-center">
+        <h5>You plan Expires after</h5>
+        <h1>{{ myParams['months'] }} Months</h1>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-lg-12 text-center">
+      <h1>Your plan amount is <strong>Rs. {{ readingCalculation['totalFee'] }}/-</strong></h1>
+      <br>
+      <button class="btn btn-md btn-primary book-details-checkout text-uppercase">
+        <strong>Request Membership</strong>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="container make-margin"></div>

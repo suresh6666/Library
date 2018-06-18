@@ -3,6 +3,9 @@ body {
   background-color: #FFFFFF;
   font-size: 14px !important;
 }
+.make-margin {
+  margin-bottom: 150px;
+}
 .card {
   border: 1px solid #EEEEEE;
 }

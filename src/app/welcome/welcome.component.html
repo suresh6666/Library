@@ -1,28 +1,4 @@
 <div class="container">
-  <br>
-  <!-- Popular Section -->
-  <div class="heading-bar">
-    <h5 class="text-uppercase"><b>Most Popular Books</b></h5>
-    <span class="h-line"></span>
-  </div>
-  <div class="genre flex-center">
-    <div title="{{ i['category_name'] }}" class="genre-item popular-genre-item flex-center"
-         routerLink="/book_details/{{i.book_url}}/{{ i.ISBN_13 }}"
-         *ngFor="let i of booksList; let index = index">
-      <div class="genre-item-img">
-        <img src="{{ i.image_thumbnail }}" alt="{{ i.book_title }}">
-      </div>
-      <div class="genre-item-text">
-        <h5><a routerLink="/book_details/{{i.book_url}}/{{ i.ISBN_13 }}">{{ i.book_title }}</a></h5>
-        <h6>
-          By
-          <span *ngFor="let author of i.book_authors">
-            <a routerLink="/search" [queryParams]="{q: '', author: author, category: ''}">{{ author }}</a>&nbsp;
-          </span></h6>
-      </div>
-    </div>
-  </div>
-  <!-- End of Popular Section -->
   <br />
   <section>
     <h4 class="text-center">Hear what’s trending for reading in a while.!</h4>

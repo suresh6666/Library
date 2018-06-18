@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AppService} from '../../shared/app.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from '../../shared/auth.service';
 import {AppConstants, AppUrls} from '../../shared/app.constants';
 import {FormControl, FormGroup} from '@angular/forms';
@@ -12,6 +12,14 @@ import {FormControl, FormGroup} from '@angular/forms';
 })
 export class MembershipComponent implements OnInit {
   public membership: any = {};
+  public myParams: any = {};
+  public readingCalculation = {books: 3, months: 3, totalFee: 0};
+  public membershipType = {
+    '3': 'Economy reader',
+    '6': 'Value reader',
+    '9': 'Deluxe reader',
+    '12': 'Ultimate reader'
+  };
   pForm = new FormGroup({
     cvv: new FormControl(),
     mm: new FormControl(),
@@ -24,10 +32,34 @@ export class MembershipComponent implements OnInit {
               private router: Router,
               public authService: AuthService,
               public appUrls: AppUrls,
-              public appConstants: AppConstants) {}
+              public appConstants: AppConstants,
+              public activatedRoute: ActivatedRoute) {
+    this.activatedRoute.queryParams.subscribe((params: any) => {
+      console.log(params);
+      this.myParams = params;
+      this.getPriceDetails((this.myParams['plan']) ? this.myParams : this.readingCalculation);
+    });
+  }
 
   ngOnInit() {
     this.getMembership();
+  }
+  getPriceDetails(calcData) {
+    const month = Number(calcData['months']);
+    const bCount = Number(calcData['books']);
+    let tFee = 800;
+    if (month === 3) {
+      this.readingCalculation['totalFee'] = tFee + (180 * (bCount - 1));
+    } else if (month === 6) {
+      tFee = (tFee * 2) - ((tFee * 2) / 100) * 10;
+      this.readingCalculation['totalFee'] = tFee + (324 * (bCount - 1));
+    } else if (month === 9) {
+      tFee = (tFee * 3) - ((tFee * 3) / 100) * 15;
+      this.readingCalculation['totalFee'] = tFee + (468 * (bCount - 1));
+    } else if (month === 12) {
+      tFee = (tFee * 4) - ((tFee * 4) / 100) * 20;
+      this.readingCalculation['totalFee'] = tFee + (576 * (bCount - 1));
+    }
   }
   getMembership() {
     this.appService.get(this.appUrls.membership).then((data) => {

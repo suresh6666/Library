@@ -37,12 +37,14 @@ import {TermsconditionsComponent} from '../termsconditions/termsconditions.compo
 import {PrivacypolicyComponent} from '../privacypolicy/privacypolicy.component';
 import {TestimonialsComponent} from '../testimonials/testimonials.component';
 import {ActivateemailComponent} from '../activateemail/activateemail.component';
+import {ForgotpasswordactivationComponent} from '../forgotpasswordactivation/forgotpasswordactivation.component';
 
 export const routes: Routes = [
   {path: 'welcome', component: WelcomeComponent},
   {path: 'book_details/:book_name/:isbn', component: BookDetailsComponent},
   {path: 'register-now', component: RegisterComponent},
   {path: 'confirm_account/users/:user_id/confirm/:token', component: ActivateemailComponent},
+  {path: 'forgot-password-activation/users/:user_id/confirm/:token', component: ForgotpasswordactivationComponent},
   {path: 'login-now', component: LoginComponent},
   {path: 'forgot-password', component: ForgotPasswordComponent},
   {path: 'search', component: SearchbooksComponent},
@@ -59,6 +61,7 @@ export const routes: Routes = [
   {path: 'publicationcare', component: PublicationcareComponent},
   {path: 'talktomember', component: TalktomemberComponent},
   {path: 'contactus', component: ContactusComponent},
+  {path: 'membership', component: MembershipComponent},
   {path: 'benifitsofreading', component: BenifitsofreadingComponent},
   {path: 'deliverylocations', component: DeliverylocationsComponent},
   {path: 'termsconditions', component: TermsconditionsComponent},
@@ -71,7 +74,6 @@ export const routes: Routes = [
     path: 'profile', component: ProfileComponent,
     children: [
       {path: '', redirectTo: 'settings', pathMatch: 'full'},
-      {path: 'membership', component: MembershipComponent},
       {path: 'settings', component: SettingsComponent},
       {path: 'shipping', component: ShippingComponent},
       {path: 'change-password', component: ChangePasswordComponent},

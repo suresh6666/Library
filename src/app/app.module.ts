@@ -50,6 +50,7 @@ import { PrivacypolicyComponent } from './privacypolicy/privacypolicy.component'
 import { TermsconditionsComponent } from './termsconditions/termsconditions.component';
 import { TestimonialsComponent } from './testimonials/testimonials.component';
 import { ActivateemailComponent } from './activateemail/activateemail.component';
+import { ForgotpasswordactivationComponent } from './forgotpasswordactivation/forgotpasswordactivation.component';
 
 @NgModule({
   declarations: [
@@ -94,7 +95,8 @@ import { ActivateemailComponent } from './activateemail/activateemail.component'
     PrivacypolicyComponent,
     TermsconditionsComponent,
     TestimonialsComponent,
-    ActivateemailComponent
+    ActivateemailComponent,
+    ForgotpasswordactivationComponent
   ],
   imports: [
     FormsModule,

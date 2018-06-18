@@ -61,8 +61,7 @@
                   </button>
                 </div>
                 <div class="request-copy-area" *ngIf="!authService.isAuthenticated()">
-                  <button (click)="requestCopy(details, 'hardcopy')"
-                          class="btn btn-primary btn-md book-details-checkout req-btn">
+                  <button routerLink="/register-now" class="btn btn-primary btn-md book-details-checkout req-btn">
                     Become a Member
                   </button>
                 </div>

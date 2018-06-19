@@ -1,40 +1,3 @@
-<!--
-<div *ngIf="membership">
-  <h5><b>Membership Summary</b></h5>
-  <br>
-  <div class="row">
-    <div class="col-lg-8">
-      <table class='table table-bordered'>
-        <tr>
-          <td>Membership Id: </td>
-          <td><span class="blue-ink">{{ membership['_id'] }}</span></td>
-        </tr>
-        <tr>
-          <td>Membership Type: </td>
-          <td><span class="blue-ink">{{  membership['membership_type']}}</span></td>
-        </tr>
-        <tr>
-          <td>Status:</td>
-          <td><span class="blue-ink">{{(membership['status']) ? 'Active': 'In Active' }}</span></td>
-        </tr>
-        <tr>
-          <td>Account Balance:</td>
-          <td><span class="blue-ink"><b>Rs. {{ membership['account_balance'] }}</b></span></td>
-        </tr>
-        <tr>
-          <td>Plan Balance:</td>
-          <td><span class="blue-ink"><b>Rs. {{ membership['plan_balance'] }}</b></span></td>
-        </tr>
-        <tr>
-          <td>Plan Expiration:</td>
-          <td><span class="blue-ink">{{ membership['plan_expiry'] | date: 'dd/MM/yyyy hh:mm a' }}</span></td>
-        </tr>
-      </table>
-    </div>
-  </div>
-</div>
--->
-
 <div class="container" *ngIf="!membership && !myParams['plan']">
   <br>
   <div class="row">
@@ -112,9 +75,52 @@
     <div class="col-lg-12 text-center">
       <h1>Your plan amount is <strong>Rs. {{ readingCalculation['totalFee'] }}/-</strong></h1>
       <br>
-      <button class="btn btn-md btn-primary book-details-checkout text-uppercase">
+      <button (click)="requestMembership()" class="btn btn-md btn-primary book-details-checkout text-uppercase">
         <strong>Request Membership</strong>
       </button>
+    </div>
+  </div>
+</div>
+<div class="container" *ngIf="membership && !myParams['plan']">
+  <br>
+  <h4 class="membership-notes">{{ membership['membership_notes'] }}</h4>
+  <br>
+  <div class="row">
+    <div class="col-lg-8">
+      <table class='table table-bordered'>
+        <tr>
+          <td>Membership Id: </td>
+          <td><span class="blue-ink">{{ membership['_id'] }}</span></td>
+        </tr>
+        <tr>
+          <td>Membership Type: </td>
+          <td><span class="blue-ink">{{  membership['membership_type']}}</span></td>
+        </tr>
+        <tr>
+          <td>Status:</td>
+          <td><span class="blue-ink">{{(membership['status']) ? 'Active': 'In Active' }}</span></td>
+        </tr>
+        <tr>
+          <td>Account Balance:</td>
+          <td><span class="blue-ink"><b>Rs. {{ membership['account_balance'] }}</b></span></td>
+        </tr>
+        <tr>
+          <td>Plan Balance:</td>
+          <td><span class="blue-ink"><b>Rs. {{ membership['plan_balance'] }}</b></span></td>
+        </tr>
+        <tr>
+          <td>Plan Expiration:</td>
+          <td><span class="blue-ink">{{ membership['plan_expiry'] | date: 'dd/MM/yyyy hh:mm a' }}</span></td>
+        </tr>
+        <tr>
+          <td>No.of Months</td>
+          <td><span class="blue-ink">{{ membership['no_of_months']}} month(s)</span></td>
+        </tr>
+        <tr>
+          <td>Books you can order at a time</td>
+          <td><span class="blue-ink">{{ membership['books_at_a_time'] }} book(s)</span></td>
+        </tr>
+      </table>
     </div>
   </div>
 </div>

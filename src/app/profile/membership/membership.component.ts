@@ -35,7 +35,7 @@ export class MembershipComponent implements OnInit {
               public appConstants: AppConstants,
               public activatedRoute: ActivatedRoute) {
     this.activatedRoute.queryParams.subscribe((params: any) => {
-      console.log(params);
+      console.log('membership Plan', params);
       this.myParams = params;
       this.getPriceDetails((this.myParams['plan']) ? this.myParams : this.readingCalculation);
     });
@@ -73,40 +73,28 @@ export class MembershipComponent implements OnInit {
       console.log(err);
     });
   }
-  doPayment(amount) {
-    console.log(amount);
-    const pObj = {
-      total_amount: amount,
-      payment_date: new Date().toISOString(),
-      payment_status: 'active',
-      card_details: {
-        user_id: this.authService.getUser()['_id'],
-        card_number: this.pForm.get('card_number').value,
-        card_type: this.pForm.get('card_type').value,
-        expire_date: this.pForm.get('mm').value + '/' + this.pForm.get('yy').value,
-        cvv: this.pForm.get('cvv').value,
-        name_on_card: this.pForm.get('name_on_card').value
-      }
+  requestMembership() {
+    const date = new Date(),
+      books = Number(this.myParams['books']),
+      months = Number(this.myParams['months']);
+    const plan_expiry = new Date(date.setMonth(date.getMonth() + months)).toISOString();
+    const membership = {
+      user_id: this.authService.getUser()['_id'],
+      plan_expiry: plan_expiry,
+      books_at_a_time: books,
+      no_of_months: months,
+      membership_type: this.membershipType[this.readingCalculation['books']],
+      status: false,
+      account_balance: -this.readingCalculation['totalFee'],
+      plan_balance: -this.readingCalculation['totalFee'],
+      membership_notes: 'You have successfully requested for Membership plan, Our executive will call you Shortly!'
     };
-    this.appService.post(this.appUrls.payments, pObj).then((data) => {
-      console.log('Hello Payment', data);
-      const date = new Date();
-      const membershipObj = {
-        user_id: this.authService.getUser()['_id'],
-        plan_expiry: new Date(date.setFullYear(date.getFullYear() + 1)).toISOString(),
-        membership_type: 'Individual',
-        status: true,
-        account_balance: 0,
-        plan_balance: this.appConstants.mAmount
-      };
-      this.appService.post(this.appUrls.membership, membershipObj).then((orderSuccess) => {
-        console.log(orderSuccess);
-      }).catch((orderErr) => {
-        console.log(orderErr);
-      });
-    }).catch((err) => {
-      console.log(err);
+    console.log(membership);
+    this.appService.post(this.appUrls.membership, membership).then((data) => {
+      this.appService.toast(membership['membership_notes'], '', 's');
+      this.router.navigate(['/welcome']);
+    }).catch((error: any) => {
+      this.appService.toast('Something went wrong!', 'Contact Administrator for any issue!', 'e');
     });
   }
-
 }

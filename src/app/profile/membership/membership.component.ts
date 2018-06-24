@@ -20,14 +20,6 @@ export class MembershipComponent implements OnInit {
     '9': 'Deluxe reader',
     '12': 'Ultimate reader'
   };
-  pForm = new FormGroup({
-    cvv: new FormControl(),
-    mm: new FormControl(),
-    yy: new FormControl(),
-    card_type: new FormControl('Credit'),
-    card_number: new FormControl(),
-    name_on_card: new FormControl()
-  });
   constructor(public appService: AppService,
               private router: Router,
               public authService: AuthService,
@@ -78,6 +70,8 @@ export class MembershipComponent implements OnInit {
       books = Number(this.myParams['books']),
       months = Number(this.myParams['months']);
     const plan_expiry = new Date(date.setMonth(date.getMonth() + months)).toISOString();
+    const notes_first = 'You have successfully requested for the ',
+      notes_second = ' Membership plan, Our executive will call you Shortly!';
     const membership = {
       user_id: this.authService.getUser()['_id'],
       plan_expiry: plan_expiry,
@@ -87,7 +81,7 @@ export class MembershipComponent implements OnInit {
       status: false,
       account_balance: -this.readingCalculation['totalFee'],
       plan_balance: -this.readingCalculation['totalFee'],
-      membership_notes: 'You have successfully requested for Membership plan, Our executive will call you Shortly!'
+      membership_notes: notes_first + this.membershipType[this.readingCalculation['books']] + notes_second
     };
     console.log(membership);
     this.appService.post(this.appUrls.membership, membership).then((data) => {

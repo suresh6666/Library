@@ -33,8 +33,8 @@ export class RegisterComponent implements OnInit {
   register(user: any, valid: any) {
     user['user_level'] = [user['user_level']];
     delete user['c_password'];
-    user = [user];
-    this.appService.post(this.appUrls.register, user).then((data) => {
+    const sendingUser = [user];
+    this.appService.post(this.appUrls.register, sendingUser).then((data) => {
       if (data['data'] && data['data'].length) {
         const myUser = data['data'][0];
         // Toast service

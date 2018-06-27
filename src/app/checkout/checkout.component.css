@@ -70,5 +70,21 @@ label {
   margin-right: 10px;
 }
 .address {
-  margin: 10px 0;
+  margin: 2px 0 7px 0;
+}
+.selected-mark, .address {
+  font-size: 13px;
+}
+.address p {
+  margin-bottom: 0;
+}
+.shipping-address {
+  border-bottom: 1px solid #DDDDDD;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+.shipping-address:last-child {
+  border-bottom: 0 solid;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }

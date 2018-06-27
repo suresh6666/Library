@@ -1,0 +1,55 @@
+<div class="container">
+  <br>
+  <h5><b>Transaction History</b></h5>
+  <div class="table-responsive">
+    <table class="table table-hover table-bordered">
+      <thead>
+      <tr>
+        <th>Merchant Name</th>
+        <th>Withdrawal</th>
+        <th>Deposit</th>
+        <th>Status</th>
+        <th>Comment</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of transactions">
+        <td class="money-transac">
+          <div class="icon-sec">
+            <i class="fa fa-rupee"></i>&nbsp;
+            <i class="fa"
+               [ngClass]="{'fa-plus': item.transaction_type === 'credit', 'fa-minus': item.transaction_type === 'debit'}"></i>
+          </div>
+          <div class="content-sec">
+            <h6>
+              <b>
+                {{ (item.transaction_type === 'credit') ? 'Added to ' : 'Deducted from ' }} Wallet
+              </b>
+            </h6>
+            <h6>Transaction ID: {{ item.txnid }}</h6>
+            <h6>{{ item._created | date: 'yyyy-MM-dd hh:mm a' }}</h6>
+          </div>
+        </td>
+        <td>
+          {{ (item.transaction_type === 'debit') ? 'Rs ' + item.amount : '-' }}
+        </td>
+        <td>
+          <h6>
+            {{ (item.transaction_type === 'credit') ? 'Rs ' + item.amount : '-' }}
+          </h6>
+        </td>
+        <td>
+          <h6 class="text-uppercase">
+            {{ item.status }}
+          </h6>
+        </td>
+        <td>
+          <h6>
+            {{ item.product_info }}
+          </h6>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -13,7 +13,7 @@ export class ShippingComponent implements OnInit {
   new_address: any = {
     clicked: false
   };
-  shipping_address: any = {};
+  shipping_address: any = [];
   user: any = {};
   sForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
@@ -28,12 +28,13 @@ export class ShippingComponent implements OnInit {
               private authService: AuthService) {
     this.appService.userCast.subscribe((myUser) => {
       this.user = myUser;
-      this.shipping_address = myUser['shipping_address'];
+      this.shipping_address = myUser['shipping_address'] ? myUser['shipping_address'] : [];
     });
   }
 
   ngOnInit() {}
   submit(formData, formValid) {
+    console.log(formData, this.shipping_address);
     this.shipping_address.push(formData);
     this.appService.patch(this.appUrls.users + '/' + this.user['_id'], {shipping_address: this.shipping_address})
       .then((data) => {

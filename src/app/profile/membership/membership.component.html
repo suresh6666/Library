@@ -1,4 +1,4 @@
-<div class="container" *ngIf="!membership && !myParams['plan']">
+<div class="container" *ngIf="!membership">
   <br>
   <div class="row">
     <div class="col-lg-offset-3 col-lg-6">
@@ -8,29 +8,46 @@
       <h4 class="text-center text-uppercase">The more you read the less you Pay</h4>
       <br><br>
     </div>
-    <div class="col-lg-2 col-lg-offset-3 col-md-offset-3">
+    <div class="col-lg-3 col-lg-offset-3 col-md-offset-3">
+      <label for="">Select Books</label>
       <select name="no_of_books" (change)="getPriceDetails(readingCalculation)"
               class="form-control" id="no_of_books" [(ngModel)]="readingCalculation['books']">
         <option value="{{ item }}" *ngFor="let item of [3,6,9,12]">{{ item }} book(s) at a time</option>
       </select>
     </div>
-    <div class="col-lg-2">
+    <div class="col-lg-3">
+      <label for="">Select Months</label>
       <select name="no_of_months" (change)="getPriceDetails(readingCalculation)"
               class="form-control" id="no_of_months" [(ngModel)]="readingCalculation['months']">
         <option value="{{ item }}" *ngFor="let item of [3,6,9,12]">{{ item }} month(s)</option>
       </select>
     </div>
-    <div class="col-lg-2">
-      <button class="btn btn-lg btn-default price-btn">
-        <strong><i>Rs. {{ readingCalculation['totalFee'] }} /- </i></strong>
-      </button>
-    </div>
   </div>
   <div class="row">
-    <div class="col-lg-offset-3 col-lg-6 col-md-offset-3 col-md-6">
-      <h5 class="text-uppercase text-center">
-        <strong>{{ membershipType[readingCalculation['books']] }} </strong>Membership
-      </h5>
+    <div class="col-lg-offset-3 col-md-offset-3 col-lg-6 col-md-6">
+      <hr>
+      <table class="table table-bordered table-hover">
+        <tr>
+          <td>One time Registration Fee</td>
+          <td class="text-right">{{ appConstants.one_time_reg_fee }}</td>
+        </tr>
+        <tr>
+          <td>One time Security deposit</td>
+          <td class="text-right">{{ appConstants.one_time_security_deposit }}</td>
+        </tr>
+        <tr>
+          <td>Reading fee for {{ readingCalculation['months'] }} month(s)</td>
+          <td class="text-right">{{ readingCalculation['readingFee'] }}</td>
+        </tr>
+        <tr>
+          <td>Membership plan type</td>
+          <td class="text-right"><strong>{{ membershipType[readingCalculation['books']] }} </strong></td>
+        </tr>
+        <tr>
+          <td>Net amount payable</td>
+          <td class="text-right"><b>{{ readingCalculation['totalAmount'] }}</b></td>
+        </tr>
+      </table>
     </div>
   </div>
   <br>
@@ -39,78 +56,42 @@
       <button *ngIf="!authService.isAuthenticated()"
               class="btn btn-md btn-primary book-details-checkout" routerLink="/register-now">SIGN UP NOW</button>
       <button *ngIf="authService.isAuthenticated()"
-              class="btn btn-md btn-primary text-uppercase book-details-checkout"
-              routerLink="/membership" [queryParams]="{plan: membershipType[readingCalculation['books']],
-              months: readingCalculation['months'], books: readingCalculation['books']}">
-        Become a Member now
+              class="btn btn-md btn-primary text-uppercase book-details-checkout" (click)="requestMembership()">
+        Pay now
       </button>
     </div>
   </div>
 </div>
-
-<div class="container" *ngIf="myParams && myParams['plan']">
-  <br><br>
-  <div class="row">
-    <div class="col-lg-4">
-      <div class="card text-center">
-        <h5>Membership type</h5>
-        <h1>{{ myParams['plan'] }}</h1>
-      </div>
-    </div>
-    <div class="col-lg-4">
-      <div class="card text-center">
-        <h5>No.of books you can order</h5>
-        <h1>{{ myParams['books'] }} Books</h1>
-      </div>
-    </div>
-    <div class="col-lg-4">
-      <div class="card text-center">
-        <h5>You plan Expires after</h5>
-        <h1>{{ myParams['months'] }} Months</h1>
-      </div>
-    </div>
-  </div>
+<div class="container" *ngIf="membership">
   <br>
-  <div class="row">
-    <div class="col-lg-12 text-center">
-      <h1>Your plan amount is <strong>Rs. {{ readingCalculation['totalFee'] }}/-</strong></h1>
-      <br>
-      <button (click)="requestMembership()" class="btn btn-md btn-primary book-details-checkout text-uppercase">
-        <strong>Request Membership</strong>
-      </button>
-    </div>
-  </div>
-</div>
-<div class="container" *ngIf="membership && !myParams['plan']">
-  <br>
-  <h4 class="membership-notes">{{ membership['membership_notes'] }}</h4>
+  <h5 class="membership-notes text-capitalize">{{ membership['membership_notes'] }}</h5>
   <br>
   <div class="row">
     <div class="col-lg-8">
       <table class='table table-bordered'>
         <tr>
-          <td>Membership Id: </td>
+          <td>Membership Id </td>
           <td><span class="blue-ink">{{ membership['_id'] }}</span></td>
         </tr>
         <tr>
-          <td>Membership Type: </td>
-          <td><span class="blue-ink">{{  membership['membership_type']}}</span></td>
+          <td>Membership Type </td>
+          <td><span class="blue-ink text-uppercase">{{  membership['membership_type']}}</span></td>
         </tr>
         <tr>
           <td>Status:</td>
           <td><span class="blue-ink">{{(membership['status']) ? 'Active': 'In Active' }}</span></td>
         </tr>
-        <tr>
-          <td>Account Balance:</td>
-          <td><span class="blue-ink"><b>Rs. {{ membership['account_balance'] }}</b></span></td>
+        <tr *ngIf="membership['amount']">
+          <td>Account Balance</td>
+          <td><span class="blue-ink"><b>Rs. {{ membership['amount']['account_balance'] }}</b></span></td>
+        </tr>
+        <tr *ngIf="membership['amount']">
+          <td>Plan Balance</td>
+          <td><span class="blue-ink"><b>Rs. {{ membership['amount']['plan_balance'] }}</b></span></td>
         </tr>
         <tr>
-          <td>Plan Balance:</td>
-          <td><span class="blue-ink"><b>Rs. {{ membership['plan_balance'] }}</b></span></td>
-        </tr>
-        <tr>
-          <td>Plan Expiration:</td>
-          <td><span class="blue-ink">{{ membership['plan_expiry'] | date: 'dd/MM/yyyy hh:mm a' }}</span></td>
+          <td>Plan Expiration</td>
+          <td><span class="blue-ink">{{ membership['plan_expiry'] | date: 'dd MMM yyyy' }}</span></td>
         </tr>
         <tr>
           <td>No.of Months</td>

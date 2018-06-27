@@ -29,7 +29,7 @@ export class AppUrls {
   /*
   * ------------- Parse Queries
   * */
-  /*public wallet = 'http://localhost:1337/parse/classes/wallet';
+  /*public transactions = 'http://localhost:1337/parse/classes/wallet';
   public transactions = 'http://localhost:1337/parse/classes/transactions';*/
 }
 
@@ -38,6 +38,6 @@ export class AppUrls {
 export class AppConstants {
   public lease_rate = 12.00;
   public del_charges = 40.00;
-  public mAmount = 500;
-  public mPlanExpiry = 12;
+  public one_time_reg_fee = 400.00;
+  public one_time_security_deposit = 400.00;
 }

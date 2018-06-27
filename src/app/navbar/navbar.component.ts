@@ -45,6 +45,10 @@ export class NavbarComponent implements OnInit, AfterViewInit {
         this.logout();
       });
       this.userInfo = this.authService.getUser();
+      // Update Cart Items
+      this.appService.cartCast.subscribe((cartResults: any) => {
+        this.myCart = cartResults;
+      });
       this.getCartValues();
     }
   }

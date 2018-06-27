@@ -27,13 +27,20 @@
                     </h5>
                     <p class="book-cost">For Hard Copy</p>
                   </div>
-                  <div class="col-lg-6 col-md-6" *ngIf="details.ecopy">
+                  <div class="col-lg-6 col-md-6">
                     <!--<p class="book-cost">MRP  Rs. {{ details['ecopy_price'] }}  (Inclusive of all taxes)</p>-->
-                    <h5 class="lease-details-h">
-                      <span class="lease-details-price">Rs. {{ (( details['ecopy_price']/100)*appConstants['lease_rate']).toFixed(2) }} </span>
+                    <h5 class="lease-details-h" *ngIf="details['ebook']">
+                      <span class="lease-details-price">
+                        Rs. {{ (( details['ecopy_price']/100)*appConstants['lease_rate']).toFixed(2) }}
+                      </span>
                       <span class="lease-calc">({{ appConstants['lease_rate'] }}% of {{ details['ecopy_price'] }}.00)</span>
                     </h5>
-                    <p class="book-cost">For Audio Book</p>
+                    <h5 class="lease-details-h" *ngIf="!details['ebook']">
+                      <span class="lease-details-price">
+                        Not Available
+                      </span>
+                    </h5>
+                    <p class="book-cost">For E-Book</p>
                   </div>
                 </div>
               </div>
@@ -48,16 +55,16 @@
                      (click)="getString(details.book_summary, 400)">Less...</a>
                 </p>
                 <br>
-                <p>Only 5 items left.</p>
-                <div class="request-copy-area" *ngIf="authService.isAuthenticated()">
-                  <button [disabled]="!details.availability" (click)="requestCopy(details, 'hardcopy')"
+                <p *ngIf="details['no_of_copies']">Only {{ details['no_of_copies']['instore'] }} item(s) left.</p>
+                <div class="request-copy-area" *ngIf="authService.isAuthenticated() && details['no_of_copies']">
+                  <button [disabled]="!details.availability || details['no_of_copies']['instore'] === 0" (click)="requestCopy(details, 'hardcopy')"
                           class="btn btn-primary btn-md book-details-checkout req-btn">
                     Request hard copy!
                   </button>
-                  <button [title]="(details.ecopy) ? '' : 'E-copy is not available'"
-                          [disabled]="!details.availability || !details.ecopy" (click)="requestCopy(details, 'ecopy')"
+                  <button [title]="(details.ebook) ? '' : 'E-Book is not available'"
+                          [disabled]="!details.availability || !details.ebook" (click)="requestCopy(details, 'ecopy')"
                           class="btn btn-primary btn-md req-btn req-ecopy">
-                    Request E-copy!
+                    Request E-Book!
                   </button>
                 </div>
                 <div class="request-copy-area" *ngIf="!authService.isAuthenticated()">
@@ -65,8 +72,8 @@
                     Become a Member
                   </button>
                 </div>
-                <p class="book-cost" style="margin: 10px 0;">
-                  Book is {{ (details.availability) ? 'Available': 'Not available' }},
+                <p class="book-cost" style="margin: 10px 0;" *ngIf="details['no_of_copies']">
+                  Book is {{ (details.availability && details['no_of_copies']['instore'] > 0) ? 'Available': 'Not available' }},
                   {{ (details.availability) ? 'Generally delivered in 2 days': '' }}
                 </p>
               </div>

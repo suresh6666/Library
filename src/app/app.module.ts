@@ -28,7 +28,7 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import { OrdersComponent } from './orders/orders.component';
 import { PaymentComponent } from './payment/payment.component';
-import { WalletComponent } from './wallet/wallet.component';
+import { TransactionsComponent } from './transactions/transactions.component';
 import { MycartComponent } from './mycart/mycart.component';
 import { CategoriesComponent } from './categories/categories.component';
 import {FilterPipe} from './app.pipe';
@@ -74,7 +74,7 @@ import { ForgotpasswordactivationComponent } from './forgotpasswordactivation/fo
     OrderDetailsComponent,
     OrdersComponent,
     PaymentComponent,
-    WalletComponent,
+    TransactionsComponent,
     MycartComponent,
     CategoriesComponent,
     FilterPipe,

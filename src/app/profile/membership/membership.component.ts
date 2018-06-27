@@ -13,7 +13,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 export class MembershipComponent implements OnInit {
   public membership: any = {};
   public myParams: any = {};
-  public readingCalculation = {books: 3, months: 3, totalFee: 0};
+  public readingCalculation = {books: 3, months: 3, readingFee: 0, totalAmount: 0};
   public membershipType = {
     '3': 'Economy reader',
     '6': 'Value reader',
@@ -41,17 +41,19 @@ export class MembershipComponent implements OnInit {
     const bCount = Number(calcData['books']);
     let tFee = 800;
     if (month === 3) {
-      this.readingCalculation['totalFee'] = tFee + (180 * (bCount - 1));
+      this.readingCalculation['readingFee'] = tFee + (180 * (bCount - 1));
     } else if (month === 6) {
       tFee = (tFee * 2) - ((tFee * 2) / 100) * 10;
-      this.readingCalculation['totalFee'] = tFee + (324 * (bCount - 1));
+      this.readingCalculation['readingFee'] = tFee + (324 * (bCount - 1));
     } else if (month === 9) {
       tFee = (tFee * 3) - ((tFee * 3) / 100) * 15;
-      this.readingCalculation['totalFee'] = tFee + (468 * (bCount - 1));
+      this.readingCalculation['readingFee'] = tFee + (468 * (bCount - 1));
     } else if (month === 12) {
       tFee = (tFee * 4) - ((tFee * 4) / 100) * 20;
-      this.readingCalculation['totalFee'] = tFee + (576 * (bCount - 1));
+      this.readingCalculation['readingFee'] = tFee + (576 * (bCount - 1));
     }
+    const extraCost = this.appConstants.one_time_security_deposit + this.appConstants.one_time_reg_fee;
+    this.readingCalculation['totalAmount'] = this.readingCalculation['readingFee'] + extraCost;
   }
   getMembership() {
     this.appService.get(this.appUrls.membership).then((data) => {
@@ -67,10 +69,10 @@ export class MembershipComponent implements OnInit {
   }
   requestMembership() {
     const date = new Date(),
-      books = Number(this.myParams['books']),
-      months = Number(this.myParams['months']);
+      books = Number(this.readingCalculation['books']),
+      months = Number(this.readingCalculation['months']);
     const plan_expiry = new Date(date.setMonth(date.getMonth() + months)).toISOString();
-    const notes_first = 'You have successfully requested for the ',
+    const notes_first = 'successfully requested for the ',
       notes_second = ' Membership plan, Our executive will call you Shortly!';
     const membership = {
       user_id: this.authService.getUser()['_id'],
@@ -79,8 +81,14 @@ export class MembershipComponent implements OnInit {
       no_of_months: months,
       membership_type: this.membershipType[this.readingCalculation['books']],
       status: false,
-      account_balance: -this.readingCalculation['totalFee'],
-      plan_balance: -this.readingCalculation['totalFee'],
+      new_member: true,
+      amount: {
+        account_balance: -this.readingCalculation['readingFee'],
+        plan_balance: -this.readingCalculation['readingFee'],
+        one_time_reg_fee: -this.appConstants.one_time_reg_fee,
+        one_time_security_deposit: -this.appConstants.one_time_security_deposit,
+        amount_paid: false
+      },
       membership_notes: notes_first + this.membershipType[this.readingCalculation['books']] + notes_second
     };
     console.log(membership);

@@ -21,7 +21,7 @@
               <h4><b>₹ {{ book.book_price }}</b></h4>
             </div>
             <div class="col-lg-3 col-md-3">
-              <button class="btn btn-sm btn-default" (click)="removeFromCart(book._id)">Remove from Cart</button>
+              <button class="btn btn-xs btn-default" (click)="removeFromCart(book._id)">Remove</button>
               <h6>Requested for <b>{{ book['book_type'] }}</b></h6>
             </div>
           </div>
@@ -33,11 +33,9 @@
     </div>
     <div class="col-lg-4 col-md-4">
       <div class="panel panel-default">
-        <div class="panel-title">
+        <div class="panel-body">
           <h5 class="text-uppercase"><b>Reading Fee</b></h5>
           <hr>
-        </div>
-        <div class="panel-body">
           <h5>
             Price ({{ books.length }} items)
             <span class="pull-right"><b>₹ {{ totalPrice }}</b></span>

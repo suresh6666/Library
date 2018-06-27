@@ -61,6 +61,9 @@ body {
 .pointer {
   cursor: pointer;
 }
+.error-message {
+  color: red;
+}
 .book-details-checkout, .book-details-checkout:hover, .my-button, .my-button:hover,
 .my-button:active, .my-button:focus{
   background-color: #FF4081 !important;

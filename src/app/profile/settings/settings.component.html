@@ -19,7 +19,7 @@
       <div class="form-group">
         <label class="control-label" for="first_name">Registered on</label>
         <input name="last_name" type="text" placeholder="Registered Date"
-               value="{{ user['created_date'] | date: 'dd/MM/yyyy' }}"
+               value="{{ user['_created'] | date: 'dd/MM/yyyy' }}"
                class="form-control input-md" disabled />
       </div> <!-- form-group-->
     </div> <!-- end col -->

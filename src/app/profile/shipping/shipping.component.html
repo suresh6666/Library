@@ -1,8 +1,8 @@
 <div class="card-body shipping-address">
   <div class="row">
-    <div class="col-lg-5">
+    <div class="col-lg-3">
       <div class="new-address" (click)="new_address.clicked = !new_address.clicked">
-        <h6 style="margin-bottom: 0; color: #2780E3; text-transform: uppercase; font-weight: 400;">
+        <h6 style="margin: 0; color: #2780E3; text-transform: uppercase; font-weight: 400;">
           <i class="fa fa-plus"></i>&nbsp;
           <a style="cursor: pointer;">Add New Address</a>
         </h6>
@@ -58,7 +58,6 @@
     </div>
   </div>
 
-  <br>
   <div class="row" *ngFor="let shipping_address of shipping_address; let i = index;">
     <div class="col-lg-12">
       <div class="address-area">
@@ -66,7 +65,7 @@
           <span class="address-type" *ngIf="shipping_address.default">
             <b>
               <i class="fa fa-map-marker"></i>
-              Marked as Default Address </b>
+              Default Address </b>
           </span>
           <div class="address-owner">
             <p><b>{{ shipping_address.name }} &nbsp;&nbsp;{{ shipping_address.phone_number }}</b></p>

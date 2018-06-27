@@ -24,7 +24,7 @@ export class OrderDetailsComponent implements OnInit {
     this.appService.updateCart([]);
   }
   getOrder() {
-    const embedded = JSON.stringify({books: 1, payment_id: 1});
+    const embedded = JSON.stringify({'books.book_id': 1});
     const query = '/' + this.urlParams['order_id'] + '?embedded=' + embedded;
     this.appService.get(this.appUrls.orders + query).then((data) => {
       console.log(data);
